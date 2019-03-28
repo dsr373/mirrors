@@ -1,0 +1,6 @@
+# vscode config files
+.vscode
+
+# object and source
+bin/*
+obj/*
