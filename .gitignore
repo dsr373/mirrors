@@ -4,3 +4,6 @@
 # object and source
 bin/*
 obj/*
+
+# data types
+data/*.txt
