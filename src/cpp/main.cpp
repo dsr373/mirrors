@@ -54,7 +54,8 @@ int main(int argc, char * argv[]) {
     fftw_execute(p);
     // print arrays
     complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
-    in.print_prop(myabs, in_file);
+    complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
+    in.print_prop(myarg, in_file);
     out.print_prop(myabs, out_file);
 
     // clean up and exit
