@@ -9,7 +9,7 @@ INC = -I/usr/include
 
 # these are the object file names (targets for compilation step)
 # second line prepends the obj directory to object file names
-_OBJ = main.o array2d.o
+_OBJ = main.o array2d.o util.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 .PHONY: default directories remove clean

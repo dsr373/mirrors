@@ -7,30 +7,16 @@
 #include<fftw3.h>
 
 #include "array2d.h"
+#include "util.h"
 
 using namespace std;
 
 #define N 50
 
 int main(int argc, char * argv[]) {
-    // parse command line args
-    // either none or two arguments must be provided, giving the input and output filenames
-    char ifile[] = "data/in.txt";
-    char ofile[] = "data/out.txt";
-    if(argc > 1) {
-        if(argc == 3) {
-            strcpy(ifile, argv[1]);
-            strcpy(ofile, argv[2]);
-        }
-        else {
-            printf("Error: incorrect number of arguments!\n");
-            return 1;
-        }
-    }
-
-    // open files
-    FILE * in_file = fopen(ifile, "w");
-    FILE * out_file = fopen(ofile, "w");
+    // parse command line config
+    Config conf;
+    configure(argc, argv, conf);
 
     // declarations
     double wx = 0.628;    // 0.2 pi
@@ -55,11 +41,10 @@ int main(int argc, char * argv[]) {
     // print arrays
     complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
     complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
-    in.print_prop(myarg, in_file);
-    out.print_prop(myabs, out_file);
+    in.print_prop(myarg, conf.in_filep);
+    out.print_prop(myabs, conf.out_filep);
 
     // clean up and exit
     fftw_destroy_plan(p);
-    fclose(in_file); fclose(out_file);
     return 0;
 }
