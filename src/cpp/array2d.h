@@ -7,15 +7,10 @@
 #include<algorithm>
 
 #include<fftw3.h>
+
+#include "util.h"
 using namespace std;
 
-#define EPS 1e-6
-#define DBL_EQ(a, b) (abs(a-b) < EPS)
-
-/** Type that takes complex argument and returns real number.
- * These are functions such as abs, real, imag, arg, etc...
- */
-using complex_to_real = double (*)(complex<double>);
 
 /** THE class that stores a 2D nx by ny array of complex<double> numbers
  * internally represented as a 1D array of length (nx*ny). It offers access
@@ -50,29 +45,9 @@ public:
 
 
 /**
- * Generate the FT frequencies corresponding to n time-samples spaced by dt.
- * For even n, the positive frequencies are [1 .. n/2 - 1] / (n*dt)
- * For odd n, the positive frequencies are [1 .. (n-1)/2] / (n*dt)
+ * Print the limits in two directions of the 2d array, then the array itself,
+ * in standard formatted way.
  */
-vector<double> fftfreq(int n, double dt=1.0);
-
-/**
- * Create new vector where the zero-component freuqency is shifted to the middle
- */
-template <typename T> vector<T> fftshift(const vector<T> &v) {
-    int n = v.size();
-    vector<T> shifted(v);
-    int new_first = (n+1) / 2;
-    
-    rotate(shifted.begin(), shifted.begin() + new_first, shifted.end());
-
-    return shifted;
-}
-
-
-/**
- * Calculate the coordinates of n evenly distributed points between -l/2 and l/2
- */
-vector<double> coords(double l, int n);
+void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys);
 
 #endif

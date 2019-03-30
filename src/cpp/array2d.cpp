@@ -103,27 +103,12 @@ Array2d fftshift(const Array2d &a) {
 }
 
 
-vector<double> fftfreq(int n, double dt) {
-    vector<double> v(n, 0.0);
-    int halfpoint = (n+1)/2;
-
-    for(int i = 0; i < halfpoint; i++)
-        v[i] = i / (dt*n);
-
-    for(int i = halfpoint; i < n; i ++)
-        v[i] = i / (dt*n) - n;
-
-    return v;
-}
-
-
 /**
- * Calculate the coordinates of n evenly distributed points between -l/2 and l/2
+ * Print the limits in two directions of the 2d array, then the array itself,
+ * in standard formatted way.
  */
-vector<double> coords(double l, int n) {
-    vector<double> x(n);
-    for(int i = 0; i < n; i ++ )
-        x[i] = (i - n/2) * l/n;
-    
-    return x;
+void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys) {
+    fprintf(filep, "% 6.5f\t% 6.5f \n", *xs.begin(), *xs.end());
+    fprintf(filep, "% 6.5f\t% 6.5f \n", *ys.begin(), *ys.end());
+    a.print_prop(fun, filep);
 }

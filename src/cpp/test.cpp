@@ -2,10 +2,6 @@
 
 #include "array2d.h"
 
-// returns the abs of a complex. Used later for printing
-complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
-complex_to_real myre = [](complex<double> z) -> double {return real(z);};
-
 // utility function to print real part of all elements only if verbose is true
 void conditional_print(bool verbose, const char * name, const Array2d &a) {
     if(verbose) {

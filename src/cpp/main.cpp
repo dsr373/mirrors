@@ -15,9 +15,7 @@ using namespace std;
 
 int main(int argc, char * argv[]) {
     // parse command line config
-    Config conf;
-    int status = configure(argc, argv, conf);
-    if(status != 0) return status;
+    Config conf(argc, argv);
 
     // declarations
     Array2d in(N, N);
@@ -44,8 +42,6 @@ int main(int argc, char * argv[]) {
     // plan
     fftw_execute(p);
     // print arrays
-    complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
-    // complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
     in.print_prop(myabs, conf.in_filep);
     fftshift(out).print_prop(myabs, conf.out_filep);
 
