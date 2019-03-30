@@ -11,7 +11,7 @@ Array2d::~Array2d() {
 /** Return the value of element [ix][iy] through round bracket operator
  * Use like a(ix, iy)
  */
-complex<double> Array2d::operator()(int ix, int iy) {
+complex<double> Array2d::operator()(int ix, int iy) const {
     int idx = ny*ix + iy;
     return arr[idx];
 }
@@ -21,6 +21,21 @@ complex<double> Array2d::operator()(int ix, int iy) {
  */
 complex<double> * Array2d::operator[](int ix) {
     return (arr + (ny*ix));
+}
+
+/** Test for near equality to within REL_EPS */
+bool operator==(const Array2d &a, const Array2d &b) {
+    if(a.nx != b.nx) return false;
+    if(a.ny != b.ny) return false;
+    
+    int nx = a.nx, ny = a.ny;
+
+    for(int i = 0; i < nx; i ++ )
+        for(int j = 0; j < ny; j ++ ) {
+            if( ! DBL_EQ(abs(a(i, j) - b(i, j)), 0.0))
+                return false;
+        }
+    return true;
 }
 
 /** Cast the pointer to fftw_complex*,
@@ -40,6 +55,27 @@ void Array2d::print_prop(complex_to_real fun, FILE * out_file) {
     }
 }
 
+Array2d Array2d::deep_copy() {
+    Array2d aa(nx, ny);
+
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            aa[i][j] = (*this)[i][j];
+        }
+    }
+
+    return aa;
+}
+
+// Array2d * Array2d::fftshift_x() {
+//     int shift = (ny+1) / 2;
+
+//     for(int i = 0; i < nx; i ++ ) {
+//         rotate((*this)[i], (*this)[i] + shift, (*this)[i] + ny);
+//     }
+
+//     return this;
+// }
 
 // Array2d fftshift(const Array2d &a) {
     

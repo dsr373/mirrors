@@ -9,6 +9,10 @@
 #include<fftw3.h>
 using namespace std;
 
+#define EPS 1e-6
+
+#define DBL_EQ(a, b) (abs(a-b) < EPS)
+
 using complex_to_real = double (*)(complex<double>);
 //TODO: use that to define printing a property of the Array2d: print_prop(Array2d a, complex_to_real fun);
 
@@ -20,12 +24,20 @@ private:
 public:
     Array2d(int size_x, int size_y);
     ~Array2d();
+
     complex<double> * operator[](int ix);
-    complex<double> operator()(int ix, int iy);
+    complex<double> operator()(int ix, int iy) const;
+    friend bool operator==(const Array2d &a, const Array2d &b);
+    
     fftw_complex * ptr();
     void print_prop(complex_to_real fun, FILE * out_file);
 
-    friend Array2d fftshift(const Array2d &a);
+    Array2d deep_copy();
+
+    // Array2d * fftshift_x();
+    // Array2d * transpose();
+
+    // friend Array2d fftshift(const Array2d &a);
 };
 
 
