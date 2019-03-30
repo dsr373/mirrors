@@ -9,11 +9,12 @@ INC = -I/usr/include
 
 # these are the object file names (targets for compilation step)
 # second line prepends the obj directory to object file names
-_OBJ = main.o array2d.o util.o
+_OBJ = array2d.o util.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-.PHONY: default directories remove clean
+.PHONY: default test directories remove clean
 default: $(BDIR)/main.exe
+test: $(BDIR)/test.exe
 
 # create the necessary directories
 directories:
@@ -26,7 +27,7 @@ $(ODIR)/%.o: $(SDIR)/%.cpp
 	$(CXX) $(CFLAGS) -c -o $@ $<
 
 # link to executable
-$(BDIR)/main.exe: $(OBJ)
+$(BDIR)/%.exe: $(ODIR)/%.o $(OBJ)
 	$(CXX) $(CFLAGS) $^ $(LIBS) -o $@
 
 remove:

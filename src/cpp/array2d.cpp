@@ -39,3 +39,22 @@ void Array2d::print_prop(complex_to_real fun, FILE * out_file) {
         fprintf(out_file, "\n");
     }
 }
+
+
+// Array2d fftshift(const Array2d &a) {
+    
+// }
+
+
+vector<double> fftfreq(int n, double dt) {
+    vector<double> v(n, 0.0);
+    int halfpoint = (n+1)/2;
+
+    for(int i = 0; i < halfpoint; i++)
+        v[i] = i / (dt*n);
+
+    for(int i = halfpoint; i < n; i ++)
+        v[i] = i / (dt*n) - n;
+
+    return v;
+}
