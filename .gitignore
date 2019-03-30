@@ -7,3 +7,7 @@ obj/*
 
 # data types
 data/*.txt
+
+# my own symlinks
+main
+test
