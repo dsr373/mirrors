@@ -48,10 +48,10 @@ fftw_complex * Array2d::ptr() {
 
 /** Print function fun applied to all the elements, formatted as 2d array
  */
-void Array2d::print_prop(complex_to_real fun, FILE * out_file) {
+void Array2d::print_prop(complex_to_real fun, FILE * out_file) const {
     for(int ix = 0; ix < nx; ix++) {
         for(int iy = 0; iy < ny; iy++)
-            fprintf(out_file, "% 6.5f\t", fun((*this)[ix][iy]));
+            fprintf(out_file, "% 6.5f\t", fun((*this)(ix, iy)));
         fprintf(out_file, "\n");
     }
 }

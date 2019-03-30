@@ -40,7 +40,7 @@ public:
     friend bool operator==(const Array2d &a, const Array2d &b);
     
     fftw_complex * ptr();
-    void print_prop(complex_to_real fun, FILE * out_file);
+    void print_prop(complex_to_real fun, FILE * out_file) const;
 
     Array2d deep_copy() const;
     Array2d transpose() const;
