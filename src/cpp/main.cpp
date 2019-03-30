@@ -16,7 +16,8 @@ using namespace std;
 int main(int argc, char * argv[]) {
     // parse command line config
     Config conf;
-    configure(argc, argv, conf);
+    int status = configure(argc, argv, conf);
+    if(status != 0) return status;
 
     // declarations
     double wx = 0.628;    // 0.2 pi
