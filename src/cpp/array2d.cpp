@@ -108,7 +108,7 @@ Array2d fftshift(const Array2d &a) {
  * in standard formatted way.
  */
 void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys) {
-    fprintf(filep, "% 6.5f\t% 6.5f \n", *xs.begin(), *xs.end());
-    fprintf(filep, "% 6.5f\t% 6.5f \n", *ys.begin(), *ys.end());
+    fprintf(filep, "% 6.5f\t% 6.5f \n", xs.front(), xs.back());
+    fprintf(filep, "% 6.5f\t% 6.5f \n", ys.front(), ys.back());
     a.print_prop(fun, filep);
 }

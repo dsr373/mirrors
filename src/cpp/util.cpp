@@ -44,7 +44,7 @@ vector<double> fftfreq(int n, double dt) {
         v[i] = i / (dt*n);
 
     for(int i = halfpoint; i < n; i ++)
-        v[i] = i / (dt*n) - n;
+        v[i] = (i - n) / (dt*n);
 
     return v;
 }

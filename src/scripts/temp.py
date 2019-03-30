@@ -5,12 +5,21 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 
 def readfile(filename):
-    return np.loadtxt(filename)
+    with open(filename) as fin:
+        lines = fin.readlines()
+        data = [[float(x) for x in line.split()] for line in lines]
+        xlim = data[0]
+        ylim = data[1]
+        data = data[2:]
+    return xlim, ylim, data
 
 
-def colour_plot(data):
+def colour_plot(readout):
+    xlim, ylim, data = readout
+    
     _, ax = plt.subplots()
-    ax.imshow(data, cmap=cm.plasma, interpolation='nearest')
+    lims = xlim + ylim
+    ax.imshow(data, cmap=cm.plasma, interpolation='nearest', extent=lims)
 
 
 if __name__ == "__main__":

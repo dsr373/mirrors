@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#define N 1000
+#define N 501
 
 int main(int argc, char * argv[]) {
     // parse command line config
@@ -27,9 +27,19 @@ int main(int argc, char * argv[]) {
 
     // fill in the input
     double lx = 16, ly = 10;
-    double ax = 0.12, ay = 0.24;
+    double ax = 0.2, ay = 0.5;
     vector<double> xs = coords(lx, N);
     vector<double> ys = coords(ly, N);
+    vector<double> fx = fftshift(fftfreq(N, lx/(double)N));
+    vector<double> fy = fftshift(fftfreq(N, ly/(double)N));
+
+    // for(int i = 0; i < N; i ++ )
+    //     printf("% 6.5f ", fx[i]);
+    
+    // printf("\n\n");
+    // for(int i = 0; i < N; i ++ )
+    //     printf("% 6.5f ", fy[i]);
+    // printf("\n");
 
     for(int i = 0; i < N; i++) 
         for(int j = 0; j < N; j++) {
@@ -39,11 +49,11 @@ int main(int argc, char * argv[]) {
                 in[i][j] = 0;
     }
 
-    // plan
+    // execute
     fftw_execute(p);
     // print arrays
-    in.print_prop(myabs, conf.in_filep);
-    fftshift(out).print_prop(myabs, conf.out_filep);
+    print_lim_array(conf.in_filep, myabs, in, xs, ys);
+    print_lim_array(conf.out_filep, myabs, fftshift(out), fx, fy);
 
     // clean up and exit
     fftw_destroy_plan(p);
