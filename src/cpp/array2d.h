@@ -14,7 +14,6 @@ using namespace std;
 #define DBL_EQ(a, b) (abs(a-b) < EPS)
 
 using complex_to_real = double (*)(complex<double>);
-//TODO: use that to define printing a property of the Array2d: print_prop(Array2d a, complex_to_real fun);
 
 class Array2d {
 private:
@@ -32,12 +31,10 @@ public:
     fftw_complex * ptr();
     void print_prop(complex_to_real fun, FILE * out_file);
 
-    Array2d deep_copy();
+    Array2d deep_copy() const;
+    Array2d transpose();
 
-    // Array2d * fftshift_x();
-    // Array2d * transpose();
-
-    // friend Array2d fftshift(const Array2d &a);
+    friend Array2d fftshift(const Array2d &a);
 };
 
 
