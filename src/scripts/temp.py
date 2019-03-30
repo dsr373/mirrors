@@ -9,9 +9,11 @@ def readfile(filename):
 
 
 def colour_plot(data):
-    plt.imshow(data, cmap=cm.plasma, interpolation='nearest')
-    plt.show()
+    _, ax = plt.subplots()
+    ax.imshow(data, cmap=cm.plasma, interpolation='nearest')
 
 
 if __name__ == "__main__":
     colour_plot(readfile("data/in.txt"))
+    colour_plot(readfile("data/out.txt"))
+    plt.show()

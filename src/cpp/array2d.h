@@ -69,4 +69,10 @@ template <typename T> vector<T> fftshift(const vector<T> &v) {
     return shifted;
 }
 
+
+/**
+ * Calculate the coordinates of n evenly distributed points between -l/2 and l/2
+ */
+vector<double> coords(double l, int n);
+
 #endif

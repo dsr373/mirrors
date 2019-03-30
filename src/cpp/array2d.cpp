@@ -115,3 +115,15 @@ vector<double> fftfreq(int n, double dt) {
 
     return v;
 }
+
+
+/**
+ * Calculate the coordinates of n evenly distributed points between -l/2 and l/2
+ */
+vector<double> coords(double l, int n) {
+    vector<double> x(n);
+    for(int i = 0; i < n; i ++ )
+        x[i] = (i - n/2) * l/n;
+    
+    return x;
+}
