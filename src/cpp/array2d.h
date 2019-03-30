@@ -4,6 +4,7 @@
 #include<cstdio>
 #include<complex>
 #include<vector>
+#include<algorithm>
 
 #include<fftw3.h>
 using namespace std;
@@ -40,18 +41,10 @@ vector<double> fftfreq(int n, double dt=1.0);
  */
 template <typename T> vector<T> fftshift(const vector<T> &v) {
     int n = v.size();
-    // apply shift1 to all values up to halfpoint
-    // and shift2 to all values after halfpoint
-    int halfpoint = n/2;
-    int shift1 = (n+1)/2;
-    int shift2 = -n/2;
-    vector<T> shifted(n);
+    vector<T> shifted(v);
+    int new_first = (n+1) / 2;
     
-    for(int i = 0; i < halfpoint; i++)
-        shifted[i] = v[i + shift1];
-    
-    for(int i = halfpoint; i < n; i++)
-        shifted[i] = v[i + shift2];
+    rotate(shifted.begin(), shifted.begin() + new_first, shifted.end());
 
     return shifted;
 }
