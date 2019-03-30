@@ -9,7 +9,7 @@ Array2d::~Array2d() {
 }
 
 /** Return the value of element [ix][iy] through round bracket operator
- * Use like a(ix, iy)
+ * Use like a(ix, iy). Return is immutable, good for use with const Array2d &.
  */
 complex<double> Array2d::operator()(int ix, int iy) const {
     int idx = ny*ix + iy;
@@ -17,13 +17,14 @@ complex<double> Array2d::operator()(int ix, int iy) const {
 }
 
 /** Return a pointer to row number ix
- * Use like a[ix][iy] for value of element, like a normal 2d array
+ * Use like a[ix][iy] for value of element, like a normal 2d array.
+ * Return is mutable.
  */
 complex<double> * Array2d::operator[](int ix) {
     return (arr + (ny*ix));
 }
 
-/** Test for near equality to within REL_EPS */
+/** Test for near equality to within EPS */
 bool operator==(const Array2d &a, const Array2d &b) {
     if(a.nx != b.nx) return false;
     if(a.ny != b.ny) return false;
@@ -45,7 +46,7 @@ fftw_complex * Array2d::ptr() {
     return (fftw_complex*) arr;
 }
 
-/** Print function fun of the elements as a 2d array
+/** Print function fun applied to all the elements, formatted as 2d array
  */
 void Array2d::print_prop(complex_to_real fun, FILE * out_file) {
     for(int ix = 0; ix < nx; ix++) {
@@ -72,12 +73,12 @@ Array2d Array2d::deep_copy() const {
 }
 
 /** Create a transposed copy of the array */
-Array2d Array2d::transpose() {
+Array2d Array2d::transpose() const {
     Array2d a(ny, nx);
 
     for(int i = 0; i < nx; i ++ )
         for(int j = 0; j < ny; j ++ )
-            a[j][i] = (*this)[i][j];
+            a[j][i] = (*this)(i, j);
     return a;
 }
 

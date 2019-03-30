@@ -10,11 +10,22 @@
 using namespace std;
 
 #define EPS 1e-6
-
 #define DBL_EQ(a, b) (abs(a-b) < EPS)
 
+/** Type that takes complex argument and returns real number.
+ * These are functions such as abs, real, imag, arg, etc...
+ */
 using complex_to_real = double (*)(complex<double>);
 
+/** THE class that stores a 2D nx by ny array of complex<double> numbers
+ * internally represented as a 1D array of length (nx*ny). It offers access
+ * to elements in mutable and immutable ways, (approximate) equality comparison.
+ * 
+ * NB it doesn't follow the rule of 3 for classes having pointer members.
+ * This means that the (compiler-generated) copy constructor will not deep-copy
+ * the data stored within, but rather just copy the pointer arr. This is done
+ * on purpose to save time and memory when deep-copying isn't necessary.
+ */
 class Array2d {
 private:
     int nx, ny;
@@ -32,7 +43,7 @@ public:
     void print_prop(complex_to_real fun, FILE * out_file);
 
     Array2d deep_copy() const;
-    Array2d transpose();
+    Array2d transpose() const;
 
     friend Array2d fftshift(const Array2d &a);
 };
