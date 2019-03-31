@@ -3,6 +3,7 @@
 
 #include<cstdio>
 #include<cstring>
+#include<string>
 #include<vector>
 #include<complex>
 
@@ -27,6 +28,16 @@ struct Config {
     FILE * out_filep;
     Config(int argc, char * argv[]);
     ~Config();
+};
+
+
+struct Logger {
+    FILE * filep;
+    string name;
+    bool enabled;
+    Logger(FILE * filep, const char * name, bool enabled);
+    void write(const char * message) const;
+    void operator()(const char * message) const;
 };
 
 

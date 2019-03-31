@@ -35,6 +35,26 @@ Config::Config(int argc, char * argv[]) {
     }
 }
 
+/** Construct logger that writes to file pointer filep,
+ *  prepending name given, only if enabled == true
+ */
+Logger::Logger(FILE * filep, const char * name, bool enabled) : 
+    filep(filep),
+    name(name),
+    enabled(enabled) {}
+
+/* Write logger name + given message to file pointer, only if enabled */
+void Logger::write(const char * message) const {
+    if(enabled) {
+        fprintf(filep, "%s: %s\n", name.c_str(), message);
+    }
+}
+
+/* Same as calling write */
+void Logger::operator()(const char * message) const {
+    (*this).write(message);
+}
+
 
 vector<double> fftfreq(int n, double dt) {
     vector<double> v(n, 0.0);
