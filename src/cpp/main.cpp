@@ -13,11 +13,11 @@ using namespace std;
 
 // 2 ^ 11
 #define N (1<<11)
-#define DEBUG_OUT true
+#define INFO_OUT true
 
 int main(int argc, char * argv[]) {
     // open logger
-    Logger main_log(stdout, "main.cpp", DEBUG_OUT);
+    Logger main_log(stdout, "main.cpp", INFO_OUT);
 
     // parse command line config
     main_log("Started");

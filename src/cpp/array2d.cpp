@@ -1,10 +1,26 @@
 #include "array2d.h"
 
+#define DEBUG_OUT false
+
+Logger arr2dlog(stdout, "arr2d", DEBUG_OUT);
+
 Array2d::Array2d(int size_x, int size_y) : nx(size_x), ny(size_y) {
+    // log
+    char msg[64];
+    sprintf(msg, "constructed array %d x %d", nx, ny);
+    arr2dlog(msg);
+
+    // allocate memory
     arr = (complex<double>*) fftw_alloc_complex(nx * ny);
 }
 
 Array2d::~Array2d() {
+    // log
+    char msg[64];
+    sprintf(msg, "destructed array %d x %d", nx, ny);
+    arr2dlog(msg);
+
+    // free memory
     fftw_free(ptr());
 }
 
@@ -61,6 +77,7 @@ void Array2d::print_prop(complex_to_real fun, FILE * out_file) const {
  * which would be quite expensive on large arrays given O(n^2).
  */
 Array2d Array2d::deep_copy() const {
+    arr2dlog("explicit deep copy call");
     Array2d aa(nx, ny);
 
     for(int i = 0; i < nx; i ++ ) {
@@ -74,6 +91,7 @@ Array2d Array2d::deep_copy() const {
 
 /** Create a transposed copy of the array */
 Array2d Array2d::transpose() const {
+    arr2dlog("explicit transpose call");
     Array2d a(ny, nx);
 
     for(int i = 0; i < nx; i ++ )
@@ -88,6 +106,7 @@ Array2d Array2d::transpose() const {
  * to both dimensions of the array 
  **/
 Array2d fftshift(const Array2d &a) {
+    arr2dlog("Array2d fftshift(Array2d) call");
     Array2d b(a.nx, a.ny);
 
     // first shift in x
