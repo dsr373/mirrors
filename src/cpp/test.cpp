@@ -201,8 +201,8 @@ void test_find_interesting(bool verbose = false) {
     a[2][0] = -0.5; a[2][1] = 0; a[2][2] = 5;  a[2][3] = 4; a[2][4] = 0;
     a[3][0] = -1;   a[3][1] = 0; a[3][2] = 1;  a[3][3] = 0; a[3][4] = 1;
 
-    array<int, 4> lim = a.find_interesting(myabs, 1.0, 0.0);
-    array<int, 4> explim{1, 3, 1, 4};
+    Limits lim = a.find_interesting(myabs, 1.0, 0.0);
+    Limits explim{1, 3, 1, 4};
 
     if(verbose) {
         printf("\nExpected: ");
@@ -216,8 +216,8 @@ void test_find_interesting(bool verbose = false) {
         return;
     }
 
-    array<int, 4> rel_lim = a.find_interesting(myabs, 0.0, 0.5);
-    array<int, 4> rel_explim{1, 3, 2, 4};
+    Limits rel_lim = a.find_interesting(myabs, 0.0, 0.5);
+    Limits rel_explim{1, 3, 2, 4};
     
     if(verbose) {
         printf("\nExpected: ");

@@ -14,6 +14,9 @@ using namespace std;
 
 #define PRINT_FORMAT "% 6.5f\t"
 
+// type containing i and j limits of interest in an Array2d
+using Limits = array<int, 4>;
+
 /** THE class that stores a 2D nx by ny array of complex<double> numbers
  * internally represented as a 1D array of length (nx*ny). It offers access
  * to elements in mutable and immutable ways, (approximate) equality comparison.
@@ -37,9 +40,9 @@ public:
     friend bool operator==(const Array2d &a, const Array2d &b);
     
     fftw_complex * ptr();
-    array<int, 4> find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const;
+    Limits find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const;
     void print_prop(complex_to_real fun, FILE * out_file) const;
-    void print_prop(complex_to_real fun, const array<int, 4> &lim, FILE * out_file) const;
+    void print_prop(complex_to_real fun, const Limits &lim, FILE * out_file) const;
 
     Array2d deep_copy() const;
     Array2d transpose() const;
@@ -53,6 +56,13 @@ public:
  * in standard formatted way.
  */
 void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys);
+
+/**
+ * Print the limits in two directions of the 2d array, then the array itself,
+ * in standard formatted way. 
+ * Only print stuff within x and y limits given by lims.
+ */
+void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys, const Limits &lims);
 
 /**
  * Type of function that writes and aperture an aperture given

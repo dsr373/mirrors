@@ -69,7 +69,7 @@ fftw_complex * Array2d::ptr() {
  * 
  *  To ignore one of absolute or relative sensitivities, set them to 0.
  */
-array<int, 4> Array2d::find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const {
+Limits Array2d::find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const {
     // check if caller wants to ignore one criterion
     if(abs_sens == 0.0) abs_sens = INFINITY; // nothing is greater than inf
     if(rel_sens == 0.0) rel_sens = 2.0;      // nothing is greater than 2*max
@@ -102,7 +102,7 @@ array<int, 4> Array2d::find_interesting(complex_to_real fun, double abs_sens, do
     // increase maxima by one to follow inclusive-exclusive convention
     imax++; jmax++;
 
-    return array<int, 4>{imin, imax, jmin, jmax};
+    return Limits{imin, imax, jmin, jmax};
 }
 
 
@@ -118,7 +118,7 @@ void Array2d::print_prop(complex_to_real fun, FILE * out_file) const {
 
 
 /* Print function applied to all elements within limits specified in lim */
-void Array2d::print_prop(complex_to_real fun, const array<int, 4> &lim, FILE * out_file) const {
+void Array2d::print_prop(complex_to_real fun, const Limits &lim, FILE * out_file) const {
     int imin = lim[0], imax = lim[1], jmin = lim[2], jmax = lim[3];
 
     for(int i = imin; i < imax; i++) {
@@ -187,6 +187,19 @@ void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const 
     fprintf(filep, "% 6.5f\t% 6.5f \n", xs.front(), xs.back());
     fprintf(filep, "% 6.5f\t% 6.5f \n", ys.front(), ys.back());
     a.print_prop(fun, filep);
+}
+
+/**
+ * Print the limits in two directions of the 2d array, then the array itself,
+ * in standard formatted way. 
+ * Only print stuff within x and y limits given by lims.
+ */
+void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys, const Limits &lims) {
+    int imin = lims[0], imax = lims[1], jmin = lims[2], jmax = lims[3];
+
+    fprintf(filep, "% 6.5f\t% 6.5f \n", xs[jmin], xs[jmax-1]);
+    fprintf(filep, "% 6.5f\t% 6.5f \n", ys[imin], ys[imax-1]);
+    a.print_prop(fun, lims, filep);
 }
 
 // ================ Aperture generators ================
