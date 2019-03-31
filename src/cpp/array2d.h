@@ -6,7 +6,6 @@
 #include<vector>
 #include<array>
 #include<string>
-#include<algorithm>
 
 #include<fftw3.h>
 
@@ -72,8 +71,12 @@ void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const 
  */
 using aperture_generator = int (*)(Array2d&, const vector<double>&, const vector<double>&, const vector<double>&);
 
+/** map the name found in config files to the actual function pointer
+ * for dynamically choosing which functions to run
+ */
+extern map<string, aperture_generator> generators;
+
 int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
 int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
-int double_slit(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
 
 #endif

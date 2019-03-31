@@ -5,6 +5,8 @@
 #include<cstring>
 #include<string>
 #include<vector>
+#include<map>
+#include<algorithm>
 #include<complex>
 
 using namespace std;
@@ -18,16 +20,32 @@ using namespace std;
 using complex_to_real = double (*)(complex<double>);
 extern complex_to_real myabs, myarg, myre;
 
+/** Holds the properties of an aperture shape.
+ * lx, ly are the lengths of the sides of the board
+ * shape holds all the numbers necessary to make the shape, and it's passed
+ * to the generator function.
+ * generator_key is a key in the name-function map of aperture generators
+ */
+struct ShapeProperties {
+    string generator_key;
+    double lx, ly;
+    vector<double> shape_params;
+};
+
+
 /**
  * Struct containing the configuration of the program.
- * in_filep is a file pointer for the input array;
- * out_filep is a file pointer for the output array;
+ * nx and ny are the dimensions of the arrays used
+ * in_prefix and out_prefix are prefixes for the files where to print arrays
+ * shapes is a vector of shaped to process
  */
 struct Config {
-    FILE * in_filep;
-    FILE * out_filep;
     Config(int argc, char * argv[]);
-    ~Config();
+
+    string in_prefix, out_prefix;
+    vector<ShapeProperties> shapes;
+
+    int nx, ny;
 };
 
 

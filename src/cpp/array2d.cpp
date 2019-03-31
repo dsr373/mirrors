@@ -208,6 +208,8 @@ void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const 
 }
 
 // ================ Aperture generators ================
+
+/** Just a circle at the origin. Params[0] is the radius. */
 int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
     int nx = xs.size(), ny = ys.size();
     double radius = params[0], r;
@@ -223,3 +225,24 @@ int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, co
     }
     return 0;
 }
+
+/** A rectange of dimensions params[0] x params[1] */
+int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    int nx = xs.size(), ny = ys.size();
+    double ax = params[0], ay = params[1];
+
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            if(xs[j] <= ax/2.0 && ys[i] <= ay/2.0)
+                in[i][j] = 1.0;
+            else
+                in[i][j] = 0.0;
+        }
+    }
+    return 0;
+}
+
+map<string, aperture_generator> generators = {
+    {"circular", circular},
+    {"rectangle", rectangle}
+};
