@@ -117,6 +117,7 @@ void Array2d::print_prop(complex_to_real fun, FILE * out_file) const {
 }
 
 
+/* Print function applied to all elements within limits specified in lim */
 void Array2d::print_prop(complex_to_real fun, const array<int, 4> &lim, FILE * out_file) const {
     int imin = lim[0], imax = lim[1], jmin = lim[2], jmax = lim[3];
 
