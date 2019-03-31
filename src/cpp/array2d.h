@@ -4,6 +4,7 @@
 #include<cstdio>
 #include<complex>
 #include<vector>
+#include<array>
 #include<algorithm>
 
 #include<fftw3.h>
@@ -11,6 +12,7 @@
 #include "util.h"
 using namespace std;
 
+#define PRINT_FORMAT "% 6.5f\t"
 
 /** THE class that stores a 2D nx by ny array of complex<double> numbers
  * internally represented as a 1D array of length (nx*ny). It offers access
@@ -35,7 +37,9 @@ public:
     friend bool operator==(const Array2d &a, const Array2d &b);
     
     fftw_complex * ptr();
+    array<int, 4> find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const;
     void print_prop(complex_to_real fun, FILE * out_file) const;
+    void print_prop(complex_to_real fun, const array<int, 4> &lim, FILE * out_file) const;
 
     Array2d deep_copy() const;
     Array2d transpose() const;

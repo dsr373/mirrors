@@ -62,15 +62,71 @@ fftw_complex * Array2d::ptr() {
     return (fftw_complex*) arr;
 }
 
+
+/** Find the x and y bounds within which the absolute value of property fun
+ *  is greater than some fraction (rel_sens) of the maximum value
+ *  OR just greater than abs_sens.
+ * 
+ *  To ignore one of absolute or relative sensitivities, set them to 0.
+ */
+array<int, 4> Array2d::find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const {
+    // check if caller wants to ignore one criterion
+    if(abs_sens == 0.0) abs_sens = INFINITY; // nothing is greater than inf
+    if(rel_sens == 0.0) rel_sens = 2.0;      // nothing is greater than 2*max
+
+    int imin = nx, imax = 0, jmin = ny, jmax = 0;
+    double fun_max = 0.0, abs_here;
+
+    // walk the array once and find max abs value of fun
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            abs_here = abs(fun((*this)(i, j)));
+            if(abs_here > fun_max)
+                fun_max = abs_here;
+        }
+    }
+
+    // walk again and record where abs value of fun
+    // is greater than fraction of maximum found earlier
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            abs_here = abs(fun((*this)(i, j)));
+            if(abs_here > rel_sens * fun_max) {
+                if(i > imax) imax = i;
+                if(i < imin) imin = i;
+                if(j > jmax) jmax = j;
+                if(j < jmin) jmin = j;
+            }
+        }
+    }
+    // increase maxima by one to follow inclusive-exclusive convention
+    imax++; jmax++;
+
+    return array<int, 4>{imin, imax, jmin, jmax};
+}
+
+
 /** Print function fun applied to all the elements, formatted as 2d array
  */
 void Array2d::print_prop(complex_to_real fun, FILE * out_file) const {
     for(int ix = 0; ix < nx; ix++) {
         for(int iy = 0; iy < ny; iy++)
-            fprintf(out_file, "% 6.5f\t", fun((*this)(ix, iy)));
+            fprintf(out_file, PRINT_FORMAT, fun((*this)(ix, iy)));
         fprintf(out_file, "\n");
     }
 }
+
+
+void Array2d::print_prop(complex_to_real fun, const array<int, 4> &lim, FILE * out_file) const {
+    int imin = lim[0], imax = lim[1], jmin = lim[2], jmax = lim[3];
+
+    for(int i = imin; i < imax; i++) {
+        for(int j = jmin; j < jmax; j++)
+            fprintf(out_file, PRINT_FORMAT, fun((*this)(i, j)));
+        fprintf(out_file, "\n");
+    }
+}
+
 
 /** Deep copy the array. Written to avoid deep copying on copy-constructor
  * or equality assignment,
