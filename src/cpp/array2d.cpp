@@ -1,8 +1,13 @@
 #include "array2d.h"
 
 #define DEBUG_OUT false
-
 Logger arr2dlog(stdout, "arr2d", DEBUG_OUT);
+
+string lims_to_str(const Limits &l) {
+    char buff[100];
+    sprintf(buff, "%d\t%d\t%d\t%d", l[0], l[1], l[2], l[3]);
+    return string(buff);
+}
 
 Array2d::Array2d(int size_x, int size_y) : nx(size_x), ny(size_y) {
     // log

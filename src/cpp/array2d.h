@@ -5,6 +5,7 @@
 #include<complex>
 #include<vector>
 #include<array>
+#include<string>
 #include<algorithm>
 
 #include<fftw3.h>
@@ -16,6 +17,7 @@ using namespace std;
 
 // type containing i and j limits of interest in an Array2d
 using Limits = array<int, 4>;
+string lims_to_str(const Limits &l);
 
 /** THE class that stores a 2D nx by ny array of complex<double> numbers
  * internally represented as a 1D array of length (nx*ny). It offers access

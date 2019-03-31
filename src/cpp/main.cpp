@@ -11,8 +11,8 @@
 
 using namespace std;
 
-// 2 ^ 11
-#define N (1<<11)
+// power of 2
+#define N (1<<12)
 #define INFO_OUT true
 
 int main(int argc, char * argv[]) {
@@ -46,10 +46,18 @@ int main(int argc, char * argv[]) {
     // execute
     main_log("Executing...");
     fftw_execute(p);
+    
     // print arrays
     main_log("Writing Output...");
-    print_lim_array(conf.in_filep, myabs, in, xs, ys);
-    print_lim_array(conf.out_filep, myabs, fftshift(out), fx, fy);
+    Array2d out_f = fftshift(out);
+    Limits lims_in = in.find_interesting(myabs, 0.0, 1e-2);
+    Limits lims_out = out_f.find_interesting(myabs, 0.0, 1e-2);
+
+    // main_log((string("in limits: ") + lims_to_str(lims_in)).c_str());
+    // main_log((string("out limits: ") + lims_to_str(lims_out)).c_str());
+
+    print_lim_array(conf.in_filep, myabs, in, xs, ys, lims_in);
+    print_lim_array(conf.out_filep, myabs, out_f, fx, fy, lims_out);
 
     main_log("Done. Cleaning up...");
     // clean up and exit
