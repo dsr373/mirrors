@@ -50,4 +50,14 @@ public:
  */
 void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys);
 
+/**
+ * Type of function that writes and aperture an aperture given
+ * the list of x and y coordinates and a vector of parameters.
+ */
+using aperture_generator = int (*)(Array2d&, const vector<double>&, const vector<double>&, const vector<double>&);
+
+int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
+int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
+int double_slit(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
+
 #endif

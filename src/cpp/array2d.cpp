@@ -112,3 +112,20 @@ void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const 
     fprintf(filep, "% 6.5f\t% 6.5f \n", ys.front(), ys.back());
     a.print_prop(fun, filep);
 }
+
+// ================ Aperture generators ================
+int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    int nx = xs.size(), ny = ys.size();
+    double radius = params[0], r;
+
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            r = xs[j] * xs[j] + ys[i] * ys[i];
+            if(r <= radius*radius)
+                in[i][j] = 1.0;
+            else
+                in[i][j] = 0.0;
+        }
+    }
+    return 0;
+}
