@@ -2,6 +2,8 @@
 
 #include "array2d.h"
 
+#define VERBOSE true
+
 // utility function to print real part of all elements only if verbose is true
 void conditional_print(bool verbose, const char * name, const Array2d &a) {
     if(verbose) {
@@ -190,12 +192,56 @@ void test_array2d_fftshift(bool verbose = false) {
     printf("OK\n");
 }
 
+void test_find_interesting(bool verbose = false) {
+    printf("test_find_interesting : ");
+
+    Array2d a(4, 5);
+    a[0][0] = 0;    a[0][1] = 1; a[0][2] = 1;  a[0][3] = 0; a[0][4] = 0;
+    a[1][0] = 1;    a[1][1] = 2; a[1][2] = -3; a[1][3] = 0; a[1][4] = 0;
+    a[2][0] = -0.5; a[2][1] = 0; a[2][2] = 5;  a[2][3] = 4; a[2][4] = 0;
+    a[3][0] = -1;   a[3][1] = 0; a[3][2] = 1;  a[3][3] = 0; a[3][4] = 1;
+
+    array<int, 4> lim = a.find_interesting(myabs, 1.0, 0.0);
+    array<int, 4> explim{1, 3, 1, 4};
+
+    if(verbose) {
+        printf("\nExpected: ");
+        for(int i = 0; i < 4; i ++ ) printf("%d ", explim[i]);
+        printf("; Got: ");
+        for(int i = 0; i < 4; i ++ ) printf("%d ", lim[i]);
+    }
+
+    if(lim != explim) {
+        printf("FAILED absolute test.\n");
+        return;
+    }
+
+    array<int, 4> rel_lim = a.find_interesting(myabs, 0.0, 0.5);
+    array<int, 4> rel_explim{1, 3, 2, 4};
+    
+    if(verbose) {
+        printf("\nExpected: ");
+        for(int i = 0; i < 4; i ++ ) printf("%d ", rel_explim[i]);
+        printf("; Got: ");
+        for(int i = 0; i < 4; i ++ ) printf("%d ", rel_lim[i]);
+        printf("\n");
+    }
+    
+    if(rel_lim != rel_explim) {
+        printf("FAILED relative test.\n");
+        return;
+    }
+
+    printf("OK\n");
+}
+
 int main() {
     test_fftfreq();
     test_fftshift();
     test_array2d_equality();
-    test_array2d_deepcopy();
-    test_array2d_transpose();
-    test_array2d_fftshift();
+    test_array2d_deepcopy(false);
+    test_array2d_transpose(false);
+    test_array2d_fftshift(false);
+    test_find_interesting(false);
     return 0;
 }

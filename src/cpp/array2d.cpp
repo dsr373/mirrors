@@ -91,7 +91,7 @@ array<int, 4> Array2d::find_interesting(complex_to_real fun, double abs_sens, do
     for(int i = 0; i < nx; i ++ ) {
         for(int j = 0; j < ny; j ++ ) {
             abs_here = abs(fun((*this)(i, j)));
-            if(abs_here > rel_sens * fun_max) {
+            if(abs_here > rel_sens * fun_max || abs_here > abs_sens) {
                 if(i > imax) imax = i;
                 if(i < imin) imin = i;
                 if(j > jmax) jmax = j;
