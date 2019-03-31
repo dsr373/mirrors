@@ -69,7 +69,7 @@ void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const 
  * Type of function that writes and aperture an aperture given
  * the list of x and y coordinates and a vector of parameters.
  */
-using aperture_generator = int (*)(Array2d&, const vector<double>&, const vector<double>&, const vector<double>&);
+using aperture_generator = int (*)(Array2d& arr, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
 
 /** map the name found in config files to the actual function pointer
  * for dynamically choosing which functions to run

@@ -233,7 +233,7 @@ int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, c
 
     for(int i = 0; i < nx; i ++ ) {
         for(int j = 0; j < ny; j ++ ) {
-            if(xs[j] <= ax/2.0 && ys[i] <= ay/2.0)
+            if(abs(xs[j]) <= ax/2.0 && abs(ys[i]) <= ay/2.0)
                 in[i][j] = 1.0;
             else
                 in[i][j] = 0.0;

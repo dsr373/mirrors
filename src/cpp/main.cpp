@@ -33,35 +33,45 @@ int main(int argc, char * argv[]) {
     main_log("Planning...");
     p = fftw_plan_dft_2d(conf.nx, conf.ny, in.ptr(), out.ptr(), FFTW_FORWARD, FFTW_MEASURE);
 
-    // // fill in the input
-    // main_log("Initializing input...");
-    // double lx = 10, ly = 10;
-    // vector<double> xs = coords(lx, N);
-    // vector<double> ys = coords(ly, N);
-    // vector<double> fx = fftshift(fftfreq(N, lx/(double)N));
-    // vector<double> fy = fftshift(fftfreq(N, ly/(double)N));
+    // fill in the input
+    for(unsigned int i = 0; i < conf.shapes.size(); i ++ ) {
+        main_log(("Loop " + to_string(i)).c_str());
+        main_log("Initializing input...");
+        ShapeProperties sp = conf.shapes[i];
 
-    // circular(in, xs, ys, {0.1});
+        // calculate x and y values for both in and out
+        double dx = sp.lx / (double)conf.nx;
+        double dy = sp.ly / (double)conf.ny;
+        vector<double> xs = coords(sp.lx, conf.nx);
+        vector<double> ys = coords(sp.ly, conf.ny);
+        vector<double> fx = fftshift(fftfreq(conf.nx, dx));
+        vector<double> fy = fftshift(fftfreq(conf.ny, dy));
 
-    // // execute
-    // main_log("Executing...");
-    // fftw_execute(p);
-    
-    // // print arrays
-    // main_log("Writing Output...");
-    // Array2d out_f = fftshift(out);
-    // Limits lims_in = in.find_interesting(myabs, 0.0, 1e-2);
-    // Limits lims_out = out_f.find_interesting(myabs, 0.0, 1e-2);
+        generators[sp.generator_key](in, xs, ys, sp.shape_params);
 
-    // // main_log((string("in limits: ") + lims_to_str(lims_in)).c_str());
-    // // main_log((string("out limits: ") + lims_to_str(lims_out)).c_str());
+        main_log("Executing...");
+        fftw_execute(p);
 
-    // print_lim_array(conf.in_filep, myabs, in, xs, ys, lims_in);
-    // print_lim_array(conf.out_filep, myabs, out_f, fx, fy, lims_out);
+        main_log("Writing output...");
+        // shift the output
+        Array2d out_f = fftshift(out);
+        
+        // find areas of interest
+        Limits lims_in = in.find_interesting(myabs, 0.0, 1e-2);
+        Limits lims_out = out_f.find_interesting(myabs, 0.0, 5e-2);
 
-    // main_log("Done. Cleaning up...");
-    // // clean up and exit
-    // fftw_destroy_plan(p);
+        // find where to print
+        string in_filename = conf.in_prefix + to_string(i) + ".txt";
+        FILE * in_filep = fopen(in_filename.c_str(), "w");
+        print_lim_array(in_filep, myabs, in, xs, ys, lims_in);
+
+        string out_filename = conf.out_prefix + to_string(i) + ".txt";
+        FILE * out_filep = fopen(out_filename.c_str(), "w");
+        print_lim_array(out_filep, myabs, out_f, fx, fy, lims_out);
+    }
+
+    main_log("Done. Cleaning up...");
+    fftw_destroy_plan(p);
 
     main_log("Done. Exiting.");
     return 0;

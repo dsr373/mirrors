@@ -4,10 +4,10 @@ n_shapes = 2
 
 type = circular
 lx = 10
-ly = 12
-0.1 0.2 0.3
+ly = 10
+0.2
 
-type = square
+type = rectangle
 lx = 10
 ly = 10
-0.25
+0.4 1.0
