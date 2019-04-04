@@ -4,9 +4,17 @@ complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
 complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
 complex_to_real myre = [](complex<double> z) -> double {return real(z);};
 
+#define OPTION_ERROR "Incorrect option. Expected %s, got %s"
+
+inline void option_error(const char * optname, const char * readname) {
+    char msg[100];
+    sprintf(msg, OPTION_ERROR, optname, readname);
+    throw runtime_error(msg);
+}
+
 /** Overloaded utility function used to parse one line of the the config file
  * It expects a format like
- * ```name = value```
+ * `name = value`
  * where `name` has to match `optname` exactly. Only if that happens, `value` is
  * written to `option`.
  */
@@ -15,12 +23,8 @@ void read_option(FILE * filep, const char * optname, int &option) {
     int readval;
     fscanf(filep, " %s = %d ", readname, &readval);
 
-    if(strcmp(readname, optname) == 0) option = readval;
-    else {
-        char msg[100];
-        sprintf(msg, "Incorrect option. Expected %s, got %s", optname, readname);
-        throw runtime_error(msg);
-    }
+    if(strcmp(readname, optname) != 0) option_error(optname, readname);
+    option = readval;
 }
 
 void read_option(FILE * filep, const char * optname, double &option) {
@@ -28,12 +32,8 @@ void read_option(FILE * filep, const char * optname, double &option) {
     double readval;
     fscanf(filep, " %s = %lf ", readname, &readval);
 
-    if(strcmp(readname, optname) == 0) option = readval;
-    else {
-        char msg[100];
-        sprintf(msg, "Incorrect option. Expected %s, got %s", optname, readname);
-        throw runtime_error(msg);
-    }
+    if(strcmp(readname, optname) != 0) option_error(optname, readname);
+    option = readval;
 }
 
 void read_option(FILE * filep, const char * optname, string &option) {
@@ -41,47 +41,54 @@ void read_option(FILE * filep, const char * optname, string &option) {
     char readval[64];
     fscanf(filep, " %s = %s ", readname, readval);
 
-    if(strcmp(readname, optname) == 0) option = string(readval);
-    else {
-        char msg[100];
-        sprintf(msg, "Incorrect option. Expected %s, got %s", optname, readname);
-        throw runtime_error(msg);
+    if(strcmp(readname, optname) != 0) option_error(optname, readname);
+    option = string(readval);
+}
+
+void read_option(FILE * filep, const char * optname, vector<double> &option) {
+    char readname[64], delim[2];
+    double readval;
+    fscanf(filep, " %s = ", readname);
+    
+    if(strcmp(readname, optname) != 0) option_error(optname, readname);
+
+    while(fscanf(filep, " %lf", &readval) == 1) {
+        option.push_back(readval);
+        // consume terminating newline
+        if(fscanf(filep, "%1[\n]", delim) == 1) break;
+    }
+}
+
+void read_option(FILE * filep, const char * optname, vector<string> &option) {
+    char readname[64], delim[2];
+    char readval[64];
+    fscanf(filep, " %s = ", readname);
+    
+    if(strcmp(readname, optname) != 0) option_error(optname, readname);
+
+    while(fscanf(filep, " %s", readval) == 1) {
+        option.push_back(string(readval));
+        // consume the terminating newline
+        if(fscanf(filep, "%1[\n]", delim) == 1) break;
     }
 }
 
 /** 
- * Parse command line options and write them into the config structure.
- * The program can be run in three ways:
- * 1. no options. Then the defaults are used.
- * 2. One option. Only the config file is given: `main.exe filename`
- * 3. Three options. The config file and prefixes for results files:
- *      `main.exe filename in_prefix out_prefix`
+ * Parse configuration file `filename` and construct the Config object.
  */
-Config::Config(int argc, char * argv[]) {
-    // defaults
-    in_prefix = "data/in";
-    out_prefix = "data/out";
-    string cnf_filename = "config/config.txt";
+Config::Config(const char * filename) {
+    string cnf_filename = filename;
 
     int n_shapes = 0;
-    double f_tmp;
+    // double f_tmp;
 
-    if(argc == 2) {
-        cnf_filename = string(argv[1]);
-    } else if(argc == 4) {
-        cnf_filename = string(argv[1]);
-        in_prefix = string(argv[2]);
-        out_prefix = string(argv[3]);
-    } else if(argc != 1)
-        throw runtime_error("Incorrect number or arguments. "
-        "Usage: main.exe [config_filename] [in_prefix out_prefix]");
-    
     FILE * cnf_filep = fopen(cnf_filename.c_str(), "r");
-    if(cnf_filep == NULL)
-        throw runtime_error("Could not open config file.");
+    if(cnf_filep == NULL) perror("Could not open config file.");
     
     read_option(cnf_filep, "nx", nx);
     read_option(cnf_filep, "ny", ny);
+    read_option(cnf_filep, "prefix", out_prefix);
+    read_option(cnf_filep, "tasks", tasks);
     read_option(cnf_filep, "n_shapes", n_shapes);
 
     for(int i = 0; i < n_shapes; i ++ ) {
@@ -89,9 +96,7 @@ Config::Config(int argc, char * argv[]) {
         read_option(cnf_filep, "type", sp.generator_key);
         read_option(cnf_filep, "lx", sp.lx);
         read_option(cnf_filep, "ly", sp.ly);
-        while(fscanf(cnf_filep, "%lf ", &f_tmp) == 1) {
-            sp.shape_params.push_back(f_tmp);
-        }
+        read_option(cnf_filep, "params", sp.shape_params);
 
         shapes.push_back(sp);
     }
@@ -115,6 +120,10 @@ void Logger::write(const char * message) const {
 /* Same as calling write */
 void Logger::operator()(const char * message) const {
     (*this).write(message);
+}
+
+void Logger::operator()(const string message) const {
+    (*this).write(message.c_str());
 }
 
 

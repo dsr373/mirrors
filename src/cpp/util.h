@@ -36,13 +36,14 @@ struct ShapeProperties {
 /**
  * Struct containing the configuration of the program.
  * nx and ny are the dimensions of the arrays used
- * in_prefix and out_prefix are prefixes for the files where to print arrays
- * shapes is a vector of shaped to process
+ * out_prefix is a prefix for the files where to print data
+ * shapes is a vector of shapes to process
  */
 struct Config {
-    Config(int argc, char * argv[]);
+    Config(const char * filename);
 
-    string in_prefix, out_prefix;
+    string out_prefix;
+    vector<string> tasks;
     vector<ShapeProperties> shapes;
 
     int nx, ny;
@@ -56,6 +57,7 @@ struct Logger {
     Logger(FILE * filep, const char * name, bool enabled);
     void write(const char * message) const;
     void operator()(const char * message) const;
+    void operator()(const string message) const;
 };
 
 
