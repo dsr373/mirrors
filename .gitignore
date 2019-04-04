@@ -11,3 +11,11 @@ data/*.txt
 # my own symlinks
 main
 test
+
+# latex
+*minted-main*
+*.dvi
+*.bcf
+*.run.xml
+*.synctex.gz
+*.synctex(busy)

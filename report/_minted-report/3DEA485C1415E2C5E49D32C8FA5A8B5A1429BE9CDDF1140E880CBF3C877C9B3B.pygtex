@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Array2d}\PYG{o}{::}\PYG{n}{Array2d}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{nx}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{ny}\PYG{p}{)}
+\end{Verbatim}
