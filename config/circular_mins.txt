@@ -1,0 +1,56 @@
+nx = 5000
+ny = 5000
+prefix = data/circmin
+tasks = params find_min
+n_shapes = 10
+
+type = circular
+lx = 5
+ly = 5
+params = 0.1
+
+type = circular
+lx = 5
+ly = 5
+params = 0.1111
+
+type = circular
+lx = 5
+ly = 5
+params = 0.125
+
+type = circular
+lx = 5
+ly = 5
+params = 0.14286
+
+type = circular
+lx = 5
+ly = 5
+params = 0.166667
+
+type = circular
+lx = 5
+ly = 5
+params = 0.2
+
+type = circular
+lx = 5
+ly = 5
+params = 0.25
+
+type = circular
+lx = 5
+ly = 5
+params = 0.333333
+
+type = circular
+lx = 5
+ly = 5
+params = 0.5
+
+type = circular
+lx = 5
+ly = 5
+params = 1.0
+

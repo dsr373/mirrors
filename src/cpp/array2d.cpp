@@ -184,6 +184,24 @@ Array2d fftshift(const Array2d &a) {
 }
 
 
+ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const vector<double> &xs) {
+    int i = 0, j = 1;
+    int nx = xs.size();
+
+    // keep walking along the row until you find a local min
+    while(j < nx-1)
+        if(fun(a(i, j-1)) > fun(a(i, j)) && fun(a(i, j)) < fun(a(i, j+1)))
+            break;
+        else
+            j++;
+
+    ValueError<double> res;
+    res.val = xs[j];
+    res.err = abs(xs[j] - xs[j-1]);
+    return res;
+}
+
+
 /**
  * Print the limits in two directions of the 2d array, then the array itself,
  * in standard formatted way.

@@ -4,6 +4,7 @@
 #include<cstring>
 
 #include<gsl/gsl_sf_trig.h>
+#include<gsl/gsl_math.h>
 #include<fftw3.h>
 
 #include "array2d.h"
@@ -19,12 +20,19 @@ int main(int argc, char * argv[]) {
     // open logger
     Logger main_log(stdout, "main.cpp", INFO_OUT);
 
+    if(argc != 2)
+        throw runtime_error("Incorrect number of arguments. Provide one config file.");
+
     // parse command line config
     main_log("Started");
-    Config conf(argc, argv);
+    Config conf(argv[1]);
     main_log("Configured");
 
-    // // declarations
+    // open data file;
+    string data_filename = conf.out_prefix + "dat.txt";
+    FILE * data_filep = fopen(data_filename.c_str(), "w");
+
+    // declarations
     Array2d in(conf.nx, conf.ny);
     Array2d out(conf.nx, conf.ny);
     fftw_plan p;
@@ -33,45 +41,77 @@ int main(int argc, char * argv[]) {
     main_log("Planning...");
     p = fftw_plan_dft_2d(conf.nx, conf.ny, in.ptr(), out.ptr(), FFTW_FORWARD, FFTW_MEASURE);
 
-    // fill in the input
+    // walk through the shapes
     for(unsigned int i = 0; i < conf.shapes.size(); i ++ ) {
-        main_log(("Loop " + to_string(i)).c_str());
+        main_log("===== Shape " + to_string(i) + " =====");
         main_log("Initializing input...");
         ShapeProperties sp = conf.shapes[i];
 
+        fprintf(data_filep, "%u", i);
+
         // calculate x and y values for both in and out
-        double dx = sp.lx / (double)conf.nx;
-        double dy = sp.ly / (double)conf.ny;
+        // the division by 2pi is because p and q are angular frequencies,
+        // whereas the FFT produces number frequencies
         vector<double> xs = coords(sp.lx, conf.nx);
         vector<double> ys = coords(sp.ly, conf.ny);
-        vector<double> fx = fftshift(fftfreq(conf.nx, dx));
-        vector<double> fy = fftshift(fftfreq(conf.ny, dy));
+        vector<double> ps = fftfreq(conf.nx, sp.lx/(double)conf.nx/(2*M_PI));
+        vector<double> qs = fftfreq(conf.ny, sp.ly/(double)conf.ny/(2*M_PI));
 
+        // fill in the input
         generators[sp.generator_key](in, xs, ys, sp.shape_params);
 
         main_log("Executing...");
         fftw_execute(p);
 
-        main_log("Writing output...");
-        // shift the output
-        Array2d out_f = fftshift(out);
+        main_log("Resolving tasks");
         
-        // find areas of interest
-        Limits lims_in = in.find_interesting(myabs, 0.0, 1e-2);
-        Limits lims_out = out_f.find_interesting(myabs, 0.0, 5e-2);
+        // execute the tasks
+        for(vector<string>::iterator it = conf.tasks.begin(); it != conf.tasks.end(); it ++ ) {
+            if((*it) == "print") {
+                main_log("Print arrays");
 
-        // find where to print
-        string in_filename = conf.in_prefix + to_string(i) + ".txt";
-        FILE * in_filep = fopen(in_filename.c_str(), "w");
-        print_lim_array(in_filep, myabs, in, xs, ys, lims_in);
+                // print aperture
+                Limits lims_in = in.find_interesting(myabs, 0.0, 1e-2);
+                string in_fname = conf.out_prefix + to_string(i) + "in.txt";
+                FILE * in_filep = fopen(in_fname.c_str(), "w");
+                print_lim_array(in_filep, myabs, in, xs, ys, lims_in);
+                fclose(in_filep);
 
-        string out_filename = conf.out_prefix + to_string(i) + ".txt";
-        FILE * out_filep = fopen(out_filename.c_str(), "w");
-        print_lim_array(out_filep, myabs, out_f, fx, fy, lims_out);
+                // shift output
+                Array2d out_f = fftshift(out);
+                Limits lims_out = out_f.find_interesting(myabs, 0.0, 5e-2);
+                
+                // print image
+                string out_fname = conf.out_prefix + to_string(i) + "out.txt";
+                FILE * out_filep = fopen(out_fname.c_str(), "w");
+                print_lim_array(out_filep, myabs, out_f, fftshift(ps), fftshift(qs), lims_out);
+                fclose(out_filep);
+            }
+            else if((*it) == "params") {
+                // print shape parameters
+                for(int ip = 0; ip < sp.shape_params.size(); ip ++ )
+                    fprintf(data_filep, "\t%lf", sp.shape_params[ip]);
+            }
+            else if((*it) == "find_min") {
+                // print size of central spot and error
+                ValueError<double> min_pos = find_first_min(myabs, out, ps);
+                fprintf(data_filep, "\t%lf\t%lf", min_pos.val, min_pos.err);
+            }
+            else if((*it) == "central_amplitude") {
+                // print absolute value of central spot
+                fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
+            }
+            else {
+                main_log("Unknown task: " + (*it));
+            }
+        }
+
+        fprintf(data_filep, "\n");
     }
 
     main_log("Done. Cleaning up...");
     fftw_destroy_plan(p);
+    fclose(data_filep);
 
     main_log("Done. Exiting.");
     return 0;

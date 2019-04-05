@@ -61,6 +61,13 @@ struct Logger {
 };
 
 
+template <typename T>
+struct ValueError {
+    T val;
+    T err;
+};
+
+
 /**
  * Generate the FT frequencies corresponding to n time-samples spaced by dt.
  * For even n, the positive frequencies are [1 .. n/2 - 1] / (n*dt)

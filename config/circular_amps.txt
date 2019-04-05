@@ -1,0 +1,56 @@
+nx = 5000
+ny = 5000
+prefix = data/circamp
+tasks = params central_amplitude
+n_shapes = 10
+
+type = circular
+lx = 20
+ly = 20
+params = 1
+
+type = circular
+lx = 20
+ly = 20
+params = 1.41
+
+type = circular
+lx = 20
+ly = 20
+params = 1.73
+
+type = circular
+lx = 20
+ly = 20
+params = 2.0
+
+type = circular
+lx = 20
+ly = 20
+params = 2.236
+
+type = circular
+lx = 20
+ly = 20
+params = 2.4495
+
+type = circular
+lx = 20
+ly = 20
+params = 2.646
+
+type = circular
+lx = 20
+ly = 20
+params = 2.828
+
+type = circular
+lx = 20
+ly = 20
+params = 3.0
+
+type = circular
+lx = 20
+ly = 20
+params = 3.162
+

@@ -51,6 +51,11 @@ public:
     friend Array2d fftshift(const Array2d &a);
 };
 
+/**
+ * Find the first minimum of fun(z) along the horizontal axis of a
+ * and the associated error
+ */
+ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const vector<double> &xs);
 
 /**
  * Print the limits in two directions of the 2d array, then the array itself,
