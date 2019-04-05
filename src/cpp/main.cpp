@@ -89,7 +89,7 @@ int main(int argc, char * argv[]) {
             }
             else if((*it) == "params") {
                 // print shape parameters
-                for(int ip = 0; ip < sp.shape_params.size(); ip ++ )
+                for(unsigned int ip = 0; ip < sp.shape_params.size(); ip ++ )
                     fprintf(data_filep, "\t%lf", sp.shape_params[ip]);
             }
             else if((*it) == "find_min") {

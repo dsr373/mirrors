@@ -1,0 +1,56 @@
+nx = 5000
+ny = 5000
+prefix = data/rectmin
+tasks = params find_min
+n_shapes = 10
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.1    0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.1111 0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.125  0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.14286    0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.166667   0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.2    0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.25   0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.333333   0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 0.5    0.1
+
+type = rectangle
+lx = 5
+ly = 5
+params = 1.0    0.1
+
