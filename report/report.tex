@@ -5,8 +5,8 @@
 \usepackage[british]{babel}
 \usepackage{csquotes}
 \usepackage{graphicx}
-% \usepackage{subcaption}
-% \usepackage{float}
+\usepackage{subcaption}
+\usepackage{float}
 \usepackage{amsmath}
 % \usepackage{amssymb}
 \usepackage[separate-uncertainty=true]{siunitx}
@@ -70,7 +70,7 @@ A more detailed analysis of the theory and techniques used is given in Section~\
 
 
 \section{Analysis}~\label{sec:analysis}
-In the analysis of this problem, we treat the far-field diffraction pattern of the mirror under uniform or Gaussian illumination. It can be easily shown that in the far field regime, the diffraction pattern of an aperture is given by the Fourier Transform of the aperture function \( A(x,y) \)~\cite[Chapter 10.2]{hecht}. This is a reasonable approximation as long as:
+In the analysis of this problem, we treat the far-field diffraction pattern of the mirror under uniform or Gaussian illumination. In the far field regime, the diffraction pattern of an aperture is given by the Fourier Transform of the aperture function \( A(x,y) \)~\cite[Chapter 10.2]{hecht}. This is a reasonable approximation as long as:
 \begin{equation}\label{eqn:fraunhofer}
     \frac{R^2}{\lambda D} \ll 1,
 \end{equation}
@@ -79,9 +79,9 @@ known as the Fraunhofer limit, where $R$ is the maximum extent of the aperture, 
     \lambda &= \SI{1}{mm} \\
     R &= \SI{6}{m},
 \end{align*}
-which would require a distance on the order of \SI{1}{km} for the far-field limit to hold. However, we are looking at curved telescope mirrors whose effect is creating at the focal point images of objects at infinity, thus reducing the observation distance required.
+which would require a distance on the order of \SI{1}{km} for the far-field limit to hold. 
 
-Besides, we can work in angular coordinates, with the image space spanned by:
+However, we can work in angular coordinates, with the image space spanned by:
 \begin{align*}
     p &= k \sin{\theta} \approx \frac{k x'}{D} \\
     q &= k \sin{\chi} \approx \frac{k y'}{D},
@@ -95,24 +95,24 @@ which is just a Fourier transform of $A$. Seemingly we've also eliminated the de
 \subsection{Discrete Fourier Transforms}\label{sec:analysis:dft}
 The fact that the image is a Fourier transform of the aperture function is very useful. The Fast Fourier Transform algorithm can compute discrete Fourier transforms of multi-dimensional data efficiently, and there exist library implementations of it for virtually any language. Here, the \CC{} \texttt{FFTW 3} library~\cite{fftw} was chosen, as suggested in the projects manual~\cite{manual}. It is a well-established and well-tested library with very good computational efficiency.
 
-Minor adaptations are required to use the DFT algorithms in the library, mostly to do with scaling. The 1D discrete Fourier transform is defined as~\cite[Chapter 12.1]{NumRecipes}:
+Minor adaptations are required to use the DFT algorithms in the library. The 1D discrete Fourier transform is defined as~\cite[Chapter 12.1]{NumRecipes}:
 \begin{equation}
     H_k \propto \sum_{n=0}^{N-1} h_n\ \exp{\left( 2\pi{}i \frac{kn}{N} \right)},
 \end{equation}
 with the corresponding frequency values:
-\begin{equation}
+\begin{equation}\label{eqn:fk}
     f_k = \frac{k}{N \Delta},\quad k = 0..N-1,
 \end{equation}
-where $\Delta$ is the sampling interval of the original signal. Comparing to a 1D discrete form of the diffraction integral~\ref{eqn:diff}: 
+where $\Delta$ is the sampling interval of the original signal. Comparing to a 1D discrete form of the diffraction integral (Equation~\ref{eqn:diff}): 
 \begin{equation}
-    \psi_k \propto \sum_{n=0}^{N-1} A_n \exp{\left( i p_k x_n \right)},\quad x_n = n \Delta
+    \psi_k \propto \sum_{n=0}^{N-1} A_n \exp{\left( i p_k x_n \right)},\quad \R{where} \quad x_n = n \Delta
 \end{equation}
 we see that we need to rescale:
 \begin{equation}
     p_k = 2\pi f_k
 \end{equation}
 
-\subsection{Testing}\label{sec:analysis:expected}
+\subsection{Testing}\label{sec:analysis:test}
 To determine whether the algorithm is outputting something sensible, we need to test it on a range of known results. Diffraction patterns for several kinds of apertures are easy to compute analytically, and thus can be used for testing the program.
 
 \paragraph{Rectangular aperture} A rectangular aperture of size $-a < x < a$, $-b < y < b$ has diffraction pattern:
@@ -120,12 +120,12 @@ To determine whether the algorithm is outputting something sensible, we need to 
     \psi(p, q) \propto \frac{\sin{\left( pa \right)}}{pa} \frac{\sin{\left( qb \right)}}{qb},
 \end{equation}
 thus it's expected to have the first zeros at:
-\begin{equation}
+\begin{equation}\label{eqn:test_rect}
     p = \pm \frac{\pi}{a}\quad \R{and} \quad q = \pm \frac{\pi}{b}.
 \end{equation}
 
 \paragraph{Circular aperture} A circular aperture of radius $R$ has a diffraction pattern called an Airy disc, with angular radius:
-\begin{equation}
+\begin{equation}\label{eqn:test_circ}
     \sin{\theta} \approx 1.22 \frac{\lambda}{2R} \quad \Rightarrow \quad p = 1.22 \frac{\pi}{R}.
 \end{equation}
 
@@ -135,16 +135,16 @@ Both of these zero-intensity points should appear in the diffraction patterns, a
 
 \section{Implementation}\label{sec:impl}
 The implementation consists of several different parts, discussed in the subsections that follow. The overall logic flow of the program is:
-The executable is invoked with an arbitrary number of arguments, each pointing to a specific configuration file. The instructions in each configuration file are read and executed in order, thus computing diffraction patterns for various apertures, and properties thereof. The results are printed to disk, and figures can then be produced by invoking the respective Python scripts for each problem.
+The executable is invoked with one argument, pointing to a configuration file. The instructions therein are read and executed in order, thus computing diffraction patterns for the described apertures. The results are printed to disk, and figures can then be produced by invoking the respective Python scripts for each problem.
 
-\CC{} source files are in \texttt{src/cpp}, and plotting scripts in \texttt{src/scripts}. Data is written by convention to the \texttt{data} directory.
+\CC{} source files are in \texttt{src/cpp}, and plotting scripts in \texttt{src/scripts}. Data is written by convention to the \texttt{data} directory, and figures to \texttt{fig}.
 
 \subsection{Describing Apertures and Images}
-As mentioned before, the \texttt{FFTW} library is used for computing discrete Fourier transforms of various aperture functions. In the library, two-dimensional $N_x$ by $N_y$ arrays are represented as one-dimensional $N_x \times N_y$ arrays of complex numbers (of the inbuilt \texttt{complex} type)~\cite[Section 3.2]{fftw}.
+In the \texttt{FFTW} library two-dimensional $N_x$ by $N_y$ arrays are represented as one-dimensional $N_x \times N_y$ arrays of complex numbers (of the inbuilt \texttt{complex} type)~\cite[Section 3.2]{fftw}.
 
 Because working directly with a 1D representation of 2D data can be clunky, I decided to wrap this functionality in a class called \texttt{Array2d}, declared in \texttt{array2d.h} and implemented in \texttt{array2d.cpp}. The class stores the data internally in the 1D array representation, but has a more user-friendly interface. For example, it defines the \texttt{[i][j]} and \texttt{(i, j)} operators for easy access to the element in the $i^{th}$ row and $j^{th}$ column.
 
-\paragraph{FFTW compatibility} A method \texttt{ptr()} is defined, returning a pointer to the beginning of the array, cast to \texttt{fftw\_complex} type. This pointer can be passed to functions in the \texttt{FFTW} library~\cite[Section 4]{fftw}.
+\paragraph{FFTW compatibility} The method \texttt{ptr()} returns a pointer to the beginning of the array, cast to \texttt{fftw\_complex} type. This pointer can be passed to functions in the \texttt{FFTW} library~\cite[Section 4]{fftw}.
 
 \paragraph{Memory allocation} One special feature of this class that breaks with convention is that there is no explicitly defined copy constructor. The compiler generated one only performs a shallow copy, copying the pointer to the data array, but not the data itself. Only the explicitly defined constructor \mintinline{C++}{Array2d::Array2d(int nx, int ny)} uses \texttt{fftw\_alloc\_complex} to allocate new memory for the array. This means that the user of the class has finer control over where memory is allocated, which is important in the case of large arrays. For example, using IEEE double-precision floating point, which occupies 64 bits of memory, a $2^{13} \times 2^{13}$ array of complex numbers occupies around \SI{1}{GB} of memory.
 
@@ -153,18 +153,53 @@ For better understanding of when new memory is allocated, compile the code with 
 \paragraph{Aperture generators} These are a type of function that initialise an \texttt{Array2d} with a particular kind of aperture with given parameters. For example, there is a generator for circular apertures, one for circular Gaussian-illuminated, one for circular with random errors, etc.
 
 \subsection{Configuration Files}
-Configuration files are stored by convention in the \texttt{config} directory, and are a series of \texttt{key = value} lines. Their contents is, in order:
+Configuration files are stored by convention in the \texttt{config} directory, and are a series of \texttt{key = value} lines. They contain:
 \begin{itemize}
     \item \texttt{nx} and \texttt{ny}. These are the size of the problem, i.e.\ the numbers of rows and columns that the mirror shape is split into.
     \item \texttt{tasks}, what actions to perform on each of the shapes
     \item \texttt{n\_shapes}, the number of shapes
-    \item for each shape, it's properties: \texttt{type}, \texttt{lx} and \texttt{ly}, the physical length of the sides, and \texttt{params}, a list of parameters of the shape, e.g.\ the radius, width and height of the slit or the taper for Gaussian illumination.
+    \item for each shape, it's properties: \texttt{type}, \texttt{lx} and \texttt{ly}, the limits within which $A(x,y)$ is defined, and \texttt{params}, a list of parameters of the shape, e.g.\ the dimensions or the taper of Gaussian illumination.
 \end{itemize}
 
-\subsection{Describing Aperture Shapes}
-
+\subsection{The \texttt{fftshift} operation}
+The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. The function \texttt{fftshift} is overloaded to act on both 1D \texttt{vector} and 2D \texttt{Array2d} objects.
 
 \section{Results and Discussion}\label{sec:res}
+\subsection{Tests}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/tests/airy.pdf}
+        \caption{}\label{fig:test1:round}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/tests/rect.pdf}
+        \caption{}\label{fig:test1:rect}
+    \end{subfigure}
+    \caption{Sizes of central spots as function of aperture size, for both round and rectangular apertures.}\label{fig:test1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/def/out0}
+        \caption{}\label{fig:typ:round}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/def/out1}
+        \caption{}\label{fig:typ:rect}
+    \end{subfigure}
+    \caption{Typical diffraction patterns of circular and vertical rectangular apertures.}\label{fig:typ}
+\end{figure}
+
+First, I ran the program on series of circular and rectangular apertures described in \texttt{config/circular\_mins.txt} and \texttt{config/rectangle\_mins.txt}, expecting to see a linear relationship between the extent of the central maximum and the inverse of the aperture size (see Section~\ref{sec:analysis:test}). As seen in Figure~\ref{fig:test1}, these linear relationships hold. The line slopes are close to the expected values of $1.22\pi$ for the Airy disc and $\pi$ for rectangular shapes.
+
+Figure~\ref{fig:typ} shows that the diffraction patterns look as expected. Most notably, the image from a vertical rectangle is longer along the horizontal axis, as expected from Equation~\ref{eqn:test_rect}.
 
 \section{Conclusion}\label{sec:conclusion}
 
