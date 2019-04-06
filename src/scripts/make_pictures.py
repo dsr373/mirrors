@@ -8,32 +8,39 @@ import matplotlib.pyplot as plt
 import matplotlib
 
 COLORMAP = matplotlib.cm.plasma
+PHASE_COLORMAP = matplotlib.cm.hsv
 FIGSIZE = (9, 9)
 FONTSIZE = 16
-
-SAVE_DIR = os.path.join("fig", "def")
 
 def extract_value(line):
     return re.split(r'\s+=\s+', line)[-1].strip()
 
 def parse_config(filename):
-    n_shapes_line = None
-    prefix_line = None
+    n_shapes = None
+    prefix = None
+    tasks = None
 
     with open(filename) as fin:
         lines = fin.readlines()
         for line in lines:
             if line.startswith("n_shapes"):
-                n_shapes_line = line
+                n_shapes = int(extract_value(line))
             elif line.startswith("prefix"):
-                prefix_line = line
+                prefix = extract_value(line)
+            elif line.startswith("tasks"):
+                tasks = extract_value(line)
 
-    n_shapes = int(extract_value(n_shapes_line))
-    prefix = extract_value(prefix_line)
-    return (n_shapes, prefix)
+    # extract what figures are produced for each shape
+    figs = []
+    for task in tasks.split():
+        if task.startswith("print_"):
+            figs.append(task[6:])
+    
+    return (n_shapes, prefix, figs)
 
 
 def readfile(filename):
+    print("Reading data from " + filename)
     with open(filename) as fin:
         lines = fin.readlines()
         data = [[float(x) for x in line.split()] for line in lines]
@@ -43,22 +50,39 @@ def readfile(filename):
     return xlim, ylim, data
 
 
-def colour_plot(readout, logdata=False):
+def colour_plot(filename, title, colorbar=False, logdata=False, colormap=COLORMAP):
     matplotlib.rcParams.update({'font.size': FONTSIZE})
-    xlim, ylim, data = readout
+    
+    xlim, ylim, data = readfile(filename)
     if logdata:
         data = np.log(data)
     
-    _, ax = plt.subplots(figsize=FIGSIZE)
-    lims = xlim + ylim
-    ax.imshow(data, cmap=COLORMAP, interpolation='nearest', extent=lims)
+    fig, ax = plt.subplots(figsize=FIGSIZE)
+    im = ax.imshow(data, cmap=COLORMAP, interpolation='nearest', extent=(xlim+ylim))
 
+    # draw colorbar
+    if colorbar:
+        fig.colorbar(im, ax=ax)
+
+    ax.set_title(title)
+
+SAVE_DIR = os.path.join("fig", "gauss")
 
 if __name__ == "__main__":
-    n_shapes, prefix = parse_config("config/config.txt")
     os.makedirs(SAVE_DIR, exist_ok=True)
-    for i in range(n_shapes):
-        colour_plot(readfile(prefix + str(i) + "in.txt"))
-        colour_plot(readfile(prefix + str(i) + "out.txt"))
-        plt.savefig(os.path.join(SAVE_DIR, "out{:d}.png".format(i)))
-        plt.show()
+
+    colour_plot(os.path.join("data", "gauss0out_abs.txt"), "Uniform illumination")
+    plt.savefig(os.path.join(SAVE_DIR, "uniform.png"))
+
+    colour_plot(os.path.join("data", "gauss1out_abs.txt"), "Gaussian illumination")
+    plt.savefig(os.path.join(SAVE_DIR, "gaussian.png"))
+
+    # uncomment this to automagically plot everything created by a certain config
+    # otherwise do it manually with your own tweaks
+    # n_shapes, prefix, figs = parse_config(CONFIG)
+    # for i in range(n_shapes):
+    #     for fig in figs:
+    #         filename = prefix + str(i) + fig + ".txt"
+    #         title = "{:d} {:s}".format(i, fig.replace("_", " "))
+    #         colour_plot(readfile(filename), title)
+    plt.show()
