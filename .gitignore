@@ -13,7 +13,8 @@ main
 test
 
 # latex
-*minted-main*
+*minted-report*
+*.pyg
 *.dvi
 *.bcf
 *.run.xml
