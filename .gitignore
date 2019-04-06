@@ -17,6 +17,7 @@ test
 *.pyg
 *.dvi
 *.bcf
+*.aux
 *.run.xml
 *.synctex.gz
 *.synctex(busy)
