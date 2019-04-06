@@ -13,6 +13,7 @@ RECT_CONFIG = "config/rectangle_mins.txt"
 SAVE_DIR = "fig/tests"
 
 FONTSIZE = 16
+CAPSIZE = 7
 FIT_LABEL = "fit: $y={:4.4f}x{:+4.4f}$"
 FIGSIZE = (9, 8)
 
@@ -40,6 +41,7 @@ def plot_sizes(data):
 
     # formatting niceness
     matplotlib.rcParams.update({'font.size': FONTSIZE})
+    matplotlib.rcParams.update({'errorbar.capsize': CAPSIZE})
 
     # plot the data
     fig, ax = plt.subplots(figsize=FIGSIZE)
@@ -57,6 +59,8 @@ def plot_sizes(data):
     ax.set_title("Airy disc radii")
     ax.legend()
 
+    plt.savefig(os.path.join(SAVE_DIR, "airy.pdf"))
+
 
 def plot_rect_sizes(data):
     xs = 2/data[1]      # inverse aperture size/2
@@ -65,6 +69,7 @@ def plot_rect_sizes(data):
 
     # formatting niceness
     matplotlib.rcParams.update({'font.size': FONTSIZE})
+    matplotlib.rcParams.update({'errorbar.capsize': CAPSIZE})
 
     # plot the data
     fig, ax = plt.subplots(figsize=FIGSIZE)
@@ -81,6 +86,8 @@ def plot_rect_sizes(data):
     ax.set_ylabel("first minimum (m)")
     ax.set_title("Rectangular aperture image size")
     ax.legend()
+
+    plt.savefig(os.path.join(SAVE_DIR, "rect.pdf"))
 
 
 def plot_amplitudes(data):
@@ -99,6 +106,8 @@ def plot_amplitudes(data):
     ax.set_ylabel("central amplitude (arbitrary)")
     ax.set_title("Central amplitude of circular aperture")
     # ax.legend()
+
+    plt.savefig(os.path.join(SAVE_DIR, "amp.pdf"))
 
 
 if __name__ == "__main__":
