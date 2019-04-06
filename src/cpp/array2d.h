@@ -81,7 +81,4 @@ using aperture_generator = int (*)(Array2d& arr, const vector<double>& xs, const
  */
 extern map<string, aperture_generator> generators;
 
-int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
-int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params);
-
 #endif

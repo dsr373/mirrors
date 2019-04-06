@@ -260,7 +260,26 @@ int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, c
     return 0;
 }
 
+/** Gaussian illuminated circular aperture. params[0] is radius and params[1] is sigma */
+int gaussian(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    int nx = xs.size(), ny = ys.size();
+    double R = params[0], sig = params[1];
+    double rsq;
+
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            if(rsq <= R * R)
+                in[i][j] = exp(-rsq/(2 * sig * sig));
+            else
+                in[i][j] = 0.0;
+        }
+    }
+    return 0;
+}
+
 map<string, aperture_generator> generators = {
     {"circular", circular},
-    {"rectangle", rectangle}
+    {"rectangle", rectangle},
+    {"gaussian", gaussian}
 };
