@@ -1,6 +1,6 @@
 CXX = g++
 CFLAGS = -g -std=c++14 -Wall -pedantic
-LIBS = -L/usr/lib/x86_64-linux-gnu -lgsl -lgslcblas -lfftw3 -lm -l stdc++
+LIBS = -L/usr/lib/x86_64-linux-gnu -lgsl -lgslcblas -lfftw3_threads -lfftw3 -lm -lpthread -l stdc++
 SDIR = src/cpp
 BDIR = bin
 ODIR = obj

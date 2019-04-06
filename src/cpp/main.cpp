@@ -12,6 +12,8 @@
 
 using namespace std;
 
+#define N_THREADS 1
+
 // power of 2
 #define N (1<<12)
 #define INFO_OUT true
@@ -20,11 +22,21 @@ int main(int argc, char * argv[]) {
     // open logger
     Logger main_log(stdout, "main.cpp", INFO_OUT);
 
-    if(argc != 2)
-        throw runtime_error("Incorrect number of arguments. Provide one config file.");
+    if(argc != 2) {
+        main_log("Incorrect number of arguments. Provide one config file.");
+        return 1;
+    }
+
+    // init fftw threads
+    int threads_status = fftw_init_threads();
+    if(threads_status == 0) {
+        main_log("Thread initialisation failed!");
+        return 1;
+    }
+    fftw_plan_with_nthreads(N_THREADS);
+    main_log("Thread initialisation successful.");
 
     // parse command line config
-    main_log("Started");
     Config conf(argv[1]);
     main_log("Configured");
 
@@ -68,8 +80,6 @@ int main(int argc, char * argv[]) {
         // execute the tasks
         for(vector<string>::iterator it = conf.tasks.begin(); it != conf.tasks.end(); it ++ ) {
             if((*it) == "print") {
-                main_log("Print arrays");
-
                 // print aperture
                 Limits lims_in = in.find_interesting(myabs, 0.0, 1e-2);
                 string in_fname = conf.out_prefix + to_string(i) + "in.txt";

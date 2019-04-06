@@ -1,0 +1,15 @@
+nx = 16384 
+ny = 16384
+prefix = data/large
+tasks = params find_min
+n_shapes = 2
+
+type = circular
+lx = 30
+ly = 30
+params = 0.2
+
+type = rectangle
+lx = 30
+ly = 30
+params = 0.4 1.0
