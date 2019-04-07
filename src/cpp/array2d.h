@@ -59,12 +59,6 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
 
 /**
  * Print the limits in two directions of the 2d array, then the array itself,
- * in standard formatted way.
- */
-void print_lim_array(FILE * filep, complex_to_real fun, const Array2d &a, const vector<double> &xs, const vector<double> &ys);
-
-/**
- * Print the limits in two directions of the 2d array, then the array itself,
  * in standard formatted way. 
  * Only print stuff within x and y limits given by lims.
  */
