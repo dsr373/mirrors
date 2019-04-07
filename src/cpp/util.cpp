@@ -3,6 +3,7 @@
 complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
 complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
 complex_to_real myre = [](complex<double> z) -> double {return real(z);};
+complex_to_real complexness = [](complex<double> z) -> double {return abs(imag(z)/real(z));};
 
 #define OPTION_ERROR "Incorrect option. Expected %s, got %s"
 

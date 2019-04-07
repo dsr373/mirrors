@@ -18,7 +18,7 @@ using namespace std;
  * These are functions such as abs, real, imag, arg, etc...
  */
 using complex_to_real = double (*)(complex<double>);
-extern complex_to_real myabs, myarg, myre;
+extern complex_to_real myabs, myarg, myre, complexness;
 
 /** Holds the properties of an aperture shape.
  * lx, ly are the lengths of the sides of the board
