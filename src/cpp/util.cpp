@@ -90,6 +90,8 @@ Config::Config(const char * filename) {
     read_option(cnf_filep, "ny", ny);
     read_option(cnf_filep, "prefix", out_prefix);
     read_option(cnf_filep, "tasks", tasks);
+    read_option(cnf_filep, "rel_sens", rel_sens);
+    read_option(cnf_filep, "abs_sens", abs_sens);
     read_option(cnf_filep, "n_shapes", n_shapes);
 
     for(int i = 0; i < n_shapes; i ++ ) {

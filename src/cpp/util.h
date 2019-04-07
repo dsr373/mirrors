@@ -47,6 +47,7 @@ struct Config {
     vector<ShapeProperties> shapes;
 
     int nx, ny;
+    double abs_sens, rel_sens;
 };
 
 
