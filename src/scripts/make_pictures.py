@@ -79,10 +79,10 @@ if __name__ == "__main__":
 
     # uncomment this to automagically plot everything created by a certain config
     # otherwise do it manually with your own tweaks
-    # n_shapes, prefix, figs = parse_config(CONFIG)
+    # n_shapes, prefix, figs = parse_config("config/config.txt")
     # for i in range(n_shapes):
     #     for fig in figs:
     #         filename = prefix + str(i) + fig + ".txt"
     #         title = "{:d} {:s}".format(i, fig.replace("_", " "))
-    #         colour_plot(readfile(filename), title)
+    #         colour_plot(filename, title)
     plt.show()
