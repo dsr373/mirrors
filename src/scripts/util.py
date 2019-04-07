@@ -17,7 +17,7 @@ def extract_value(line):
     return re.split(r'\s+=\s+', line)[-1].strip()
 
 def read_data(config_filename):
-    """ Read the data file created by some running some config file """
+    """ Read the data file created by running some config file """
     with open(config_filename) as confin:
         prefix = None     # some default that must change
         lines = confin.readlines()

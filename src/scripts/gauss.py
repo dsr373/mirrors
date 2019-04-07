@@ -45,7 +45,7 @@ def plot_sizes(data):
     # label the plot
     ax.set_xlabel("$\\sigma / R$")
     ax.set_ylabel("central spot radius (m)")
-    ax.set_title("Gaussian illumination")
+    ax.set_title("Gaussian illumination spot size")
     ax.legend()
 
     plt.savefig(os.path.join(SAVE_DIR, "size.pdf"))
@@ -69,7 +69,7 @@ def plot_intensities(data):
     # label the plot
     ax.set_xlabel("$\\sigma / R$")
     ax.set_ylabel("central amplitude (arbitrary)")
-    ax.set_title("Central amplitude of circular aperture")
+    ax.set_title("Gaussian illumination central intensity")
     ax.ticklabel_format(axis='y', style='sci', scilimits=(-2,3), useMathText=True)
     # ax.legend()
 
