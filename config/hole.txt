@@ -1,0 +1,20 @@
+nx = 8192
+ny = 8192
+prefix = data/hole
+tasks = print_in_abs print_out_abs
+n_shapes = 3
+
+type = gaussian
+lx = 480
+ly = 480
+params = 6 3
+
+type = gaussian
+lx = 480
+ly = 480
+params = 0.5 3
+
+type = gaussian_hole
+lx = 480
+ly = 480
+params = 6 3 0.5

@@ -16,17 +16,74 @@ def print_warning(configs):
 def extract_value(line):
     return re.split(r'\s+=\s+', line)[-1].strip()
 
+def parse_config(filename):
+    n_shapes = None
+    prefix = None
+    tasks = None
+
+    with open(filename) as fin:
+        lines = fin.readlines()
+        for line in lines:
+            if line.startswith("n_shapes"):
+                n_shapes = int(extract_value(line))
+            elif line.startswith("prefix"):
+                prefix = extract_value(line)
+            elif line.startswith("tasks"):
+                tasks = extract_value(line)
+
+    # extract what figures are produced for each shape
+    figs = []
+    for task in tasks.split():
+        if task.startswith("print_"):
+            figs.append(task[6:])
+    
+    return (n_shapes, prefix, figs)
+
+
+def read_image(filename):
+    """ Read image from a data file """
+    
+    print("Reading data from " + filename)
+    with open(filename) as fin:
+        lines = fin.readlines()
+        data = [[float(x) for x in line.split()] for line in lines]
+        xlim = data[0]
+        ylim = data[1]  
+        data = np.array(data[2:])
+    return xlim, ylim, data
+
+
 def read_data(config_filename):
     """ Read the data file created by running some config file """
-    with open(config_filename) as confin:
-        prefix = None     # some default that must change
-        lines = confin.readlines()
-        for line in lines:
-            if line.startswith("prefix"):
-                prefix = extract_value(line)
+    _, prefix, _ = parse_config(config_filename)
 
     data_fname = prefix + "dat.txt"
     with open(data_fname) as fin:
         lines = fin.readlines()
         data = np.array([[float(x) for x in line.split()] for line in lines])
     return np.ndarray.transpose(data)
+
+def relim(data, old_lim, new_lim):
+    """ 
+    Take a data array with known x and y limits
+    and return the data between different x and y limits
+    of course, the new limits should be included in the old ones
+    """
+    x1, x2, y1, y2 = old_lim
+    xn1, xn2, yn1, yn2 = new_lim
+    n_rows, n_cols = data.shape
+
+    # the delta is the distance divided by the number of intervals
+    dx = abs(x2 - x1) / (n_cols-1)
+    dy = abs(y2 - y1) / (n_rows-1)
+    
+    # find the indices of the new coordinates
+    ixmin = int(np.ceil((xn1 - x1) / dx))
+    ixmax = int(np.ceil((xn2 - x1) / dx))
+
+    iymin = int(np.ceil((yn1 - y1) / dy))
+    iymax = int(np.ceil((yn2 - y1) / dy))
+
+    xlim = (x1 + dx * ixmin), (x1 + dx * (ixmax-1))
+    ylim = (y1 + dy * iymin), (y1 + dy * (iymax-1))
+    return xlim, ylim, data[iymin:iymax][ixmin:ixmax]

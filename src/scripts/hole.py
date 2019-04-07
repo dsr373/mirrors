@@ -10,7 +10,6 @@ import matplotlib
 from util import *
 
 COLORMAP = matplotlib.cm.plasma
-PHASE_COLORMAP = matplotlib.cm.hsv
 FIGSIZE = (9, 9)
 FONTSIZE = 16
 

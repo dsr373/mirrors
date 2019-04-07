@@ -7,6 +7,8 @@ obj/*
 
 # python bytecode
 *.pyc
+# test scripts
+*lol*.py
 
 # data types
 data/*.txt
