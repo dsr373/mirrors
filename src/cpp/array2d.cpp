@@ -264,13 +264,40 @@ int rectangle(Array2d& in, const vector<double>& xs, const vector<double>& ys, c
 int gaussian(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
     int nx = xs.size(), ny = ys.size();
     double R = params[0], sig = params[1];
+
+    double R_sq = R * R;
+    double sigsq2 = 2.0 * sig * sig;
     double rsq;
 
     for(int i = 0; i < nx; i ++ ) {
         for(int j = 0; j < ny; j ++ ) {
             rsq = xs[j] * xs[j] + ys[i] * ys[i];
-            if(rsq <= R * R)
-                in[i][j] = exp(-rsq/(2 * sig * sig));
+            if(rsq <= R_sq)
+                in[i][j] = exp(-rsq / sigsq2);
+            else
+                in[i][j] = 0.0;
+        }
+    }
+    return 0;
+}
+
+/** A circular Gaussian aperture with a hole in the middle 
+ * params[0] is the radius. params[1] is sigma. params[2] is the hole radius.
+ */
+int gaussian_hole(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    int nx = xs.size(), ny = ys.size();
+    double R_ext = params[0], sig = params[1], R_int = params[2];
+
+    double R_ext_sq = R_ext * R_ext;
+    double R_int_sq = R_int * R_int;
+    double sigsq2 = 2.0 * sig * sig;
+    double rsq;
+
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            if(rsq <= R_ext_sq && rsq >= R_int_sq)
+                in[i][j] = exp(-rsq / sigsq2);
             else
                 in[i][j] = 0.0;
         }
@@ -281,5 +308,6 @@ int gaussian(Array2d& in, const vector<double>& xs, const vector<double>& ys, co
 map<string, aperture_generator> generators = {
     {"circular", circular},
     {"rectangle", rectangle},
-    {"gaussian", gaussian}
+    {"gaussian", gaussian},
+    {"gaussian_hole", gaussian_hole}
 };

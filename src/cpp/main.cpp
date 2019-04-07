@@ -101,7 +101,7 @@ int main(int argc, char * argv[]) {
             }
             else if((*task) == "print_in_phase") {
                 // print aperture phase
-                Limits lims_in = in.find_interesting(complexness, 0.05, 0.0);
+                Limits lims_in = in.find_interesting(complexness, 0.02, 0.0);
                 string in_fname = conf.out_prefix + to_string(i) + "in_phase.txt";
                 FILE * in_filep = fopen(in_fname.c_str(), "w");
                 print_lim_array(in_filep, myarg, in, xs, ys, lims_in);
@@ -110,7 +110,7 @@ int main(int argc, char * argv[]) {
             else if((*task) == "print_out_phase") {
                 // shift output
                 Array2d out_f = fftshift(out);
-                Limits lims_out = out_f.find_interesting(complexness, 0.05, 0.0);
+                Limits lims_out = out_f.find_interesting(complexness, 0.02, 0.0);
                 
                 // print image phase
                 string out_fname = conf.out_prefix + to_string(i) + "out_phase.txt";
