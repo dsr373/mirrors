@@ -63,27 +63,32 @@ def read_data(config_filename):
         data = np.array([[float(x) for x in line.split()] for line in lines])
     return np.ndarray.transpose(data)
 
-def relim(data, old_lim, new_lim):
+def relim(data_shape, old_lim, new_lim):
     """ 
     Take a data array with known x and y limits
     and return the data between different x and y limits
     of course, the new limits should be included in the old ones
+    Returns two tuples:
+        (min_row, max_row, min_col, max_col)
+    And then the coordinates:
+        (xmin, xmax, ymin, ymax)
     """
     x1, x2, y1, y2 = old_lim
     xn1, xn2, yn1, yn2 = new_lim
-    n_rows, n_cols = data.shape
+    n_rows, n_cols = data_shape
 
     # the delta is the distance divided by the number of intervals
     dx = abs(x2 - x1) / (n_cols-1)
     dy = abs(y2 - y1) / (n_rows-1)
     
     # find the indices of the new coordinates
-    ixmin = int(np.ceil((xn1 - x1) / dx))
-    ixmax = int(np.ceil((xn2 - x1) / dx))
+    min_col = int(np.ceil((xn1 - x1) / dx))
+    max_col = int(np.ceil((xn2 - x1) / dx))
 
-    iymin = int(np.ceil((yn1 - y1) / dy))
-    iymax = int(np.ceil((yn2 - y1) / dy))
+    min_row = int(np.ceil((yn1 - y1) / dy))
+    max_row = int(np.ceil((yn2 - y1) / dy))
 
-    xlim = (x1 + dx * ixmin), (x1 + dx * (ixmax-1))
-    ylim = (y1 + dy * iymin), (y1 + dy * (iymax-1))
-    return xlim, ylim, data[iymin:iymax][ixmin:ixmax]
+    xlim = (x1 + dx * min_col), (x1 + dx * (max_col-1))
+    ylim = (y1 + dy * min_row), (y1 + dy * (max_row-1))
+
+    return (min_row, max_row, min_col, max_col), xlim+ylim

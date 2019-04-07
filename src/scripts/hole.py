@@ -13,15 +13,14 @@ COLORMAP = matplotlib.cm.plasma
 FIGSIZE = (9, 9)
 FONTSIZE = 16
 
-def colour_plot(filename, title, colorbar=False, logdata=False, colormap=COLORMAP):
+def colour_plot(data, limits, title, colorbar=False, logdata=False, colormap=COLORMAP):
     matplotlib.rcParams.update({'font.size': FONTSIZE})
     
-    xlim, ylim, data = read_image(filename)
     if logdata:
         data = np.log(data)
     
     fig, ax = plt.subplots(figsize=FIGSIZE)
-    im = ax.imshow(data, cmap=COLORMAP, interpolation='nearest', extent=(xlim+ylim))
+    im = ax.imshow(data, cmap=COLORMAP, interpolation='nearest', extent=limits)
 
     # draw colorbar
     if colorbar:
@@ -30,23 +29,19 @@ def colour_plot(filename, title, colorbar=False, logdata=False, colormap=COLORMA
     ax.set_title(title)
 
 
-SAVE_DIR = os.path.join("fig", "gauss")
+SAVE_DIR = os.path.join("fig", "hole")
 
 if __name__ == "__main__":
     os.makedirs(SAVE_DIR, exist_ok=True)
 
-    colour_plot(os.path.join("data", "gauss0out_abs.txt"), "Uniform illumination")
-    plt.savefig(os.path.join(SAVE_DIR, "uniform.png"))
+    # draw the large mirror pattern
+    xlim, ylim, data = read_image("data/hole0out_abs.txt")
+    colour_plot(data, xlim+ylim, "Large Gaussian")
 
-    colour_plot(os.path.join("data", "gauss1out_abs.txt"), "Gaussian illumination")
-    plt.savefig(os.path.join(SAVE_DIR, "gaussian.png"))
-
-    # uncomment this to automagically plot everything created by a certain config
-    # otherwise do it manually with your own tweaks
-    # n_shapes, prefix, figs = parse_config("config/config.txt")
-    # for i in range(n_shapes):
-    #     for fig in figs:
-    #         filename = prefix + str(i) + fig + ".txt"
-    #         title = "{:d} {:s}".format(i, fig.replace("_", " "))
-    #         colour_plot(filename, title)
+    # read in the small mirror pattern
+    xs, ys, data = read_image("data/hole1out_abs.txt")
+    # cut it to within the limits of the other
+    (row_min, row_max, col_min, col_max), newlims = relim(data.shape, xs+ys, xlim+ylim)
+    colour_plot(data[row_min:row_max, col_min:col_max], newlims, "Small Gaussian")
+    
     plt.show()
