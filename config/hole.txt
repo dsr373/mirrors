@@ -1,7 +1,9 @@
 nx = 8192
 ny = 8192
 prefix = data/hole
-tasks = print_in_abs print_out_abs
+tasks = print_in_abs print_out_abs print_out_phase
+rel_sens = 0.01
+abs_sens = 0.0
 n_shapes = 3
 
 type = gaussian
