@@ -7,6 +7,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 
+from util import *
+
 SIZES_CONFIG = "config/circular_mins.txt"
 AMP_CONFIG = "config/circular_amps.txt"
 RECT_CONFIG = "config/rectangle_mins.txt"
@@ -18,21 +20,6 @@ FIT_LABEL = "fit: $y={:4.4f}x{:+4.4f}$"
 FIGSIZE = (9, 8)
 
 SEP = "="*30
-
-def read_data(filename):
-    with open(filename) as confin:
-        prefix = "data/"     # some default that must change
-        lines = confin.readlines()
-        for line in lines:
-            if line.startswith("prefix"):
-                prefix = re.split(r'\s+=\s+', line)[-1].strip()
-
-    data_fname = prefix + "dat.txt"
-    with open(data_fname) as fin:
-        lines = fin.readlines()
-        data = np.array([[float(x) for x in line.split()] for line in lines])
-    return np.ndarray.transpose(data)
-
 
 def plot_sizes(data):
     xs = 1/data[1]      # inverse aperture diameter
@@ -111,11 +98,7 @@ def plot_amplitudes(data):
 
 
 if __name__ == "__main__":
-    print(SEP)
-    print("INFO: for this to run correctly, you must run the executable on:")
-    print("{},\n{},\n{}".format(SIZES_CONFIG, AMP_CONFIG, RECT_CONFIG))
-    print("If you've done that, ignore this message.")
-    print(SEP)
+    print_warning([SIZES_CONFIG, AMP_CONFIG, RECT_CONFIG])
 
     os.makedirs(SAVE_DIR, exist_ok=True)
 

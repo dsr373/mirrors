@@ -21,10 +21,10 @@ FILENAME = "gauss_hm.txt"
 NX, NY = 2**13, 2**13
 DATA_PREFIX = os.path.join(DATA_DIR, "gauss_hm")
 TASKS = "params find_min central_amplitude"
-N_SHAPES = 20
+N_SHAPES = 24
 
 TYPE = "gaussian"
-LX, LY = 768, 768
+LX, LY = 512, 512
 
 with open(os.path.join(CONF_DIR, FILENAME), "w") as fout:
     write_option(fout, "nx", 2**13)
@@ -39,4 +39,6 @@ with open(os.path.join(CONF_DIR, FILENAME), "w") as fout:
         write_option(fout, "lx", LX)
         write_option(fout, "ly", LY)
         # and change this:
-        write_option(fout, "params", "{: 5.5f} {: 5.5f}".format(6, float(i+1)/2.0))
+        r = 6
+        sig = float(i+1)/6
+        write_option(fout, "params", "{: 5.5f} {: 5.5f}".format(r, sig))

@@ -1,12 +1,18 @@
 # vscode config files
 .vscode
 
-# object and source
+# object and binary
 bin/*
 obj/*
 
+# python bytecode
+*.pyc
+
 # data types
 data/*.txt
+
+# figures
+fig/*
 
 # my own symlinks
 main
