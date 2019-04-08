@@ -42,7 +42,7 @@ def plot_sizes(data):
 
     # label the plot
     ax.set_xlabel("(1 / aperture radius) $(m^{{-1}})$")
-    ax.set_ylabel("central spot radius (m)")
+    ax.set_ylabel("central spot radius $p$ $(m^{{-1}})$")
     ax.set_title("Airy disc radii")
     ax.legend()
 
@@ -70,7 +70,7 @@ def plot_rect_sizes(data):
 
     # label the plot
     ax.set_xlabel("(1 / aperture half-width) $(m^{{-1}})$")
-    ax.set_ylabel("first minimum (m)")
+    ax.set_ylabel("first minimum $p$ $(m^{{-1}})$")
     ax.set_title("Rectangular aperture image size")
     ax.legend()
 

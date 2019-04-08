@@ -1,17 +1,17 @@
-nx = 5000
-ny = 5000
+nx = 8192
+ny = 8192
 prefix = data/def
-tasks = print_in_abs print_out_abs print_out_phase find_min
-rel_sens = 0.02
+tasks = print_in_abs print_out_abs print_out_phase
+rel_sens = 0.05
 abs_sens = 0
 n_shapes = 2
 
 type = circular
-lx = 20
-ly = 20
+lx = 50
+ly = 50
 params = 0.2
 
 type = rectangle
-lx = 20
-ly = 20
+lx = 50
+ly = 50
 params = 0.4 1.0

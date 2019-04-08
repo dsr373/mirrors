@@ -1,93 +1,25 @@
 nx = 8192
 ny = 8192
 prefix = data/gauss_hm
-tasks = params find_min central_amplitude
-n_shapes = 24
+tasks = params fwhp central_amplitude
+rel_sens = 0
+abs_sens = 0
+n_shapes = 30
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  0.16667
+params =  6.00000  12.00000
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  0.33333
+params =  6.00000  6.00000
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  0.50000
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  0.66667
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  0.83333
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  1.00000
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  1.16667
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  1.33333
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  1.50000
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  1.66667
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  1.83333
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  2.00000
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  2.16667
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  2.33333
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  2.50000
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  2.66667
-
-type = gaussian
-lx = 512
-ly = 512
-params =  6.00000  2.83333
+params =  6.00000  4.00000
 
 type = gaussian
 lx = 512
@@ -97,29 +29,129 @@ params =  6.00000  3.00000
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  3.16667
+params =  6.00000  2.40000
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  3.33333
+params =  6.00000  2.00000
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  3.50000
+params =  6.00000  1.71429
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  3.66667
+params =  6.00000  1.50000
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  3.83333
+params =  6.00000  1.33333
 
 type = gaussian
 lx = 512
 ly = 512
-params =  6.00000  4.00000
+params =  6.00000  1.20000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  1.09091
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  1.00000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.92308
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.85714
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.80000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.75000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.70588
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.66667
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.63158
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.60000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.57143
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.54545
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.52174
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.50000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.48000
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.46154
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.44444
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.42857
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.41379
+
+type = gaussian
+lx = 512
+ly = 512
+params =  6.00000  0.40000
