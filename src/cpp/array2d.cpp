@@ -1,5 +1,8 @@
 #include "array2d.h"
 
+#include<gsl/gsl_rng.h>
+#include<gsl/gsl_randist.h>
+
 #define DEBUG_OUT false
 Logger arr2dlog(stdout, "arr2d", DEBUG_OUT);
 
@@ -302,9 +305,43 @@ int gaussian_hole(Array2d& in, const vector<double>& xs, const vector<double>& y
     return 0;
 }
 
+/** A circular and holed aperture, with random errors on it.
+ * params[0] is the outer radius. params[1] is sigma. params[2] is the inner(hole) radius.
+ * params[3] is the sigma of the phase errors. params[4] is (optionally) the RNG seed.
+ */
+int rand_errors(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    // this is just unpacking the arguments
+    int nx = xs.size(), ny = ys.size();
+    double R_ext_sq = params[0] * params[0];
+    double sig_sq2 = 2 * params[1] * params[1];
+    double R_int_sq = params[2] * params[2];
+    double err_sigma = params[3];
+    double rsq, phi;
+
+    // initiate a random number generator for the errors
+    gsl_rng * rng = gsl_rng_alloc(gsl_rng_default);
+    if(params.size() > 4) {
+        gsl_rng_set(rng, (unsigned long int)params[4]);
+    }
+
+    for(int i = 0; i < nx; i ++ ) {
+        for(int j = 0; j < ny; j ++ ) {
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            if(rsq <= R_ext_sq && rsq >= R_int_sq) {
+                phi = gsl_ran_gaussian(rng, err_sigma);
+                in[i][j] = polar(exp(-rsq / sig_sq2), phi);
+            }
+            else
+                in[i][j] = 0.0;
+        }
+    }
+    return 0;
+}
+
 map<string, aperture_generator> generators = {
     {"circular", circular},
     {"rectangle", rectangle},
     {"gaussian", gaussian},
-    {"gaussian_hole", gaussian_hole}
+    {"gaussian_hole", gaussian_hole},
+    {"rand_errors", rand_errors}
 };
