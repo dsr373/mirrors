@@ -44,11 +44,10 @@ public:
     Limits find_interesting(complex_to_real fun, double abs_sens, double rel_sens) const;
     void print_prop(complex_to_real fun, FILE * out_file) const;
     void print_prop(complex_to_real fun, const Limits &lim, FILE * out_file) const;
+    
+    int copy_into(Array2d &a) const;
 
-    Array2d deep_copy() const;
-    Array2d transpose() const;
-
-    friend Array2d fftshift(const Array2d &a);
+    friend void fftshift(Array2d &a);
 };
 
 /**

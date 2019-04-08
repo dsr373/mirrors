@@ -133,45 +133,29 @@ void Array2d::print_prop(complex_to_real fun, const Limits &lim, FILE * out_file
     }
 }
 
-
-/** Deep copy the array. Written to avoid deep copying on copy-constructor
- * or equality assignment,
- * which would be quite expensive on large arrays given O(n^2).
+/** Make a deep copy of this into another array, which must have the same size.
+ * returns non-zero if copy failed.
  */
-Array2d Array2d::deep_copy() const {
-    arr2dlog("explicit deep copy call");
-    Array2d aa(nx, ny);
-
-    for(int i = 0; i < nx; i ++ ) {
-        for(int j = 0; j < ny; j ++ ) {
-            aa[i][j] = (*this)(i, j);
-        }
-    }
-
-    return aa;
-}
-
-/** Create a transposed copy of the array */
-Array2d Array2d::transpose() const {
-    arr2dlog("explicit transpose call");
-    Array2d a(ny, nx);
+int Array2d::copy_into(Array2d &a) const {
+    arr2dlog("copy_into called");
+    if(a.nx != (*this).nx || a.ny != (*this).ny) return 1;
 
     for(int i = 0; i < nx; i ++ )
         for(int j = 0; j < ny; j ++ )
-            a[j][i] = (*this)(i, j);
-    return a;
+            a[i][j] = (*this)(i, j);
+    
+    return 0;
 }
 
 /** 
- * Create new Array2d with the zero-frequency component is shifted to the middle.
- * Equivalent to applying an operation like fftshift on vectors
- * to both dimensions of the array 
+ * The zero-frequency component is shifted to the middle, IN PLACE!!!
+ * The function allocates another array of the same size as a, so be careful
+ * to not run out of memory.
  **/
-Array2d fftshift(const Array2d &a) {
-    arr2dlog("Array2d fftshift(Array2d) call");
+void fftshift(Array2d &a) {
+    arr2dlog("fftshift(Array2d) call");
     Array2d b(a.nx, a.ny);
 
-    // first shift in x
     int shift_x = (a.ny+1) / 2;
     int shift_y = (a.nx+1) / 2;
     for(int i = 0; i < a.nx; i ++ )
@@ -180,7 +164,8 @@ Array2d fftshift(const Array2d &a) {
             int source_j = (j + shift_x) % a.ny;
             b[i][j] = a(source_i, source_j);
         }
-    return b;
+
+    b.copy_into(a);
 }
 
 

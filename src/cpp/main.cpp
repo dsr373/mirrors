@@ -67,7 +67,6 @@ int main(int argc, char * argv[]) {
         vector<double> qs = fftfreq(conf.ny, sp.ly/(double)conf.ny/(2*M_PI));
         // the printing limits of the arrays, and flags whether they were calculated or not
         Limits in_lims, out_lims;
-        bool in_lims_set = false, out_lims_set = false;
 
         // fill in the input
         main_log("Initializing input...");
@@ -77,83 +76,67 @@ int main(int argc, char * argv[]) {
         fftw_execute(p);
 
         main_log("Resolving tasks:");
-        for(vector<string>::iterator task = conf.tasks.begin(); task != conf.tasks.end(); task ++ ) {
-            main_log("\t" + (*task));
-            if((*task) == "print_in_abs") {
-                // find limits if needed
-                if(!in_lims_set) {
-                    main_log("\tfinding limits");
-                    in_lims = in.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
-                    in_lims_set = true;
-                }
+        if(contains(conf.tasks, "params")) {
+            // print shape parameters
+            for(unsigned int ip = 0; ip < sp.shape_params.size(); ip ++ )
+                fprintf(data_filep, "\t%lf", sp.shape_params[ip]);
+        }
+        if(contains(conf.tasks, "find_min")) {
+            // print size of central spot and error
+            ValueError<double> min_pos = find_first_min(myabs, out, ps);
+            fprintf(data_filep, "\t%lf\t%lf", min_pos.val, min_pos.err);
+        }
+        if(contains(conf.tasks, "central_amplitude")) {
+            // print absolute value of central spot
+            fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
+        }
+        fprintf(data_filep, "\n");
 
-                // print aperture amplitude
-                string in_fname = conf.out_prefix + to_string(i) + "in_abs.txt";
-                FILE * in_filep = fopen(in_fname.c_str(), "w");
-                print_lim_array(in_filep, myabs, in, xs, ys, in_lims);
-                fclose(in_filep);
-            }
-            else if((*task) == "print_in_phase") {
-                if(!in_lims_set) {
-                    main_log("\tfinding limits");
-                    in_lims = in.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
-                    in_lims_set = true;
-                }
-
-                // print aperture phase
-                string in_fname = conf.out_prefix + to_string(i) + "in_phase.txt";
-                FILE * in_filep = fopen(in_fname.c_str(), "w");
-                print_lim_array(in_filep, myarg, in, xs, ys, in_lims);
-                fclose(in_filep);
-            }
-            else if((*task) == "print_out_abs") {
-                // shift output
-                Array2d out_f = fftshift(out);
-                if(!out_lims_set) {
-                    main_log("\tfinding limits");
-                    out_lims = out_f.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
-                    out_lims_set = true;
-                }
-                
-                // print image amplitude
-                string out_fname = conf.out_prefix + to_string(i) + "out_abs.txt";
-                FILE * out_filep = fopen(out_fname.c_str(), "w");
-                print_lim_array(out_filep, myabs, out_f, fftshift(ps), fftshift(qs), out_lims);
-                fclose(out_filep);
-            }
-            else if((*task) == "print_out_phase") {
-                // shift output
-                Array2d out_f = fftshift(out);
-                if(!out_lims_set) {
-                    main_log("\tfinding limits");
-                    out_lims = out_f.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
-                    out_lims_set = true;
-                }
-
-                // print image phase
-                string out_fname = conf.out_prefix + to_string(i) + "out_phase.txt";
-                FILE * out_filep = fopen(out_fname.c_str(), "w");
-                print_lim_array(out_filep, myarg, out_f, fftshift(ps), fftshift(qs), out_lims);
-                fclose(out_filep);
-            }
-            else if((*task) == "params") {
-                // print shape parameters
-                for(unsigned int ip = 0; ip < sp.shape_params.size(); ip ++ )
-                    fprintf(data_filep, "\t%lf", sp.shape_params[ip]);
-            }
-            else if((*task) == "find_min") {
-                // print size of central spot and error
-                ValueError<double> min_pos = find_first_min(myabs, out, ps);
-                fprintf(data_filep, "\t%lf\t%lf", min_pos.val, min_pos.err);
-            }
-            else if((*task) == "central_amplitude") {
-                // print absolute value of central spot
-                fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
-            }
-            else main_log("\tUnknown task: " + (*task));
+        // find interesting limits if printing is needed. This next bit is ugly, I know.
+        if(any_begins_with(conf.tasks, "print_in")) {
+            main_log("\tin limits");
+            in_lims = in.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
+        }
+        if(any_begins_with(conf.tasks, "print_out")) {
+            // this screws up the out array:
+            fftshift(out);
+            main_log("\tout limits");
+            out_lims = out.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
         }
 
-        fprintf(data_filep, "\n");
+        // DO the array printing. 
+        if(contains(conf.tasks, "print_in_abs")) {
+            main_log("\tprint_in_abs");
+            // print aperture amplitude
+            string in_fname = conf.out_prefix + to_string(i) + "in_abs.txt";
+            FILE * in_filep = fopen(in_fname.c_str(), "w");
+            print_lim_array(in_filep, myabs, in, xs, ys, in_lims);
+            fclose(in_filep);
+        }
+        if(contains(conf.tasks, "print_in_phase")) {
+            main_log("\tprint_in_phase");
+            // print aperture phase
+            string in_fname = conf.out_prefix + to_string(i) + "in_phase.txt";
+            FILE * in_filep = fopen(in_fname.c_str(), "w");
+            print_lim_array(in_filep, myarg, in, xs, ys, in_lims);
+            fclose(in_filep);
+        }
+        if(contains(conf.tasks, "print_out_abs")) {
+            main_log("\tprint_out_abs");
+            // print image amplitude
+            string out_fname = conf.out_prefix + to_string(i) + "out_abs.txt";
+            FILE * out_filep = fopen(out_fname.c_str(), "w");
+            print_lim_array(out_filep, myabs, out, fftshift(ps), fftshift(qs), out_lims);
+            fclose(out_filep);
+        }
+        if(contains(conf.tasks, "print_out_phase")) {
+            main_log("\tprint_out_phase");
+            // print image phase
+            string out_fname = conf.out_prefix + to_string(i) + "out_phase.txt";
+            FILE * out_filep = fopen(out_fname.c_str(), "w");
+            print_lim_array(out_filep, myarg, out, fftshift(ps), fftshift(qs), out_lims);
+            fclose(out_filep);
+        }
     }
 
     main_log("Done. Cleaning up...");

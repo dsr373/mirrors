@@ -5,6 +5,18 @@ complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
 complex_to_real myre = [](complex<double> z) -> double {return real(z);};
 complex_to_real complexness = [](complex<double> z) -> double {return abs(imag(z)/real(z));};
 
+
+bool contains(const vector<string> &v, const char * s) {
+    string str = string(s);
+    return any_of(v.begin(), v.end(), [&](string element){ return element == s; });
+}
+
+bool any_begins_with(const vector<string> &v, const char * s) {
+    string str = string(s);
+    return any_of(v.begin(), v.end(), [&](string element){ return element.find(s) == 0; });
+}
+
+
 #define OPTION_ERROR "Incorrect option. Expected %s, got %s"
 
 inline void option_error(const char * optname, const char * readname) {

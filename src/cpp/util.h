@@ -20,6 +20,11 @@ using namespace std;
 using complex_to_real = double (*)(complex<double>);
 extern complex_to_real myabs, myarg, myre, complexness;
 
+/** Find if s exists in a vector of strings */
+bool contains(const vector<string> &v, const char * s);
+/** Find if any string in a vector begins with s */
+bool any_begins_with(const vector<string> &v, const char * s);
+
 /** Holds the properties of an aperture shape.
  * lx, ly are the lengths of the sides of the board
  * shape holds all the numbers necessary to make the shape, and it's passed
