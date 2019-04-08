@@ -2,6 +2,8 @@ nx = 5000
 ny = 5000
 prefix = data/rectmin
 tasks = params find_min
+rel_sens = 0
+abs_sens = 0
 n_shapes = 10
 
 type = rectangle
