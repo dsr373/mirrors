@@ -57,11 +57,7 @@ Modern telescopes use very finely polished curved mirrors to create sharp images
 
 The aim of this paper is a computational investigation of the effects of imperfections in the shape of a telescope mirror on the image. Several relationships are studied, as suggested in the projects manual~\cite{manual}:
 \begin{itemize}
-    \item the effects of Gaussian illumination, where the amplitude of radiation on the mirror
-    \begin{equation*}
-        \left| A(r) \right| \propto \exp \left( -{r^2}/{2 \sigma_T^2} \right)
-    \end{equation*}
-    on the size and central intensity of the image.
+    \item the effects of tapered illumination on the size and central intensity of the image.
     \item the effect of a central hole in the mirror, due to the secondary mirror.
     \item the effects of random and correlated phase errors, due to physical dents in the surface of the mirror. The dents cause phase errors due to the change in path length with respect to the smooth shape.
 \end{itemize}
@@ -153,6 +149,8 @@ Besides, since the integral of $|A|$ over the aperture is smaller, the central i
 \subsection{Central hole}\label{sec:analysis:hole}
 Classical telescopes, such as the Cassegrain design, have a central hole in the primary mirror due to the secondary mirror~\cite[Section~7.2.3]{RadioAstro}. The resulting aperture function can be viewed as the difference between that of the complete mirror $(A_{\R{complete}})$ and that of the hole $(A_{\R{hole}})$. Due to the linearity of the Fourier Transform, the diffraction pattern of this mirror should be the difference between the patterns of $A_{\R{complete}}$ and $A_{\R{hole}}$.
 
+We can quantify how similar these results are by subtracting the image produced by a holed aperture from the difference of the images produced by $A_{\R{complete}}$ and $A_{\R{hole}}$.
+
 \subsection{Bent mirrors}\label{sec:analysis:bent}
 
 
@@ -241,11 +239,47 @@ Figure~\ref{fig:typ} shows that the diffraction patterns look as expected. Most 
     \caption{Properties of Gaussian illumination diffraction pattern.}\label{fig:gauss}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/gauss/uniform.png}
+        \caption{}\label{fig:gpic:uniform}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/gauss/gaussian.png}
+        \caption{}\label{fig:gpic:gauss}
+    \end{subfigure}
+    \caption{Amplitude diffraction patterns of two different illumination patterns of the same mirror of radius $R=\SI{6}{m}$. Note the different scales of the images.}\label{fig:gpic}
+\end{figure}
+
 Figure~\ref{fig:gauss} shows the results anticipated in Section~\ref{sec:analysis:taper}, especially the low and high $\sigma$ limits. At low $\sigma$, the $\R{FWHM} \propto 1/\sigma$, and the central intensity tends to zero. At high $\sigma$, both properties approach their uniform illumination values:
 \begin{align*}
     \R{FWHP} &\rightarrow \SI{0.641 \pm 0.014}{\per\metre} \\
-    I(0, 0) &\rightarrow \sim \num{33e3}
+    I(0, 0) &\rightarrow \sim \num{30e3}.
 \end{align*}
+
+These results support the expected behaviour of Gaussian-illuminated apertures. Note that the shape in Figure~\ref{fig:gauss:int} is inherently hard to quantify since it results from the integral of a Gaussian, which has no analytical form.
+
+Figure~\ref{fig:gpic} shows the images produced by illuminating the same mirror uniformly or with a taper. The uniformly lit mirror produces much sharper secondary rings. This suggests that the reason for using a taper is to concentrate more of the power in the central spot, and avoid the effects of the secondary peaks on image quality.
+
+\subsection{Central hole}\label{sec:res:hole}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/hole/delta2.png}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.37\textwidth}
+        \caption{The diffraction pattern of a mirror with a central hole of radius $r=\SI{0.5}{m}$ was subtracted from the difference of diffraction patterns of a complete mirror and just the central hole.}\label{fig:hole}
+    \end{minipage}
+\end{figure}
+
+Figure~\ref{fig:hole} shows the results of the calculation suggested in Section~\ref{sec:analysis:hole}. We can see the amplitude of the difference reaching at most around \num{2e-5}. In the original diffraction patterns, the central amplitude is on the order of $10^4$, so indeed the two patterns are equal to a very high accuracy. The differences are well under the precision to which the numbers were printed before plotting (which is around $10^{-6}$).
+
+This confirms that the F.T. operations we use are linear to a good accuracy.
 
 \section{Conclusion}\label{sec:conclusion}
 
