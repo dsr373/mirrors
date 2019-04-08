@@ -187,6 +187,29 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
 }
 
 /**
+ * Find the x-coordinate of the first half-power point and the error
+ */
+ValueError<double> hwhp(const Array2d &a, const vector<double> &xs) {
+    int i = 0, j = 0;
+    int nx = xs.size();
+
+    double max_abs = abs(a(0, 0));
+    double half_power = max_abs / sqrt(2.0);
+
+    // walk along the first row until abs(a) drops below half_power
+    while(j < nx-1)
+        if(abs(a(i, j)) < half_power)
+            break;
+        else
+            j ++;
+    
+    ValueError<double> res;
+    res.val = xs[j];
+    res.err = abs(xs[j] - xs[j-1]);
+    return res;
+}
+
+/**
  * Print the limits in two directions of the 2d array, then the array itself,
  * in standard formatted way. 
  * Only print stuff within x and y limits given by lims.

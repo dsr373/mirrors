@@ -86,6 +86,11 @@ int main(int argc, char * argv[]) {
             ValueError<double> min_pos = find_first_min(myabs, out, ps);
             fprintf(data_filep, "\t%lf\t%lf", min_pos.val, min_pos.err);
         }
+        if(contains(conf.tasks, "fwhp")) {
+            // print coordinate of full-width at half-power. times by 2 for FULL width
+            ValueError<double> res = hwhp(out, ps);
+            fprintf(data_filep, "\t%lf\t%lf", res.val*2, res.err*2);
+        }
         if(contains(conf.tasks, "central_amplitude")) {
             // print absolute value of central spot
             fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
