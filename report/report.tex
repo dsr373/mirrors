@@ -140,12 +140,22 @@ The amplitude of light illuminating a telescope mirror is often not uniform. A `
     \end{cases}, \quad \R{where}\ r^2 = x^2 + y^2.
 \end{equation}
 
-This function is the multiplication of a Gaussian with a circular aperture of radius $R$, so it's diffraction pattern is given by the convolution theorem as the convolution between another Gaussian and a Bessel function. Intuitively, this should lead to a ``smearing'' of the central maximum relative to a uniformly-lit mirror. Since the variance of the F.T. of a Gaussian is inversely proportional to the variance of the original, the FWHP (full width at half power) should decrease with increasing $\sigma$. Besides, since the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller with smaller $\sigma$.
+This is the multiplication of a Gaussian with a circular aperture of radius $R$. It's diffraction pattern is given by the convolution theorem as the convolution between another Gaussian and a Bessel function. Intuitively, this should lead to a ``smearing'' of the central maximum relative to a uniformly-lit mirror. Since the variance of the F.T. of a Gaussian is inversely proportional to the variance of the original, the smearing will be stronger at small $\sigma$.
+
+Therefore, at small $\sigma$, the FWHP (full width at half power) should follow:
+\begin{equation}
+    \Delta p_{\R{hp}} \propto \sigma^{-1}.
+\end{equation}
+At large $\sigma$, $A$ approaches uniform illumination, $\psi$ tends to the Bessel function, and the FWHP will approach a constant value.
+
+Besides, since the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller with smaller $\sigma$, tending to 0 as $\sigma \rightarrow 0$.
 
 \subsection{Central hole}\label{sec:analysis:hole}
 Classical telescopes, such as the Cassegrain design, have a central hole in the primary mirror due to the secondary mirror~\cite[Section~7.2.3]{RadioAstro}. The resulting aperture function can be viewed as the difference between that of the complete mirror $(A_{\R{complete}})$ and that of the hole $(A_{\R{hole}})$. Due to the linearity of the Fourier Transform, the diffraction pattern of this mirror should be the difference between the patterns of $A_{\R{complete}}$ and $A_{\R{hole}}$.
 
 \subsection{Bent mirrors}\label{sec:analysis:bent}
+
+
 
 \section{Implementation}\label{sec:impl}
 The implementation consists of several different parts, discussed in the subsections that follow. The overall logic flow of the program is:
@@ -198,12 +208,12 @@ The result of this operation is shifting the zero-frequency component of the spe
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.4\textwidth}
+    \begin{subfigure}{0.5\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/def/out0}
         \caption{}\label{fig:typ:round}
     \end{subfigure}%
-    \begin{subfigure}{0.6\textwidth}
+    \begin{subfigure}{0.5\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/def/out1}
         \caption{}\label{fig:typ:rect}
@@ -214,6 +224,28 @@ The result of this operation is shifting the zero-frequency component of the spe
 First, I ran the program on series of circular and rectangular apertures described in \texttt{config/circular\_mins.txt} and \texttt{config/rectangle\_mins.txt}, expecting to see a linear relationship between the extent of the central maximum and the inverse of the aperture size (see Section~\ref{sec:analysis:test}). As seen in Figure~\ref{fig:test1}, these linear relationships hold. The line slopes are close to the expected values of $1.22\pi$ for the Airy disc and $\pi$ for rectangular shapes.
 
 Figure~\ref{fig:typ} shows that the diffraction patterns look as expected. Most notably, the image from a vertical rectangle is longer along the horizontal axis, as expected from Equation~\ref{eqn:test_rect}.
+
+\subsection{Gaussian Illumination}\label{sec:res:gauss}
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/gauss/size.pdf}
+        \caption{Dependence of full width at half maximum on aperture taper. The fit is for $R/\sigma > 3$.}\label{fig:gauss:size}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/gauss/int.pdf}
+        \caption{Central intensity variation with aperture taper.}\label{fig:gauss:int}
+    \end{subfigure}
+    \caption{Properties of Gaussian illumination diffraction pattern.}\label{fig:gauss}
+\end{figure}
+
+Figure~\ref{fig:gauss} shows the results anticipated in Section~\ref{sec:analysis:taper}, especially the low and high $\sigma$ limits. At low $\sigma$, the $\R{FWHM} \propto 1/\sigma$, and the central intensity tends to zero. At high $\sigma$, both properties approach their uniform illumination values:
+\begin{align*}
+    \R{FWHP} &\rightarrow \SI{0.641 \pm 0.014}{\per\metre} \\
+    I(0, 0) &\rightarrow \sim \num{33e3}
+\end{align*}
 
 \section{Conclusion}\label{sec:conclusion}
 
