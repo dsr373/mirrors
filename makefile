@@ -12,9 +12,10 @@ INC = -I/usr/include
 _OBJ = array2d.o util.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-.PHONY: default test directories remove clean
+.PHONY: default test all directories remove clean
 default: $(BDIR)/main.exe
 test: $(BDIR)/test.exe
+all: default test
 
 # create the necessary directories
 directories:
