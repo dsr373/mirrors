@@ -109,7 +109,7 @@ where $\Delta$ is the sampling interval of the original signal. Comparing to a 1
 \end{equation}
 we see that we need to rescale:
 \begin{equation}
-    p_k = 2\pi f_k
+    p_k = 2\pi f_k.
 \end{equation}
 
 \subsection{Testing}\label{sec:analysis:test}
@@ -130,6 +130,20 @@ thus it's expected to have the first zeros at:
 \end{equation}
 
 Both of these zero-intensity points should appear in the diffraction patterns, and the scaling with the inverse of the aperture size should be observable.
+
+\subsection{Tapered aperture function}\label{sec:analysis:taper}
+The amplitude of light illuminating a telescope mirror is often not uniform. A ``taper'' or ``grading'' is chosen, most often in the form of a Gaussian curve~\cite[Section~6.4]{RadioAstro}:
+\begin{equation}
+    A(r) = \begin{cases}
+        e ^ {-r^2 / {2 \sigma^2}} &, r \leq R\\
+        0 &, r > R
+    \end{cases}, \quad \R{where}\ r^2 = x^2 + y^2.
+\end{equation}
+
+This function is the multiplication of a Gaussian with a circular aperture of radius $R$, so it's diffraction pattern is given by the convolution theorem as the convolution between another Gaussian and a Bessel function. Intuitively, this should lead to a ``smearing'' of the central maximum relative to a uniformly-lit mirror. Since the variance of the F.T. of a Gaussian is inversely proportional to the variance of the original, the FWHP (full width at half power) should decrease with increasing $\sigma$. Besides, since the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller with smaller $\sigma$.
+
+\subsection{Central hole}\label{sec:analysis:hole}
+Classical telescopes, such as the Cassegrain design, have a central hole in the primary mirror due to the secondary mirror~\cite[Section~7.2.3]{RadioAstro}. The resulting aperture function can be viewed as the difference between that of the complete mirror $(A_{\R{complete}})$ and that of the hole $(A_{\R{hole}})$. Due to the linearity of the Fourier Transform, the diffraction pattern of this mirror should be the difference between the patterns of $A_{\R{complete}}$ and $A_{\R{hole}}$.
 
 \subsection{Bent mirrors}\label{sec:analysis:bent}
 
@@ -162,7 +176,7 @@ Configuration files are stored by convention in the \texttt{config} directory, a
 \end{itemize}
 
 \subsection{The \texttt{fftshift} operation}
-The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. The function \texttt{fftshift} is overloaded to act on both 1D \texttt{vector} and 2D \texttt{Array2d} objects.
+The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. The function \texttt{fftshift} is overloaded to act on both \texttt{vector} and \texttt{Array2d} objects.
 
 \section{Results and Discussion}\label{sec:res}
 \subsection{Tests}
@@ -184,12 +198,12 @@ The result of this operation is shifting the zero-frequency component of the spe
 
 \begin{figure}
     \centering
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.4\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/def/out0}
         \caption{}\label{fig:typ:round}
     \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.6\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/def/out1}
         \caption{}\label{fig:typ:rect}
