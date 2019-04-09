@@ -15,7 +15,7 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 .PHONY: default test all directories remove clean
 default: $(BDIR)/main.exe
 test: $(BDIR)/test.exe
-all: default test
+all: directories default test
 
 # create the necessary directories
 directories:
