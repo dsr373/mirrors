@@ -22,7 +22,7 @@ def colour_plot(filename, title, colorbar=False, logdata=False, colormap=COLORMA
         data = np.log(data)
     
     fig, ax = plt.subplots(figsize=FIGSIZE)
-    im = ax.imshow(data, cmap=COLORMAP, interpolation='nearest', extent=(xlim+ylim))
+    im = ax.imshow(data, cmap=colormap, interpolation='nearest', extent=(xlim+ylim))
 
     # draw colorbar
     if colorbar:
@@ -49,5 +49,9 @@ if __name__ == "__main__":
     #     for fig in figs:
     #         filename = prefix + str(i) + fig + ".txt"
     #         title = "{:d} {:s}".format(i, fig.replace("_", " "))
-    #         colour_plot(filename, title)
+    #         if fig.endswith("phase"):
+    #             colormap = PHASE_COLORMAP
+    #         else:
+    #             colormap = COLORMAP
+    #         colour_plot(filename, title, colorbar=True, colormap=colormap)
     plt.show()
