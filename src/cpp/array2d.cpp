@@ -335,6 +335,8 @@ int rand_errors(Array2d& in, const vector<double>& xs, const vector<double>& ys,
                 in[i][j] = 0.0;
         }
     }
+
+    gsl_rng_free(rng);
     return 0;
 }
 
