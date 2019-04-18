@@ -18,10 +18,6 @@ def plot_sizes(data):
     ys = data[1]          # fwhp
     dys = data[2]         # error
 
-    # xs = np.array(sigerr)
-    # ys = np.array(ps)
-    # dys = np.array(sig_ps)
-
     # formatting niceness
     matplotlib.rcParams.update({'font.size': FONTSIZE})
     matplotlib.rcParams.update({'errorbar.capsize': CAPSIZE})
@@ -34,19 +30,20 @@ def plot_sizes(data):
     ax.set_xlabel("$\\sigma_{{\\epsilon}}$")
     ax.set_ylabel("Full Width at Half Power $(m^{{-1}})$")
     ax.set_title("Central width with phase errors")
-    ax.legend()
+    # ax.legend()
 
     # plt.savefig(os.path.join(SAVE_DIR, "size.pdf"))
 
 
 def plot_intensities(data):
-    sigerr = data[0]                    # phase error std dev
-    amp = data[1]                       # amplitude
-    sig_amp = data[2]                   # std dev in amplitudes
+    sigerr = data[0]                        # phase error std dev
+    amp = data[1] / np.min(data[1])         # amplitude normalised
+    sig_amp = data[2] / np.min(data[1])     # error in amplitudes normalised
 
+    # plot log of amplitude vs square of phase deviation
     xs = np.power(np.array(sigerr), 2)
-    ys = np.array(amp / np.min(amp))
-    dys = np.array(sig_amp / np.min(amp))
+    ys = np.log(amp)
+    dys = np.divide(sig_amp, amp)
 
     # formatting
     matplotlib.rcParams.update({'font.size': FONTSIZE})
@@ -54,14 +51,18 @@ def plot_intensities(data):
     # plot
     fig, ax = plt.subplots(figsize=FIGSIZE)
     ax.errorbar(xs, ys, yerr=dys, fmt='+', label="data", markersize=FONTSIZE)
-    ax.set_yscale("log")
+
+    # fit a line
+    coefs, covar = np.polyfit(xs, ys, 1, w=1/dys, cov=True)
+    fit_label = "Line fit: " + FIT_LABEL.format(coefs[0], coefs[1])
+    ax.plot(xs, np.polyval(coefs, xs), '-', label=fit_label)
 
     # label the plot
-    ax.set_xlabel("$\\sigma_{{\\epsilon}}$")
-    ax.set_ylabel("central intensity (arbitrary)")
-    ax.set_title("Central intensity with phase errors")
-    # ax.ticklabel_format(axis='y', style='sci', scilimits=(-2,3), useMathText=True)
-    # ax.legend()
+    ax.set_xlabel("$(4\\pi\\sigma_{{\\epsilon}}/\\lambda)^2$")
+    ax.set_ylabel("$\\ln(\\psi(0, 0)\\ /\\ arb.\\ units)$")
+    ax.set_title("Central amplitude vs phase errors")
+    ax.ticklabel_format(axis='y', style='sci', scilimits=(-2,3), useMathText=True)
+    ax.legend()
 
     # plt.savefig(os.path.join(SAVE_DIR, "int.pdf"))
 
