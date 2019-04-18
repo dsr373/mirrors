@@ -45,11 +45,15 @@ int main(int argc, char * argv[]) {
     // declarations
     Array2d in(conf.nx, conf.ny);
     Array2d out(conf.nx, conf.ny);
-    fftw_plan p;
+    fftw_plan plan;
+    fftw_plan secondary_plan, reverse_plan;
 
     // plan
     main_log("Planning...");
-    p = fftw_plan_dft_2d(conf.nx, conf.ny, in.ptr(), out.ptr(), FFTW_FORWARD, FFTW_MEASURE);
+    plan = fftw_plan_dft_2d(conf.nx, conf.ny, in.ptr(), out.ptr(), FFTW_FORWARD, FFTW_MEASURE);
+    if(conf.convolution) {
+        
+    }
 
     // walk through the shapes
     for(unsigned int i = 0; i < conf.shapes.size(); i ++ ) {
@@ -73,7 +77,7 @@ int main(int argc, char * argv[]) {
         generators[sp.generator_key](in, xs, ys, sp.shape_params);
 
         main_log("Executing...");
-        fftw_execute(p);
+        fftw_execute(plan);
 
         main_log("Resolving tasks:");
         if(contains(conf.tasks, "params")) {
@@ -145,7 +149,7 @@ int main(int argc, char * argv[]) {
     }
 
     main_log("Done. Cleaning up...");
-    fftw_destroy_plan(p);
+    fftw_destroy_plan(plan);
     fclose(data_filep);
 
     main_log("Done. Exiting.");

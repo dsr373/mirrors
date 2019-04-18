@@ -93,7 +93,8 @@ Config::Config(const char * filename) {
     string cnf_filename = filename;
 
     int n_shapes = 0;
-    // double f_tmp;
+    // initialise by default to false
+    convolution = false;
 
     FILE * cnf_filep = fopen(cnf_filename.c_str(), "r");
     if(cnf_filep == NULL) perror("Could not open config file.");
@@ -112,6 +113,9 @@ Config::Config(const char * filename) {
         read_option(cnf_filep, "lx", sp.lx);
         read_option(cnf_filep, "ly", sp.ly);
         read_option(cnf_filep, "params", sp.shape_params);
+
+        if(sp.generator_key == "corr_errors")
+            convolution = true;
 
         shapes.push_back(sp);
     }

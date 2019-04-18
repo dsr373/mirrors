@@ -41,8 +41,11 @@ struct ShapeProperties {
 /**
  * Struct containing the configuration of the program.
  * nx and ny are the dimensions of the arrays used
+ * tasks is the list of things to do with each shape
  * out_prefix is a prefix for the files where to print data
  * shapes is a vector of shapes to process
+ * abs_sens and rel_sens are the sensitivities at printing. Use 0 to print everything.
+ * convolution is a flag describing whether a convolution in the input array is needed. If yes, we'll need a second FFT plan for transforming backwards, because convolution is done by multiplying the FFT results.
  */
 struct Config {
     Config(const char * filename);
@@ -53,9 +56,15 @@ struct Config {
 
     int nx, ny;
     double abs_sens, rel_sens;
+    bool convolution;
 };
 
 
+/**
+ * My own utility logger, than can be turned on or off
+ * whenever. It writes to the given file pointer, which can
+ * be stdout as well, and prepends its name.
+ */
 struct Logger {
     FILE * filep;
     string name;
