@@ -13,38 +13,6 @@ CAPSIZE = 7
 FIT_LABEL = "$y={:4.4f}x{:+4.4f}$"
 FIGSIZE = (9, 8)
 
-def accumulate_data(data, xidx, yidx, dyidx=None):
-    """
-    Accumulate the data points with the same x value into the same data point
-    with error given by the standard deviation.
-    xidx, yidx, dyidx are the indices of the columns to use as x, y and error respectively
-    """
-    xs = data[xidx]
-    ys = data[yidx]
-    if dyidx:
-        dys = data[dyidx]
-    else:
-        dys = np.zeros(len(ys))
-    res = ([], [], [])
-
-    tmp = []
-    x_current = xs[0]
-
-    for i, x in enumerate(xs):
-        if x == x_current:
-            tmp.append(ys[i])
-        else:
-            # if the current x has changed, push the values to res and start a new run
-            res[0].append(x_current)
-            res[1].append(np.average(tmp))
-            res[2].append(np.maximum(np.std(tmp), dys[i]))
-            print(tmp)
-
-            x_current = x
-            tmp = [ys[i]]
-    
-    return res
-
 def plot_sizes(data):
     xs = data[0]          # phase error std dev
     ys = data[1]          # fwhp

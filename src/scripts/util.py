@@ -63,6 +63,38 @@ def read_data(config_filename):
         data = np.array([[float(x) for x in line.split()] for line in lines])
     return np.ndarray.transpose(data)
 
+def accumulate_data(data, xidx, yidx, dyidx=None):
+    """
+    This function takes data where multiple points may have the same x value, and optionally with error bars.
+    It accumulates the points with the same x into one data point,
+    with error given by the larger of standard deviation or intrinsic error.
+    xidx, yidx, dyidx are the indices of the columns to use as x, y and error respectively
+    """
+    xs = data[xidx]
+    ys = data[yidx]
+    if dyidx:
+        dys = data[dyidx]
+    else:
+        dys = np.zeros(len(ys))
+    res = ([], [], [])
+
+    tmp = []
+    x_current = xs[0]
+
+    for i, x in enumerate(xs):
+        if x == x_current:
+            tmp.append(ys[i])
+        else:
+            # if the current x has changed, push the values to res and start a new run
+            res[0].append(x_current)
+            res[1].append(np.average(tmp))
+            res[2].append(np.maximum(np.std(tmp), dys[i]))
+
+            x_current = x
+            tmp = [ys[i]]
+    
+    return res
+
 def relim(data_shape, old_lim, new_lim):
     """ 
     Take a data array with known x and y limits
