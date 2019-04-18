@@ -1,17 +1,1507 @@
 nx = 8192
 ny = 8192
 prefix = data/rand
-tasks = print_in_abs print_in_phase print_out_abs print_out_phase
-rel_sens = 0.01
+tasks = params fwhp central_amplitude
+rel_sens = 0
 abs_sens = 0
-n_shapes = 2
+n_shapes = 300
 
 type = rand_errors
 lx = 512
 ly = 512
-params = 6 3 0 0.314 15148669
+params =  6.00000  3.00000  0.00000  0.10472  22429
 
 type = rand_errors
 lx = 512
 ly = 512
-params = 6 3 0 0.628 55317964
+params =  6.00000  3.00000  0.00000  0.10472  14107
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  2692
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  30937
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  13437
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  27520
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  10989
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  17536
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  26393
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.10472  20800
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  13880
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  5159
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  17731
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  3187
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  14344
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  15676
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  7525
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  15671
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  25625
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.20944  18410
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  17058
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  31482
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  28379
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  3142
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  21423
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  10152
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  10962
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  16728
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  6458
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416  31148
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  1768
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  12894
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  5343
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  20624
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  340
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  21346
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  30741
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  1000
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  23738
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.41888  30333
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  20780
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  16297
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  18101
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  10493
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  20311
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  17637
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  11465
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  9381
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  7164
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.52360  13751
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  11585
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  20945
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  25051
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  6389
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  490
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  4532
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  20987
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  2763
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  26695
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832  21370
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  31182
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  12502
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  14846
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  29003
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  16410
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  4405
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  23370
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  18346
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  10870
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.73304  22291
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  15542
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  11299
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  5913
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  20909
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  28288
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  4324
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  5277
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  18457
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  3287
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.83776  180
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  18114
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  22646
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  8440
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  21220
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  26047
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  6995
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  16098
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  1716
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  29435
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248  30769
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  3065
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  970
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  20447
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  9872
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  19778
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  7677
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  4343
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  27064
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  30722
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.04720  2884
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  7907
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  2844
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  7720
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  22313
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  27170
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  27670
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  24977
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  13720
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  23049
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.15192  25927
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  6697
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  21447
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  29288
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  5042
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  11437
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  2012
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  11978
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  4520
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  3603
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664  13801
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  10731
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  31930
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  25100
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  15536
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  31152
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  11233
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  20128
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  23150
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  28418
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.36136  30628
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  9320
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  27698
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  26407
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  83
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  30613
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  19808
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  16259
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  18624
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  17384
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.46608  31234
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  18799
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  30995
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  13797
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  11816
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  10778
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  10493
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  8902
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  803
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  13666
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080  8386
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  6750
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  2088
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  13999
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  10145
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  11761
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  1625
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  3324
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  30972
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  31883
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.67552  4548
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  272
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  365
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  30477
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  14762
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  7838
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  31395
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  27805
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  12221
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  11805
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.78024  8015
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  13887
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  12147
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  7437
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  14129
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  5734
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  4036
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  16764
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  8373
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  18761
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.88496  8979
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  896
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  2597
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  7699
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  25930
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  11497
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  2729
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  10590
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  7380
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  28737
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.98968  18439
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  5760
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  27554
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  709
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  20966
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  23983
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  6386
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  12534
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  8723
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  12294
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440  17248
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  545
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  23177
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  25163
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  25040
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  30518
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  7943
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  22425
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  3815
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  21411
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.19911  10278
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  19537
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  14741
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  4602
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  31099
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  15458
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  11651
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  20912
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  2254
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  10840
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.30383  977
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  5608
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  11142
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  15724
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  3269
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  1783
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  28260
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  20893
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  27824
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  10303
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.40855  19835
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  18433
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  11779
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  8964
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  4406
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  53
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  16964
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  13162
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  20056
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  248
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.51327  20786
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  26387
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  700
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  1687
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  3303
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  6051
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  24143
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  14954
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  11875
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  24531
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799  8541
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  7192
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  17405
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  19235
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  26850
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  11930
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  10460
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  21846
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  9759
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  24545
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.72271  28144
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  31634
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  21334
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  11172
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  2879
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  30126
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  9567
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  29325
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  3854
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  16555
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.82743  19966
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  6700
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  15489
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  5031
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  29520
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  8287
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  5322
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  10744
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  15178
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  8313
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.93215  22273
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  16376
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  7203
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  31954
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  20783
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  7316
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  8628
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  26487
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  17515
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  14263
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.03687  7243
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  29177
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  6622
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  8412
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  20369
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  27616
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  11878
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  1891
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  22536
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  23402
+
+type = rand_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  3.14159  7437
