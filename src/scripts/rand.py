@@ -11,6 +11,7 @@ from util import *
 FONTSIZE = 16
 CAPSIZE = 7
 FIT_LABEL = "$y={:4.4f}x{:+4.4f}$"
+FIT_INFO = "Slope: {:4.6f} +/- {:4.6f}\nIntercept: {:4.6f} +/- {:4.6f}"
 FIGSIZE = (9, 8)
 
 def plot_sizes(data):
@@ -55,6 +56,7 @@ def plot_intensities(data):
     # fit a line
     coefs, covar = np.polyfit(xs, ys, 1, w=1/dys, cov=True)
     fit_label = "Line fit: " + FIT_LABEL.format(coefs[0], coefs[1])
+    print(FIT_INFO.format(coefs[0], np.sqrt(covar[0, 0]), coefs[1], np.sqrt(covar[1, 1])))
     ax.plot(xs, np.polyval(coefs, xs), '-', label=fit_label)
 
     # label the plot
