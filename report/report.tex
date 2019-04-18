@@ -77,16 +77,22 @@ known as the Fraunhofer limit, where $R$ is the maximum extent of the aperture, 
 \end{align*}
 which would require a distance on the order of \SI{1}{km} for the far-field limit to hold. 
 
-However, we can work in angular coordinates, with the image space spanned by:
+However, considering parabolic mirrors brings the image plane closer. Besides, we can work in angular coordinates, with the image space spanned by:
 \begin{align*}
     p &= k \sin{\theta} \approx \frac{k x'}{D} \\
     q &= k \sin{\chi} \approx \frac{k y'}{D},
 \end{align*}
-where $x'$ and $y'$ are distances that would span a physical image space, and $k$ is the wavenumber. We thus eliminate the dependence on $D$. In these coordinates, the image is given by:
+where $x'$ and $y'$ are distances that would span a physical image plane, and $k$ is the wavenumber. We thus eliminate the dependence on $D$. In these coordinates, the diffraction pattern is:
 \begin{equation}\label{eqn:diff}
     \psi(p, q) \propto \iint A(x, y) \exp \left( ipx + iqy \right) dx dy,
 \end{equation}
 which is just a Fourier transform of $A$. Seemingly we've also eliminated the dependence on $\lambda$, but that will be needed again in the analysis of dented mirrors (Section~\ref{sec:analysis:bent}).
+
+What is the meaning of this diffraction pattern? Since the incoming light is multiplied by the telescope's aperture function, the resulting image is a convolution of the astronomical objects being observed and the diffraction pattern of $A(x, y)$. Intuitively, for point-like stars, they will be seen through the telescope as ``copies'' of the diffraction pattern. Two factors are thus crucial:
+\begin{itemize}
+    \item The width of the central disk, which limits the resolution of the telescope. If two objects are closer than this central width, they cannot be resolved~\cite[Section~10.2.6]{hecht}.
+    \item The central intensity, which sets a lower bound on the brightness of objects that can be observed.
+\end{itemize}
 
 \subsection{Discrete Fourier Transforms}\label{sec:analysis:dft}
 The fact that the image is a Fourier transform of the aperture function is very useful. The Fast Fourier Transform algorithm can compute discrete Fourier transforms of multi-dimensional data efficiently, and there exist library implementations of it for virtually any language. Here, the \CC{} \texttt{FFTW 3} library~\cite{fftw} was chosen, as suggested in the projects manual~\cite{manual}. It is a well-established and well-tested library with very good computational efficiency.
@@ -142,9 +148,9 @@ Therefore, at small $\sigma$, the FWHP (full width at half power) should follow:
 \begin{equation}
     \Delta p_{\R{hp}} \propto \sigma^{-1}.
 \end{equation}
-At large $\sigma$, $A$ approaches uniform illumination, $\psi$ tends to the Bessel function, and the FWHP will approach a constant value.
+At large $\sigma$, as $A$ approaches uniform illumination, the image tends to a Bessel function, and the FWHP will approach a constant value. Besides, since the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller with smaller $\sigma$, tending to 0 as $\sigma \rightarrow 0$.
 
-Besides, since the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller with smaller $\sigma$, tending to 0 as $\sigma \rightarrow 0$.
+While the taper widens the central maximum, it also leads to suppression of the side lobes of the Airy pattern, thus possibly improving the resolution. See~\cite[Section~11.3]{hecht} for an explanation.
 
 \subsection{Central hole}\label{sec:analysis:hole}
 Classical telescopes, such as the Cassegrain design, have a central hole in the primary mirror due to the secondary mirror~\cite[Section~7.2.3]{RadioAstro}. The resulting aperture function can be viewed as the difference between that of the complete mirror $(A_{\R{complete}})$ and that of the hole $(A_{\R{hole}})$. Due to the linearity of the Fourier Transform, the diffraction pattern of this mirror should be the difference between the patterns of $A_{\R{complete}}$ and $A_{\R{hole}}$.
