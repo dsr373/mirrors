@@ -10,7 +10,7 @@ import matplotlib
 from util import *
 
 COLORMAP = matplotlib.cm.plasma
-PHASE_COLORMAP = matplotlib.cm.hsv
+PHASE_COLORMAP = matplotlib.cm.bwr
 FIGSIZE = (12, 9)
 FONTSIZE = 16
 
@@ -36,22 +36,22 @@ SAVE_DIR = os.path.join("fig", "gauss")
 if __name__ == "__main__":
     os.makedirs(SAVE_DIR, exist_ok=True)
 
-    colour_plot(os.path.join("data", "gauss0out_abs.txt"), "Uniform illumination", colorbar=True)
-    plt.savefig(os.path.join(SAVE_DIR, "uniform.png"), bbox_inches='tight')
+    # colour_plot(os.path.join("data", "gauss0out_abs.txt"), "Uniform illumination", colorbar=True)
+    # plt.savefig(os.path.join(SAVE_DIR, "uniform.png"), bbox_inches='tight')
 
-    colour_plot(os.path.join("data", "gauss1out_abs.txt"), "Gaussian illumination", colorbar=True)
-    plt.savefig(os.path.join(SAVE_DIR, "gaussian.png"), bbox_inches='tight')
+    # colour_plot(os.path.join("data", "gauss1out_abs.txt"), "Gaussian illumination", colorbar=True)
+    # plt.savefig(os.path.join(SAVE_DIR, "gaussian.png"), bbox_inches='tight')
 
     # uncomment this to automagically plot everything created by a certain config
     # otherwise do it manually with your own tweaks
-    # n_shapes, prefix, figs = parse_config("config/config.txt")
-    # for i in range(n_shapes):
-    #     for fig in figs:
-    #         filename = prefix + str(i) + fig + ".txt"
-    #         title = "{:d} {:s}".format(i, fig.replace("_", " "))
-    #         if fig.endswith("phase"):
-    #             colormap = PHASE_COLORMAP
-    #         else:
-    #             colormap = COLORMAP
-    #         colour_plot(filename, title, colorbar=True, colormap=colormap)
+    n_shapes, prefix, figs = parse_config("config/correlated.txt")
+    for i in range(n_shapes):
+        for fig in figs:
+            filename = prefix + str(i) + fig + ".txt"
+            title = "{:d} {:s}".format(i, fig.replace("_", " "))
+            if fig.endswith("phase"):
+                colormap = PHASE_COLORMAP
+            else:
+                colormap = COLORMAP
+            colour_plot(filename, title, colorbar=True, colormap=colormap)
     plt.show()
