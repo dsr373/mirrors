@@ -114,6 +114,7 @@ Config::Config(const char * filename) {
         read_option(cnf_filep, "ly", sp.ly);
         read_option(cnf_filep, "params", sp.shape_params);
 
+        // check if we'll need to convolve, i.e. transform two things
         if(sp.generator_key == "corr_errors")
             convolution = true;
 
