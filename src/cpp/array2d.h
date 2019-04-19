@@ -38,6 +38,8 @@ public:
 
     complex<double> * operator[](int ix);
     complex<double> operator()(int ix, int iy) const;
+    int mult(const Array2d& a);
+    int divide_each(complex<double> c);
     friend bool operator==(const Array2d &a, const Array2d &b);
     
     fftw_complex * ptr();

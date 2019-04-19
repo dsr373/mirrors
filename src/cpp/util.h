@@ -14,6 +14,8 @@ using namespace std;
 #define EPS 1e-6
 #define DBL_EQ(a, b) (abs(a-b) < EPS)
 
+#define CONV_KEY "corr_errors"
+
 /** Type that takes complex argument and returns real number.
  * These are functions such as abs, real, imag, arg, etc...
  */

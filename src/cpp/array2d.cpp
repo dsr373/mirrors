@@ -48,6 +48,28 @@ complex<double> * Array2d::operator[](int ix) {
     return (arr + (ny*ix));
 }
 
+/** Multiply the first array with the second element-wise,
+ * storing results in the first.
+ * Returns 0 if succesful or something else if failed.
+ */
+int Array2d::mult(const Array2d& a) {
+    if(nx != a.nx) return -1;
+    if(ny != a.ny) return -1;
+
+    for(int i = 0; i < nx; i ++ )
+        for(int j = 0; j < ny; j ++ )
+            (*this)[i][j] *= a(i, j);
+    return 0;
+}
+
+/** Divide every element in the array by a scalar c */
+int Array2d::divide_each(complex<double> c) {
+    for(int i = 0; i < nx; i ++ )
+        for(int j = 0; j < ny; j ++ )
+            (*this)[i][j] /= c;
+    return 0;
+}
+
 /** Test for near equality to within EPS */
 bool operator==(const Array2d &a, const Array2d &b) {
     if(a.nx != b.nx) return false;
@@ -109,6 +131,11 @@ Limits Array2d::find_interesting(complex_to_real fun, double abs_sens, double re
     }
     // increase maxima by one to follow inclusive-exclusive convention
     imax++; jmax++;
+    
+    // log
+    char msg[100];
+    sprintf(msg, "\t\tLimits: rows %d -- %d ; cols %d -- %d", imin, imax, jmin, jmax);
+    arr2dlog(msg);
 
     return Limits{imin, imax, jmin, jmax};
 }
@@ -340,10 +367,38 @@ int rand_errors(Array2d& in, const vector<double>& xs, const vector<double>& ys,
     return 0;
 }
 
+/** A gaussian mask to convolve with.
+ * params[0] is the correlation length
+ */
+int gauss_mask(Array2d &in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    // unpack arguments
+    int n_cols = xs.size();
+    int n_rows = ys.size();
+    double lc = params[0];          // length of correlation
+    double sig_sq2 = 2 * lc * lc;   // 2 * sigma ^ 2 of the gaussian
+    double rsq;
+
+    for(int i = 0; i < n_rows; i ++ ) {
+        for(int j = 0; j < n_cols; j ++ ) {
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            in[i][j] = exp(-rsq / sig_sq2) / lc;
+        }
+    }
+    return 0;
+}
+
+/** NOTE: there is no 'correlated errors' function. That's because to do
+ * correlated errors, you initialise with random errors and then convolve with
+ * a gaussian of the needed correlation length. For correlated errors,
+ * the first 5 params are as before, and params[5] is the correlation length.
+ */
+
 map<string, aperture_generator> generators = {
     {"circular", circular},
     {"rectangle", rectangle},
     {"gaussian", gaussian},
     {"gaussian_hole", gaussian_hole},
-    {"rand_errors", rand_errors}
+    {"rand_errors", rand_errors},
+    {"corr_errors", rand_errors},
+    {"gauss_mask", gauss_mask}
 };

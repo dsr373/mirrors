@@ -115,7 +115,7 @@ Config::Config(const char * filename) {
         read_option(cnf_filep, "params", sp.shape_params);
 
         // check if we'll need to convolve, i.e. transform two things
-        if(sp.generator_key == "corr_errors")
+        if(sp.generator_key == CONV_KEY)
             convolution = true;
 
         shapes.push_back(sp);
