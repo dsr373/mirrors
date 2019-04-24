@@ -1,17 +1,3 @@
-# Table of contents
-- [Table of contents](#table-of-contents)
-- [What?](#what)
-- [How is it made?](#how-is-it-made)
-- [How to run it](#how-to-run-it)
-  - [Pre-requisites](#pre-requisites)
-  - [Compilation](#compilation)
-  - [Running](#running)
-- [Config files](#config-files)
-  - [Syntax](#syntax)
-  - [Tasks](#tasks)
-  - [Aperture types](#aperture-types)
-- [Plotting](#plotting)
-
 # What?
 
 A university project to study the behaviour of imperfect telescope mirrors.
