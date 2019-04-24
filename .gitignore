@@ -2,6 +2,9 @@
 .vscode
 compile_commands.json
 
+# kdevelop
+*.kdev4
+
 # object and binary
 bin/*
 obj/*
