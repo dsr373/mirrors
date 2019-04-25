@@ -136,11 +136,63 @@ int gauss_mask(Array2d &in, const vector<double>& xs, const vector<double>& ys, 
     return 0;
 }
 
-/** NOTE: there is no 'correlated errors' function. That's because to do
- * correlated errors, you initialise with random errors and then convolve with
- * a gaussian of the needed correlation length. For correlated errors,
- * the first 5 params are as before, and params[5] is the correlation length.
+
+/** Correlated errors - bumps in the surface
+ * This is achieved by taking random errors and convolving (multiplying in Fourier space)
+ * with a gaussian. It's quite resource intensive.
+ * WARNING: There's an assumption that nx, ny will always be the same, which should be true
+ * as long as main isn't modified!
+ * 
+ * params are the same as above for 0 -- 4, and params[5] is the correlation length.
  */
+int corr_errors(Array2d &in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    // unpack the params
+    int n_cols = xs.size(), n_rows = ys.size();
+    double lc = params.back();
+    double R_ext_sq = params[0] * params[0];
+    double R_int_sq = params[2] * params[2];
+    double rsq;
+    
+    // This will require convolution
+    static Array2d sec(n_rows, n_cols);
+    static fftw_plan sec_plan, fwd_plan, rev_plan;
+    static bool init = false;
+
+    // This only runs the first time the function is called. It's the heavy part
+    if(!init) {
+        init = true;
+        sec_plan = fftw_plan_dft_2d(n_rows, n_cols, sec.ptr(), sec.ptr(), FFTW_FORWARD, FFTW_MEASURE);
+        fwd_plan = fftw_plan_dft_2d(n_rows, n_cols, in.ptr(), in.ptr(), FFTW_FORWARD, FFTW_MEASURE);
+        rev_plan = fftw_plan_dft_2d(n_rows, n_cols, in.ptr(), in.ptr(), FFTW_BACKWARD, FFTW_MEASURE);
+    }
+
+    // fill in with random errors, sec with gaussian
+    rand_errors(in, xs, ys, params);
+    gauss_mask(sec, xs, ys, {lc});
+
+    // FT both
+    fftw_execute(sec_plan);
+    fftw_execute(fwd_plan);
+    // fftshift(sec); fftshift(in);
+    
+    // multiply, reverse FT, normalize by the size and shift to the proper space
+    in.mult(sec);
+    fftw_execute(rev_plan);
+    in.divide_each(n_rows * n_cols);
+    fftshift(in);
+    
+    // now ensure the edges aren't blurred: everything outside of R_int, R_ext is set to 0
+    for(int i = 0; i < n_rows; i ++ ) {
+        for(int j = 0; j < n_cols; j ++ ) {
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            if(rsq > R_ext_sq || rsq < R_int_sq)
+                in[i][j] = 0.0;
+        }
+    }
+
+    // whew, we're done
+    return 0;
+}
 
 map<string, aperture_generator> generators = {
     {"circular", circular},
@@ -148,6 +200,5 @@ map<string, aperture_generator> generators = {
     {"gaussian", gaussian},
     {"gaussian_hole", gaussian_hole},
     {"rand_errors", rand_errors},
-    {"corr_errors", rand_errors},
-    {"gauss_mask", gauss_mask}
+    {"corr_errors", corr_errors}
 };

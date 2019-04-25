@@ -1,17 +1,17 @@
-nx = 8192
-ny = 8192
+nx = 4096
+ny = 4096
 prefix = data/corr
-tasks = print_in_abs print_in_phase print_out_abs
+tasks = print_in_abs print_in_phase
 rel_sens = 0.01
 abs_sens = 0
 n_shapes = 2
 
 type = corr_errors
-lx = 512
-ly = 512
+lx = 256
+ly = 256
 params = 6 3 0 1.047 45138 0.1
 
 type = corr_errors
-lx = 512
-ly = 512
+lx = 256
+ly = 256
 params = 6 3 0 1.047 31846 0.3

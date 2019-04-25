@@ -47,22 +47,9 @@ int main(int argc, char * argv[]) {
     Array2d out(conf.nx, conf.ny);
     fftw_plan plan;
 
-    // in case of convolution, we need the second array. If not, make it small. 
-    int snx = conf.convolution ? conf.nx : 1;
-    int sny = conf.convolution ? conf.ny : 1;
-    Array2d sec(snx, sny);
-
     // plan
     main_log("Planning...");
     plan = fftw_plan_dft_2d(conf.nx, conf.ny, in.ptr(), out.ptr(), FFTW_FORWARD, FFTW_MEASURE);
-    
-    // if we need convolution, we'll need 3 transforms instead of 1:
-    // one for the second function forward, and one for the product backward
-    fftw_plan secondary_plan, reverse_plan;
-    if(conf.convolution) {
-        secondary_plan = fftw_plan_dft_2d(conf.nx, conf.ny, sec.ptr(), sec.ptr(), FFTW_FORWARD, FFTW_MEASURE);
-        reverse_plan = fftw_plan_dft_2d(conf.nx, conf.ny, out.ptr(), in.ptr(), FFTW_BACKWARD, FFTW_MEASURE);
-    }
 
     // walk through the shapes
     for(unsigned int i = 0; i < conf.shapes.size(); i ++ ) {
@@ -87,19 +74,6 @@ int main(int argc, char * argv[]) {
 
         main_log("Executing...");
         fftw_execute(plan);
-
-        // if this shape requires convolving
-        if(sp.generator_key == CONV_KEY) {
-            // initialise the gaussian in the secondary array
-            double lc = sp.shape_params.back();
-            generators["gauss_mask"](sec, xs, ys, {lc});
-            // transform it
-            fftw_execute(secondary_plan);
-            // multiply out with the secondary function's FT and normalise
-            out.mult(sec);
-            out.divide_each(conf.nx*conf.ny);
-        }
-
 
         main_log("Resolving tasks:");
         if(contains(conf.tasks, "params")) {
@@ -128,12 +102,6 @@ int main(int argc, char * argv[]) {
             // this screws up out
             main_log("\tfftshift(out)");
             fftshift(out);
-
-            if(sp.generator_key == CONV_KEY) {
-                main_log("\tcalculate & fftshift(in)");
-                fftw_execute(reverse_plan);
-                fftshift(in);
-            }
 
             // look for in limits
             main_log("\tin limits");

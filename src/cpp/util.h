@@ -58,7 +58,6 @@ struct Config {
 
     int nx, ny;
     double abs_sens, rel_sens;
-    bool convolution;
 };
 
 
