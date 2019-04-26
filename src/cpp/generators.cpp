@@ -3,6 +3,13 @@
 #include<gsl/gsl_rng.h>
 #include<gsl/gsl_randist.h>
 
+#define INFO_OUT true
+#define DEBUG_OUT false
+
+// logger
+Logger dbglog(stdout, "generator_dbg", DEBUG_OUT);
+Logger genlog(stdout, "generator", INFO_OUT);
+
 /** Just a circle at the origin. Params[0] is the radius. */
 int circular(Array2d& in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
     int nx = xs.size(), ny = ys.size();
@@ -116,24 +123,57 @@ int rand_errors(Array2d& in, const vector<double>& xs, const vector<double>& ys,
     return 0;
 }
 
-/** A gaussian mask to convolve with.
- * params[0] is the correlation length
+
+/** Helper: A gaussian mask to convolve with.
+ * params[0] is the correlation length.
+ * Void return so it can't be exposed via the names map at the bottom.
  */
-int gauss_mask(Array2d &in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
-    // unpack arguments
-    int n_cols = xs.size();
-    int n_rows = ys.size();
-    double lc = params[0];          // length of correlation
-    double sig_sq2 = 2 * lc * lc;   // 2 * sigma ^ 2 of the gaussian
+void gauss_mask(Array2d &in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    int n_cols = xs.size(), n_rows = ys.size();
+    double lc = params[0];          // the correlation length
+    double sig_sq2 = 2 * lc * lc;   // the 2 sigma squared in the gaussian
+    double norm = lc;               // normalization factor of the gaussian
     double rsq;
 
-    for(int i = 0; i < n_rows; i ++ ) {
+    for(int i = 0; i < n_rows; i ++ )
         for(int j = 0; j < n_cols; j ++ ) {
             rsq = xs[j] * xs[j] + ys[i] * ys[i];
-            in[i][j] = exp(-rsq / sig_sq2) / lc;
+            in[i][j] = exp( - rsq / sig_sq2) / norm;
         }
-    }
-    return 0;
+}
+
+
+/** Helper: round shape of radius 3*params[5] + params[0]
+ * (adding 3 lc to the radius to avoid convolving with 0 near the edges)
+ * Filled with randomly distributed real numbers, of mean 0 and a given RMS (params[3]).
+ * Params are like for rand_errors, except the RNG seed is required and params[5]
+ * is lc from above.
+ * 
+ * This is useful for convolving with the gaussian mask to produce correlated errors.
+ * Also void return so it can't be included in the map.
+ */
+void abs_errors(Array2d &in, const vector<double> &xs, const vector<double> &ys, const vector<double> &params) {
+    // unpack the arguments
+    int n_cols = xs.size(), n_rows = ys.size();
+
+    double R_ext_sq = params[0] * params[0];
+    double err_sigma = params[3];
+    unsigned long seed = (unsigned long)params[4];
+
+    double rsq;
+
+    // initialise the rng with the given seed
+    gsl_rng * rng = gsl_rng_alloc(gsl_rng_default);
+    gsl_rng_set(rng, seed);
+
+    // put a random number at each point
+    for(int i = 0; i < n_rows; i ++ )
+        for(int j = 0; j < n_cols; j ++ ) {
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            if(rsq <= R_ext_sq)
+                in[i][j] = gsl_ran_gaussian(rng, err_sigma);
+        }
+    gsl_rng_free(rng);
 }
 
 
@@ -146,51 +186,56 @@ int gauss_mask(Array2d &in, const vector<double>& xs, const vector<double>& ys, 
  * params are the same as above for 0 -- 4, and params[5] is the correlation length.
  */
 int corr_errors(Array2d &in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
-    // unpack the params
+    // unpack the arguments
     int n_cols = xs.size(), n_rows = ys.size();
-    double lc = params.back();
+
     double R_ext_sq = params[0] * params[0];
+    double sig_sq2 = 2 * params[1] * params[1];
     double R_int_sq = params[2] * params[2];
-    double rsq;
-    
-    // This will require convolution
-    static Array2d sec(n_rows, n_cols);
-    static fftw_plan sec_plan, fwd_plan, rev_plan;
+    double lc = params[5];
+
+    double rsq, rho, phi;
+
+    // declare the secondary array and fftw plans
+    static Array2d sec_array(n_rows, n_cols);
+    static fftw_plan fwd_plan, rev_plan, sec_plan;
     static bool init = false;
 
-    // This only runs the first time the function is called. It's the heavy part
+    // Planning: this only runs on the first call
     if(!init) {
+        genlog("\t\tPlanning convolution FFTs");
         init = true;
-        sec_plan = fftw_plan_dft_2d(n_rows, n_cols, sec.ptr(), sec.ptr(), FFTW_FORWARD, FFTW_MEASURE);
         fwd_plan = fftw_plan_dft_2d(n_rows, n_cols, in.ptr(), in.ptr(), FFTW_FORWARD, FFTW_MEASURE);
         rev_plan = fftw_plan_dft_2d(n_rows, n_cols, in.ptr(), in.ptr(), FFTW_BACKWARD, FFTW_MEASURE);
+        sec_plan = fftw_plan_dft_2d(n_rows, n_cols, sec_array.ptr(), sec_array.ptr(), FFTW_FORWARD, FFTW_MEASURE);
     }
 
-    // fill in with random errors, sec with gaussian
-    rand_errors(in, xs, ys, params);
-    gauss_mask(sec, xs, ys, {lc});
+    // init the arrays
+    gauss_mask(sec_array, xs, ys, {lc});
+    abs_errors(in, xs, ys, params);
 
-    // FT both
-    fftw_execute(sec_plan);
+    // execute forward ffts
     fftw_execute(fwd_plan);
-    // fftshift(sec); fftshift(in);
-    
-    // multiply, reverse FT, normalize by the size and shift to the proper space
-    in.mult(sec);
+    fftw_execute(sec_plan);
+
+    // multiply and reverse
+    in.mult(sec_array);
     fftw_execute(rev_plan);
-    in.divide_each(n_rows * n_cols);
     fftshift(in);
-    
-    // now ensure the edges aren't blurred: everything outside of R_int, R_ext is set to 0
-    for(int i = 0; i < n_rows; i ++ ) {
+    in.divide_each(n_rows * n_cols);
+
+    for(int i = 0; i < n_rows; i ++ )
         for(int j = 0; j < n_cols; j ++ ) {
             rsq = xs[j] * xs[j] + ys[i] * ys[i];
-            if(rsq > R_ext_sq || rsq < R_int_sq)
-                in[i][j] = 0.0;
+            if(rsq <= R_ext_sq && rsq >= R_int_sq) {
+                phi = abs(in(i, j));
+                rho = exp(- rsq / sig_sq2);
+                in[i][j] = polar(rho, phi);
+            }
+            else
+                in[i][j] = 0;
         }
-    }
 
-    // whew, we're done
     return 0;
 }
 

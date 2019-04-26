@@ -1,5 +1,7 @@
 #include "array2d.h"
 
+#include<gsl/gsl_rstat.h>
+
 #define DEBUG_OUT false
 Logger arr2dlog(stdout, "arr2d", DEBUG_OUT);
 
@@ -59,12 +61,17 @@ int Array2d::mult(const Array2d& a) {
     return 0;
 }
 
-/** Divide every element in the array by a scalar c */
-int Array2d::divide_each(complex<double> c) {
+/** Multiply every element in the array by a scalar c */
+int Array2d::mult_each(complex<double> c) {
     for(int i = 0; i < nx; i ++ )
         for(int j = 0; j < ny; j ++ )
-            (*this)[i][j] /= c;
+            (*this)[i][j] *= c;
     return 0;
+}
+
+/** Divide every element in the array by a scalar c */
+int Array2d::divide_each(complex<double> c) {
+    return this->mult_each(1.0 / c);
 }
 
 /** Test for near equality to within EPS */
@@ -235,6 +242,31 @@ ValueError<double> hwhp(const Array2d &a, const vector<double> &xs) {
     res.err = abs(xs[j] - xs[j-1]);
     return res;
 }
+
+/**
+ * Calculate the mean and RMS of argument if abs is above a sensitivity
+ */
+ValueError<double> phase_rms(const Array2d &a, int n_rows, int n_cols) {
+    const double eps = EPS;
+
+    // running statistics initialization
+    gsl_rstat_workspace * rstat = gsl_rstat_alloc();
+
+    // walk the array, and add arg only if number is larger than eps
+    for(int i = 0; i < n_rows; i ++ )
+        for(int j = 0; j < n_cols; j ++ ) {
+            if(abs(a(i, j)) > eps)
+                gsl_rstat_add(arg(a(i, j)), rstat);
+        }
+
+    // cleanup and return
+    ValueError<double> res;
+    res.err = gsl_rstat_sd(rstat);
+    res.val = gsl_rstat_mean(rstat);
+    gsl_rstat_free(rstat);
+    return res;
+}
+
 
 /**
  * Print the limits in two directions of the 2d array, then the array itself,

@@ -39,6 +39,7 @@ public:
     complex<double> * operator[](int ix);
     complex<double> operator()(int ix, int iy) const;
     int mult(const Array2d& a);
+    int mult_each(complex<double> c);
     int divide_each(complex<double> c);
     friend bool operator==(const Array2d &a, const Array2d &b);
     
@@ -62,6 +63,11 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
  * Find the x-coordinate of the first half-power point and the error
  */
 ValueError<double> hwhp(const Array2d &a, const vector<double> &xs);
+
+/**
+ * Calculate the mean and RMS of argument if abs is above a sensitivity
+ */
+ValueError<double> phase_rms(const Array2d &a, int n_rows, int n_cols);
 
 /**
  * Print the limits in two dihections of the 2d array, then the array itself,

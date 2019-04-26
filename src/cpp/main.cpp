@@ -95,6 +95,11 @@ int main(int argc, char * argv[]) {
             // print absolute value of central spot
             fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
         }
+        if(contains(conf.tasks, "in_phase_stat")) {
+            // print the RMS of phase errors in input array
+            ValueError<double> stat = phase_rms(in, conf.nx, conf.ny);
+            fprintf(data_filep, "\t%lf\t%lf", stat.val, stat.err);
+        }
         fprintf(data_filep, "\n");
 
         // find interesting limits if printing is needed. This next bit is ugly, I know.
