@@ -26,6 +26,8 @@
 
 % ====== shortcuts ======
 \newcommand{\R}[1]{\mathrm{#1}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ph}{\varphi}
 \newcommand{\CC}{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.3ex}{\scriptsize\bf ++}}}
 
 % ====== style the title ======
@@ -86,7 +88,9 @@ where $x'$ and $y'$ are distances that would span a physical image plane, and $k
 \begin{equation}\label{eqn:diff}
     \psi(p, q) \propto \iint A(x, y) \exp \left( ipx + iqy \right) dx dy,
 \end{equation}
-which is just a Fourier transform of $A$. Seemingly we've also eliminated the dependence on $\lambda$, but that will be needed again in the analysis of dented mirrors (Section~\ref{sec:analysis:bent}).
+which is just a Fourier transform of $A$. In the figures of diffraction patterns I produce, the axes will be $p$ and $q$.
+
+NB: Seemingly we've also eliminated the dependence on $\lambda$, but that will be needed again in the analysis of dented mirrors (Section~\ref{sec:analysis:bent}).
 
 What is the meaning of this diffraction pattern? Since the incoming light is multiplied by the telescope's aperture function, the resulting image is a convolution of the astronomical objects being observed and the diffraction pattern of $A(x, y)$. Intuitively, for point-like stars, they will be seen through the telescope as ``copies'' of the diffraction pattern. Two factors are thus crucial:
 \begin{itemize}
@@ -95,7 +99,7 @@ What is the meaning of this diffraction pattern? Since the incoming light is mul
 \end{itemize}
 
 \subsection{Discrete Fourier Transforms}\label{sec:analysis:dft}
-The fact that the image is a Fourier transform of the aperture function is very useful. The Fast Fourier Transform algorithm can compute discrete Fourier transforms of multi-dimensional data efficiently, and there exist library implementations of it for virtually any language. Here, the \CC{} \texttt{FFTW 3} library~\cite{fftw} was chosen, as suggested in the projects manual~\cite{manual}. It is a well-established and well-tested library with very good computational efficiency.
+The fact that the image is a Fourier transform of the aperture function is very useful. Fast Fourier Transform algorithms can compute discrete Fourier transforms of multi-dimensional data efficiently, and there exist many library implementations thereof. Here, the \CC{} \texttt{FFTW 3} library~\cite{fftw} was chosen, as suggested in the projects manual~\cite{manual}. It is a well-established and well-tested library with very good computational efficiency.
 
 Minor adaptations are required to use the DFT algorithms in the library. The 1D discrete Fourier transform is defined as~\cite[Chapter 12.1]{NumRecipes}:
 \begin{equation}
@@ -105,7 +109,7 @@ with the corresponding frequency values:
 \begin{equation}\label{eqn:fk}
     f_k = \frac{k}{N \Delta},\quad k = 0..N-1,
 \end{equation}
-where $\Delta$ is the sampling interval of the original signal. Comparing to a 1D discrete form of the diffraction integral (Equation~\ref{eqn:diff}): 
+where $\Delta$ is the sampling interval of the original signal. Comparing to a 1D discrete form of the diffraction integral (Equation~\ref{eqn:diff}):
 \begin{equation}
     \psi_k \propto \sum_{n=0}^{N-1} A_n \exp{\left( i p_k x_n \right)},\quad \R{where} \quad x_n = n \Delta
 \end{equation}
@@ -115,7 +119,7 @@ we see that we need to rescale:
 \end{equation}
 
 \subsection{Testing}\label{sec:analysis:test}
-To determine whether the algorithm is outputting something sensible, we need to test it on a range of known results. Diffraction patterns for several kinds of apertures are easy to compute analytically, and thus can be used for testing the program.
+To determine whether the program is outputting something sensible, we need to test it on a range of known results. Diffraction patterns for the following kinds of apertures are easy to compute analytically, and thus can be used for testing the program.
 
 \paragraph{Rectangular aperture} A rectangular aperture of size $-a < x < a$, $-b < y < b$ has diffraction pattern:
 \begin{equation}
@@ -131,10 +135,10 @@ thus it's expected to have the first zeros at:
     \sin{\theta} \approx 1.22 \frac{\lambda}{2R} \quad \Rightarrow \quad p = 1.22 \frac{\pi}{R}.
 \end{equation}
 
-Both of these zero-intensity points should appear in the diffraction patterns, and the scaling with the inverse of the aperture size should be observable.
+Both of these minima should appear in the diffraction patterns, and the scaling with the inverse of the aperture size should be observable.
 
 \subsection{Tapered aperture function}\label{sec:analysis:taper}
-The amplitude of light illuminating a telescope mirror is often not uniform. A ``taper'' or ``grading'' is chosen, most often in the form of a Gaussian curve~\cite[Section~6.4]{RadioAstro}:
+The amplitude of light illuminating a telescope mirror is often not uniform. A ``taper'' or ``grading'' is chosen, usually in the form of a Gaussian curve~\cite[Section~6.4]{RadioAstro}:
 \begin{equation}
     A(r) = \begin{cases}
         e ^ {-r^2 / {2 \sigma^2}} &, r \leq R\\
@@ -142,13 +146,13 @@ The amplitude of light illuminating a telescope mirror is often not uniform. A `
     \end{cases}, \quad \R{where}\ r^2 = x^2 + y^2.
 \end{equation}
 
-This is the multiplication of a Gaussian with a circular aperture of radius $R$. It's diffraction pattern is given by the convolution theorem as the convolution between another Gaussian and a Bessel function. Intuitively, this should lead to a ``smearing'' of the central maximum relative to a uniformly-lit mirror. Since the variance of the F.T. of a Gaussian is inversely proportional to the variance of the original, the smearing will be stronger at small $\sigma$.
+This is the multiplication of a Gaussian with a circular aperture of radius $R$. From the convolution theorem, its diffraction pattern is the convolution between another Gaussian and a Bessel function. Intuitively, this should lead to a ``smearing'' of the central maximum relative to a uniformly-lit mirror. Since the variance of a Gaussian is inversely proportional to the variance of its F.T., the smearing will be stronger at small $\sigma$.
 
-Therefore, at small $\sigma$, the FWHP (full width at half power) should follow:
+Therefore, at small $\sigma$, the full width at half power (FWHP) should follow:
 \begin{equation}
     \Delta p_{\R{hp}} \propto \sigma^{-1}.
 \end{equation}
-At large $\sigma$, as $A$ approaches uniform illumination, the image tends to a Bessel function, and the FWHP will approach a constant value. Besides, since the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller with smaller $\sigma$, tending to 0 as $\sigma \rightarrow 0$.
+At large $\sigma$, as $A$ approaches uniform illumination, the image tends to a Bessel function, and the FWHP will approach a constant value. Besides, since at smaller $\sigma$ the integral of $|A|$ over the aperture is smaller, the central intensity should be smaller, tending to 0 as $\sigma \rightarrow 0$.
 
 While the taper widens the central maximum, it also leads to suppression of the side lobes of the Airy pattern, thus possibly improving the resolution. See~\cite[Section~11.3]{hecht} for an explanation.
 
@@ -157,9 +161,33 @@ Classical telescopes, such as the Cassegrain design, have a central hole in the 
 
 We can quantify how similar these results are by subtracting the image produced by a holed aperture from the difference of the images produced by $A_{\R{complete}}$ and $A_{\R{hole}}$.
 
+Due to the Airy disc of the smaller $A_{\R{hole}}$ being larger than that of the complete mirror, we expect the entire central disc to be dimmer due to the hole. The secondary rings should become irregular, because they have different frequencies in the patterns of $A_{\R{complete}}$ and $A_{\R{hole}}$.
+
 \subsection{Bent mirrors}\label{sec:analysis:bent}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{pictures/mirror_dent.pdf}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \caption{effect of deformations in the mirror surface on the phase of the wave.}\label{fig:bend}
+    \end{minipage}
+\end{figure}
 
+Mirror surfaces could have deformations in them due to manufacturing errors, altering the phase of light. As seen in Figure~\ref{fig:bend}, the effect is that, for a dent of depth $\eps$, there is an extra path of $2\eps$ (one for incoming, one for reflected), leading to a phase difference of:
+\begin{equation}
+    \Delta\ph = 2k\eps = \frac{4\pi}{\lambda}\eps
+\end{equation}
 
+We are going to investigate the effect of two types of phase errors:
+\begin{itemize}
+    \item without spatial correlation, with a given RMS
+    \item spatially correlated, also with a given RMS.
+\end{itemize}
+
+The expected effect of these errors is to decrease the central intensity of the image, as they introduce decoherence to the light.
 
 \section{Implementation}\label{sec:impl}
 The implementation consists of several different parts, discussed in the subsections that follow. The overall logic flow of the program is:
@@ -168,25 +196,25 @@ The executable is invoked with one argument, pointing to a configuration file. T
 \CC{} source files are in \texttt{src/cpp}, and plotting scripts in \texttt{src/scripts}. Data is written by convention to the \texttt{data} directory, and figures to \texttt{fig}.
 
 \subsection{Describing Apertures and Images}
-In the \texttt{FFTW} library two-dimensional $N_x$ by $N_y$ arrays are represented as one-dimensional $N_x \times N_y$ arrays of complex numbers (of the inbuilt \texttt{complex} type)~\cite[Section 3.2]{fftw}.
+In the \texttt{FFTW} library two-dimensional $N_x$ by $N_y$ arrays are represented as one-dimensional arrays of complex numbers (the inbuilt \texttt{complex} type~\cite{cppcomplex}) of length $N_x \times N_y$~\cite[Section 3.2]{fftw}.
 
-Because working directly with a 1D representation of 2D data can be clunky, I decided to wrap this functionality in a class called \texttt{Array2d}, declared in \texttt{array2d.h} and implemented in \texttt{array2d.cpp}. The class stores the data internally in the 1D array representation, but has a more user-friendly interface. For example, it defines the \texttt{[i][j]} and \texttt{(i, j)} operators for easy access to the element in the $i^{th}$ row and $j^{th}$ column.
+Because working directly with a 1D representation of 2D data can be clunky, I decided to wrap this functionality in a class called \texttt{Array2d}, declared in the header with the same name. The class stores the data internally in the 1D array representation, but has a more user-friendly interface. It defines the \texttt{[i][j]} and \texttt{(i, j)} operators for easy access to the element in the $i^{th}$ row and $j^{th}$ column.
 
 \paragraph{FFTW compatibility} The method \texttt{ptr()} returns a pointer to the beginning of the array, cast to \texttt{fftw\_complex} type. This pointer can be passed to functions in the \texttt{FFTW} library~\cite[Section 4]{fftw}.
 
 \paragraph{Memory allocation} One special feature of this class that breaks with convention is that there is no explicitly defined copy constructor. The compiler generated one only performs a shallow copy, copying the pointer to the data array, but not the data itself. Only the explicitly defined constructor \mintinline{C++}{Array2d::Array2d(int nx, int ny)} uses \texttt{fftw\_alloc\_complex} to allocate new memory for the array. This means that the user of the class has finer control over where memory is allocated, which is important in the case of large arrays. For example, using IEEE double-precision floating point, which occupies 64 bits of memory, a $2^{13} \times 2^{13}$ array of complex numbers occupies around \SI{1}{GB} of memory.
 
-For better understanding of when new memory is allocated, compile the code with the variable \texttt{DEBUG\_OUT} set to \texttt{true} in \texttt{array2d.cpp}. Then the calls to the memory-allocating constructor of \texttt{Array2d} will be logged to standard output.
+For better understanding of when new memory is allocated, compile the code with the variable \texttt{DEBUG\_OUT} set to \texttt{true} in \texttt{array2d.cpp}. Then the calls to the constructor and destructor of \texttt{Array2d} will be printed to console.
 
 \paragraph{Aperture generators} These are a type of function that initialise an \texttt{Array2d} with a particular kind of aperture with given parameters. For example, there is a generator for circular apertures, one for circular Gaussian-illuminated, one for circular with random errors, etc.
 
 \subsection{Configuration Files}
 Configuration files are stored by convention in the \texttt{config} directory, and are a series of \texttt{key = value} lines. They contain:
 \begin{itemize}
-    \item \texttt{nx} and \texttt{ny}. These are the size of the problem, i.e.\ the numbers of rows and columns that the mirror shape is split into.
+    \item \texttt{nx} and \texttt{ny}. These are the size of input and output arrays.
     \item \texttt{tasks}, what actions to perform on each of the shapes
     \item \texttt{n\_shapes}, the number of shapes
-    \item for each shape, it's properties: \texttt{type}, \texttt{lx} and \texttt{ly}, the limits within which $A(x,y)$ is defined, and \texttt{params}, a list of parameters of the shape, e.g.\ the dimensions or the taper of Gaussian illumination.
+    \item for each shape, it's properties: \texttt{type} (the name of the aperture generator), \texttt{lx} and \texttt{ly}, the domain of $A(x,y)$, and \texttt{params}, a list of parameters of the shape, e.g.\ the dimensions or the taper of Gaussian illumination.
 \end{itemize}
 
 \subsection{The \texttt{fftshift} operation}
