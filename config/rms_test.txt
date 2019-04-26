@@ -1,0 +1,27 @@
+nx = 4096
+ny = 4096
+prefix = data/rms
+tasks = print_in_phase central_amplitude in_phase_stat
+rel_sens = 0.01
+abs_sens = 0
+n_shapes = 4
+
+type = corr_errors
+lx = 256
+ly = 256
+params = 6 3 0 0.5236 46234 0.3
+
+type = corr_errors
+lx = 256
+ly = 256
+params = 6 3 0 0.5236 75123 0.5
+
+type = corr_errors
+lx = 256
+ly = 256
+params = 6 3 0 0.5236 56213 0.7
+
+type = corr_errors
+lx = 256
+ly = 256
+params = 6 3 0 0.5236 12385 1.0
