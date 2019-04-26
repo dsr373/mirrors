@@ -184,7 +184,7 @@ Mirror surfaces could have deformations in them due to manufacturing errors, alt
 We are going to investigate the effect of two types of phase errors:
 \begin{itemize}
     \item without spatial correlation, with a given RMS
-    \item spatially correlated, also with a given RMS.
+    \item spatially correlated, to simulate bends in the mirror.
 \end{itemize}
 
 The expected effect of these errors is to decrease the central intensity of the image, as they introduce decoherence to the light.
@@ -202,9 +202,9 @@ Because working directly with a 1D representation of 2D data can be clunky, I de
 
 \paragraph{FFTW compatibility} The method \texttt{ptr()} returns a pointer to the beginning of the array, cast to \texttt{fftw\_complex} type. This pointer can be passed to functions in the \texttt{FFTW} library~\cite[Section 4]{fftw}.
 
-\paragraph{Memory allocation} One special feature of this class that breaks with convention is that there is no explicitly defined copy constructor. The compiler generated one only performs a shallow copy, copying the pointer to the data array, but not the data itself. Only the explicitly defined constructor \mintinline{C++}{Array2d::Array2d(int nx, int ny)} uses \texttt{fftw\_alloc\_complex} to allocate new memory for the array. This means that the user of the class has finer control over where memory is allocated, which is important in the case of large arrays. For example, using IEEE double-precision floating point, which occupies 64 bits of memory, a $2^{13} \times 2^{13}$ array of complex numbers occupies around \SI{1}{GB} of memory.
+\paragraph{Memory allocation} One special feature of this class that breaks with convention is that the (compiler generated) copy constructor only performs a shallow copy, copying the pointer to the data array, but not the data itself. Only the explicitly defined constructor \mintinline{C++}{Array2d::Array2d(int nx, int ny)} uses \texttt{fftw\_alloc\_complex} to allocate new memory for the array. This means that the user of the class has finer control over where memory is allocated, which is important in the case of large arrays. For example, using IEEE double-precision floating point, which occupies 64 bits of memory, a $2^{13} \times 2^{13}$ array of complex numbers occupies around \SI{1}{GB} of memory.
 
-For better understanding of when new memory is allocated, compile the code with the variable \texttt{DEBUG\_OUT} set to \texttt{true} in \texttt{array2d.cpp}. Then the calls to the constructor and destructor of \texttt{Array2d} will be printed to console.
+For better understanding of when memory is allocated, compile the code with the variable \texttt{DEBUG\_OUT} set to \texttt{true} in \texttt{array2d.cpp}. Then the calls to the constructor and destructor of \texttt{Array2d} will be printed to console.
 
 \paragraph{Aperture generators} These are a type of function that initialise an \texttt{Array2d} with a particular kind of aperture with given parameters. For example, there is a generator for circular apertures, one for circular Gaussian-illuminated, one for circular with random errors, etc.
 
@@ -214,11 +214,14 @@ Configuration files are stored by convention in the \texttt{config} directory, a
     \item \texttt{nx} and \texttt{ny}. These are the size of input and output arrays.
     \item \texttt{tasks}, what actions to perform on each of the shapes
     \item \texttt{n\_shapes}, the number of shapes
-    \item for each shape, it's properties: \texttt{type} (the name of the aperture generator), \texttt{lx} and \texttt{ly}, the domain of $A(x,y)$, and \texttt{params}, a list of parameters of the shape, e.g.\ the dimensions or the taper of Gaussian illumination.
+    \item for each shape, its properties: \texttt{type} (the name of the aperture generator), \texttt{lx} and \texttt{ly} (the domain of $A(x,y)$), and \texttt{params}, a list of parameters of the shape, e.g.\ the dimensions or the taper of Gaussian illumination.
 \end{itemize}
 
 \subsection{The \texttt{fftshift} operation}
-The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. The function \texttt{fftshift} is overloaded to act on both \texttt{vector} and \texttt{Array2d} objects.
+The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. Applying this is required to see a diffraction pattern as it would appear on a screen.
+
+\subsection{Correlating errors}
+As mentioned in Section~\ref{sec:analysis:bent}, we want to investigate the effects of spatially-correlated phase errors. To produce such deformations, we convolve random errors with a gaussian shape of the desired correlation width, as suggested in the manual~\cite{manual}. Taking advantage of the convolution theorem, this is equivalent to multiplication of FTs of the two shapes, followed by a reverse FT. The \texttt{corr\_errors} aperture generator implements this.
 
 \section{Results and Discussion}\label{sec:res}
 \subsection{Tests}
