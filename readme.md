@@ -97,6 +97,7 @@ The following tasks all print to a single data file per config, named `<prefix>d
 * fwhp: full width at half power
 * find_min: find the first minimum along the horizontal, starting from the centre
 * central_amplitude: print the central value in the image array (arbitrary units that depend of nx, ny and other factors)
+* in_phase_stat: find the mean and standard deviation of the phase in the mirror array
 
 ## Aperture types
 
@@ -106,7 +107,8 @@ These are the available aperture types, and how the parameters are interpreted f
 * `rectangle`: self-explanatory again. params[0] and params[1] are the horizontal and vertical full widths
 * `gaussian`: radially decaying amplitude. params[0] is radius, params[1] is decay length
 * `gaussian_hole`: radially decaying, with a central hole. First 2 params as before, params[2] is the radius of the hole.
-* `rand_errors`: radially decaying, with a central hole and random phase errors. first 3 params as before, params[3] is the square average of the phase errors (in radians), and params[4] (optional) is the seed to pass to the random number generator. NB that with the default seed the RNG will always produce the same numbers.
+* `rand_errors`: radially decaying, with a central hole and random phase errors. First 3 params as before, params[3] is the square average of the phase errors (in radians), and params[4] (optional) is the seed to pass to the random number generator. NB that with the default seed the RNG will always produce the same numbers.
+* `corr_errors`: also gaussian tapered, but with spatially correlated phase errors. First 4 params are as before; params[4] is the seed and is now mandatory, and params[5] is the correlation length for the phase errors.
 
 # Plotting
 
