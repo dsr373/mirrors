@@ -244,9 +244,10 @@ ValueError<double> hwhp(const Array2d &a, const vector<double> &xs) {
 }
 
 /**
- * Calculate the mean and RMS of fun if abs value is above a sensitivity
+ * Calculate the mean and standard deviation of fun
+ * if abs value is above a sensitivity
  */
-ValueError<double> mean_rms(complex_to_real fun, const Array2d &a, int n_rows, int n_cols) {
+ValueError<double> mean_stddev(complex_to_real fun, const Array2d &a, int n_rows, int n_cols) {
     const double eps = EPS;
 
     // running statistics initialization

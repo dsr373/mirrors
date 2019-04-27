@@ -96,8 +96,8 @@ int main(int argc, char * argv[]) {
             fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
         }
         if(contains(conf.tasks, "in_phase_stat")) {
-            // print the RMS of phase errors in input array
-            ValueError<double> stat = mean_rms(myarg, in, conf.nx, conf.ny);
+            // print the mean and   RMS of phase errors in input array
+            ValueError<double> stat = mean_stddev(myarg, in, conf.nx, conf.ny);
             fprintf(data_filep, "\t%lf\t%lf", stat.val, stat.err);
         }
         fprintf(data_filep, "\n");
