@@ -93,6 +93,11 @@ def accumulate_data(data, xidx, yidx, dyidx=None):
             x_current = x
             tmp = [ys[i]]
     
+    # flush what's left
+    res[0].append(x_current)
+    res[1].append(np.average(tmp))
+    res[2].append(np.maximum(np.std(tmp), dys[i]))
+    
     return res
 
 def relim(data_shape, old_lim, new_lim):
