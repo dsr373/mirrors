@@ -244,11 +244,11 @@ ValueError<double> hwhp(const Array2d &a, const vector<double> &xs) {
 }
 
 /**
- * Calculate the mean and standard deviation of fun
- * if abs value is above a sensitivity
+ * Calculate the mean and standard deviation of fun within a given radius
  */
-ValueError<double> mean_stddev(complex_to_real fun, const Array2d &a, int n_rows, int n_cols) {
-    const double eps = EPS;
+ValueError<double> mean_stddev(complex_to_real fun, const Array2d &a, const vector<double>& xs, const vector<double>& ys, double radius) {
+    int n_cols = xs.size(), n_rows = ys.size();
+    double rsq;
 
     // running statistics initialization
     gsl_rstat_workspace * rstat = gsl_rstat_alloc();
@@ -256,7 +256,8 @@ ValueError<double> mean_stddev(complex_to_real fun, const Array2d &a, int n_rows
     // walk the array, and add arg only if number is larger than eps
     for(int i = 0; i < n_rows; i ++ )
         for(int j = 0; j < n_cols; j ++ ) {
-            if(abs(a(i, j)) > eps)
+            rsq = xs[j] * xs[j] + ys[i] * ys[i];
+            if(rsq < radius * radius)
                 gsl_rstat_add(fun(a(i, j)), rstat);
         }
 

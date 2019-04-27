@@ -129,36 +129,35 @@ int rand_errors(Array2d& in, const vector<double>& xs, const vector<double>& ys,
  * Void return so it can't be exposed via the names map at the bottom.
  */
 void gauss_mask(Array2d &in, const vector<double>& xs, const vector<double>& ys, const vector<double>& params) {
+    // unpack arguments
     int n_cols = xs.size(), n_rows = ys.size();
     double lc = params[0];          // the correlation length
     double sig_sq2 = 2 * lc * lc;   // the 2 sigma squared in the gaussian
-    double norm = lc;               // normalization factor of the gaussian
     double rsq;
 
+    // set the array values
     for(int i = 0; i < n_rows; i ++ )
         for(int j = 0; j < n_cols; j ++ ) {
             rsq = xs[j] * xs[j] + ys[i] * ys[i];
-            in[i][j] = exp( - rsq / sig_sq2) / norm;
+            in[i][j] = exp( - rsq / sig_sq2);
         }
 }
 
 
-/** Helper: round shape of radius 3*params[5] + params[0]
- * (adding 3 lc to the radius to avoid convolving with 0 near the edges)
- * Filled with randomly distributed real numbers, of mean 0 and a given RMS (params[3]).
- * Params are like for rand_errors, except the RNG seed is required and params[5]
- * is lc from above.
+/** Helper: round shape of radius params[0], filled with random real numbers.
+ * The randomness is gaussian-distributed, with mean 0 and sigma given by params[1].
+ * params[2] is the rng seed.
  * 
  * This is useful for convolving with the gaussian mask to produce correlated errors.
  * Also void return so it can't be included in the map.
  */
-void abs_errors(Array2d &in, const vector<double> &xs, const vector<double> &ys, const vector<double> &params) {
+void real_errors(Array2d &in, const vector<double> &xs, const vector<double> &ys, const vector<double> &params) {
     // unpack the arguments
     int n_cols = xs.size(), n_rows = ys.size();
 
     double R_ext_sq = params[0] * params[0];
-    double err_sigma = params[3];
-    unsigned long seed = (unsigned long)params[4];
+    double err_sigma = params[1];
+    unsigned long seed = (unsigned long)params[2];
 
     double rsq;
 
@@ -192,6 +191,8 @@ int corr_errors(Array2d &in, const vector<double>& xs, const vector<double>& ys,
     double R_ext_sq = params[0] * params[0];
     double sig_sq2 = 2 * params[1] * params[1];
     double R_int_sq = params[2] * params[2];
+    double err_sigma = params[3];
+    double seed = params[4];
     double lc = params[5];
 
     double rsq, rho, phi;
@@ -211,24 +212,35 @@ int corr_errors(Array2d &in, const vector<double>& xs, const vector<double>& ys,
     }
 
     // init the arrays
+    // note that real_errors writes real numbers to the array - the depth
     gauss_mask(sec_array, xs, ys, {lc});
-    abs_errors(in, xs, ys, params);
+    real_errors(in, xs, ys, {params[0] + 3*lc, err_sigma, seed});
+    
+    dbglog("RMS of phase before: " + to_string(mean_stddev(myre, in, xs, ys, params[0]).err));
 
     // execute forward ffts
     fftw_execute(fwd_plan);
     fftw_execute(sec_plan);
 
-    // multiply and reverse
+    // multiply and reverse FT, then shift to proper place
     in.mult(sec_array);
     fftw_execute(rev_plan);
     fftshift(in);
-    in.divide_each(n_rows * n_cols);
 
+    // calculate the current RMS and normalize to get the desired RMS error
+    double depth_sigma = mean_stddev(myre, in, xs, ys, params[0]).err;
+    dbglog("RMS of phase after: " + to_string(depth_sigma));
+    
+    in.mult_each(err_sigma / depth_sigma);
+    dbglog("RMS of phase normalised: " + to_string(mean_stddev(myre, in, xs, ys, params[0]).err));
+
+    // walk the array and set the depth as the phase,
+    // and the amplitude as a gaussian taper
     for(int i = 0; i < n_rows; i ++ )
         for(int j = 0; j < n_cols; j ++ ) {
             rsq = xs[j] * xs[j] + ys[i] * ys[i];
             if(rsq <= R_ext_sq && rsq >= R_int_sq) {
-                phi = abs(in(i, j));
+                phi = real(in(i, j));
                 rho = exp(- rsq / sig_sq2);
                 in[i][j] = polar(rho, phi);
             }

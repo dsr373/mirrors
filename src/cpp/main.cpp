@@ -96,22 +96,24 @@ int main(int argc, char * argv[]) {
             fprintf(data_filep, "\t%lf", myabs(out(0, 0)));
         }
         if(contains(conf.tasks, "in_phase_stat")) {
-            // print the mean and   RMS of phase errors in input array
-            ValueError<double> stat = mean_stddev(myarg, in, conf.nx, conf.ny);
+            // print the mean and RMS of phase errors in input array
+            ValueError<double> stat = mean_stddev(myarg, in, xs, ys, sp.shape_params[0]);
             fprintf(data_filep, "\t%lf\t%lf", stat.val, stat.err);
         }
         fprintf(data_filep, "\n");
 
         // find interesting limits if printing is needed. This next bit is ugly, I know.
-        if(any_begins_with(conf.tasks, "print")) {
-            // this screws up out
-            main_log("\tfftshift(out)");
-            fftshift(out);
-
+        if(any_begins_with(conf.tasks, "print_in")) {
             // look for in limits
             main_log("\tin limits");
             in_lims = in.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
+        }
 
+        if(any_begins_with(conf.tasks, "print_out")) {
+            // this screws up out
+            main_log("\tfftshift(out)");
+            fftshift(out);
+            
             // look for out limits
             main_log("\tout limits");
             out_lims = out.find_interesting(myabs, conf.abs_sens, conf.rel_sens);

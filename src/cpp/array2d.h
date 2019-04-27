@@ -65,10 +65,9 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
 ValueError<double> hwhp(const Array2d &a, const vector<double> &xs);
 
 /**
- * Calculate the mean and standard deviation of fun
- * if abs value is above a sensitivity
+ * Calculate the mean and standard deviation of fun within a given radius
  */
-ValueError<double> mean_stddev(complex_to_real fun, const Array2d &a, int n_rows, int n_cols);
+ValueError<double> mean_stddev(complex_to_real fun, const Array2d &a, const vector<double>& xs, const vector<double>& ys, double radius);
 
 /**
  * Print the limits in two dihections of the 2d array, then the array itself,
