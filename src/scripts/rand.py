@@ -12,10 +12,11 @@ FONTSIZE = 16
 CAPSIZE = 7
 FIT_LABEL = "$y={:4.4f}x{:+4.4f}$"
 FIT_INFO = "Slope: {:4.6f} +/- {:4.6f}\nIntercept: {:4.6f} +/- {:4.6f}"
+X_LABEL = "$\\sigma_{{\\epsilon}}/\\lambda$"
 FIGSIZE = (9, 8)
 
 def plot_sizes(data):
-    xs = data[0]          # phase error std dev
+    xs = np.divide(data[0], 4 * np.pi)    # phase error std dev
     ys = data[1]          # fwhp
     dys = data[2]         # error
 
@@ -28,16 +29,16 @@ def plot_sizes(data):
     ax.errorbar(xs, ys, yerr=dys, fmt='+', label="data", markersize=FONTSIZE)
 
     # label the plot
-    ax.set_xlabel("$\\sigma_{{\\epsilon}}$")
+    ax.set_xlabel(X_LABEL)
     ax.set_ylabel("Full Width at Half Power $(m^{{-1}})$")
     ax.set_title("Central width with phase errors")
     # ax.legend()
 
-    # plt.savefig(os.path.join(SAVE_DIR, "size.pdf"))
+    plt.savefig(os.path.join(SAVE_DIR, "size.pdf"), bbox_inches="tight")
 
 
 def plot_intensities(data):
-    sigerr = data[0]                        # phase error std dev
+    sigerr = np.divide(data[0], 4 * np.pi)  # phase error std dev
     amp = data[1] / np.min(data[1])         # amplitude normalised
     sig_amp = data[2] / np.min(data[1])     # error in amplitudes normalised
 
@@ -60,13 +61,13 @@ def plot_intensities(data):
     ax.plot(xs, np.polyval(coefs, xs), '-', label=fit_label)
 
     # label the plot
-    ax.set_xlabel("$(4\\pi\\sigma_{{\\epsilon}}/\\lambda)^2$")
-    ax.set_ylabel("$\\ln(\\psi(0, 0)\\ /\\ arb.\\ units)$")
+    ax.set_xlabel("({:s})$^2$".format(X_LABEL))
+    ax.set_ylabel("$\\ln(\\psi_0\\ /\\ arb.\\ units)$")
     ax.set_title("Central amplitude vs phase errors")
     ax.ticklabel_format(axis='y', style='sci', scilimits=(-2,3), useMathText=True)
     ax.legend()
 
-    # plt.savefig(os.path.join(SAVE_DIR, "int.pdf"))
+    plt.savefig(os.path.join(SAVE_DIR, "int.pdf"), bbox_inches="tight")
 
 
 CONFIG1 = "config/rand.txt"
