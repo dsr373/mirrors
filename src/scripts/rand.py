@@ -8,7 +8,7 @@ import matplotlib
 
 from util import *
 
-FONTSIZE = 16
+FONTSIZE = 18
 CAPSIZE = 7
 FIT_LABEL = "$y={:4.4f}x{:+4.4f}$"
 FIT_INFO = "Slope: {:4.6f} +/- {:4.6f}\nIntercept: {:4.6f} +/- {:4.6f}"
