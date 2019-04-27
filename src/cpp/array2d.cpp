@@ -244,9 +244,9 @@ ValueError<double> hwhp(const Array2d &a, const vector<double> &xs) {
 }
 
 /**
- * Calculate the mean and RMS of argument if abs is above a sensitivity
+ * Calculate the mean and RMS of fun if abs value is above a sensitivity
  */
-ValueError<double> phase_rms(const Array2d &a, int n_rows, int n_cols) {
+ValueError<double> mean_rms(complex_to_real fun, const Array2d &a, int n_rows, int n_cols) {
     const double eps = EPS;
 
     // running statistics initialization
@@ -256,7 +256,7 @@ ValueError<double> phase_rms(const Array2d &a, int n_rows, int n_cols) {
     for(int i = 0; i < n_rows; i ++ )
         for(int j = 0; j < n_cols; j ++ ) {
             if(abs(a(i, j)) > eps)
-                gsl_rstat_add(arg(a(i, j)), rstat);
+                gsl_rstat_add(fun(a(i, j)), rstat);
         }
 
     // cleanup and return

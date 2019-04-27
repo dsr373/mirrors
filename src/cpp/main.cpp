@@ -97,7 +97,7 @@ int main(int argc, char * argv[]) {
         }
         if(contains(conf.tasks, "in_phase_stat")) {
             // print the RMS of phase errors in input array
-            ValueError<double> stat = phase_rms(in, conf.nx, conf.ny);
+            ValueError<double> stat = mean_rms(myarg, in, conf.nx, conf.ny);
             fprintf(data_filep, "\t%lf\t%lf", stat.val, stat.err);
         }
         fprintf(data_filep, "\n");

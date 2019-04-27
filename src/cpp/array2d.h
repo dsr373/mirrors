@@ -65,9 +65,9 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
 ValueError<double> hwhp(const Array2d &a, const vector<double> &xs);
 
 /**
- * Calculate the mean and RMS of argument if abs is above a sensitivity
+ * Calculate the mean and RMS of fun if abs is above a sensitivity
  */
-ValueError<double> phase_rms(const Array2d &a, int n_rows, int n_cols);
+ValueError<double> mean_rms(complex_to_real fun, const Array2d &a, int n_rows, int n_cols);
 
 /**
  * Print the limits in two dihections of the 2d array, then the array itself,
