@@ -198,25 +198,36 @@ int corr_errors(Array2d &in, const vector<double>& xs, const vector<double>& ys,
     double rsq, rho, phi;
 
     // declare the secondary array and fftw plans
-    static Array2d sec_array(n_rows, n_cols);
-    static fftw_plan fwd_plan, rev_plan, sec_plan;
-    static bool init = false;
+    static thread_local Array2d sec_array(n_rows, n_cols);
+    static thread_local fftw_plan fwd_plan, rev_plan, sec_plan;
+    static thread_local bool init = false;
 
     // Planning: this only runs on the first call
     if(!init) {
-        genlog("\t\tPlanning convolution FFTs");
         init = true;
+
+        planner_mtx.lock();
+        genlog("\t\tLocked. Planning convolution FFTs.");
+
+        // to check behaviour in multithreading, print array addresses
+        char buff[100];
+        sprintf(buff, "In array ptr: %p", (void*)in.ptr());
+        dbglog(buff);
+        sprintf(buff, "Sec array ptr: %p", (void*)sec_array.ptr());
+        dbglog(buff);
+
         fwd_plan = fftw_plan_dft_2d(n_rows, n_cols, in.ptr(), in.ptr(), FFTW_FORWARD, FFTW_MEASURE);
         rev_plan = fftw_plan_dft_2d(n_rows, n_cols, in.ptr(), in.ptr(), FFTW_BACKWARD, FFTW_MEASURE);
         sec_plan = fftw_plan_dft_2d(n_rows, n_cols, sec_array.ptr(), sec_array.ptr(), FFTW_FORWARD, FFTW_MEASURE);
+        
+        planner_mtx.unlock();
+        genlog("\t\tUnlocked. Planning done.");
     }
 
     // init the arrays
     // note that real_errors writes real numbers to the array - the depth
     gauss_mask(sec_array, xs, ys, {lc});
     real_errors(in, xs, ys, {params[0] + 3*lc, err_sigma, seed});
-    
-    dbglog("RMS of phase before: " + to_string(mean_stddev(myre, in, xs, ys, params[0]).err));
 
     // execute forward ffts
     fftw_execute(fwd_plan);
@@ -228,11 +239,8 @@ int corr_errors(Array2d &in, const vector<double>& xs, const vector<double>& ys,
     fftshift(in);
 
     // calculate the current RMS and normalize to get the desired RMS error
-    double depth_sigma = mean_stddev(myre, in, xs, ys, params[0]).err;
-    dbglog("RMS of phase after: " + to_string(depth_sigma));
-    
+    double depth_sigma = mean_stddev(myre, in, xs, ys, params[0]).err;    
     in.mult_each(err_sigma / depth_sigma);
-    dbglog("RMS of phase normalised: " + to_string(mean_stddev(myre, in, xs, ys, params[0]).err));
 
     // walk the array and set the depth as the phase,
     // and the amplitude as a gaussian taper

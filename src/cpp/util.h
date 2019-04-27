@@ -8,6 +8,7 @@
 #include<map>
 #include<algorithm>
 #include<complex>
+#include<mutex>
 
 using namespace std;
 
@@ -15,6 +16,10 @@ using namespace std;
 #define DBL_EQ(a, b) (abs(a-b) < EPS)
 
 #define CONV_KEY "corr_errors"
+
+// a mutex locks thread execution to only allow one thread at a time to access a resource
+// here it's needed because FFTW only allows one thread to plan FFTs at a time
+extern mutex planner_mtx;
 
 /** Type that takes complex argument and returns real number.
  * These are functions such as abs, real, imag, arg, etc...

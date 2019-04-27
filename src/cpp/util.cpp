@@ -1,5 +1,8 @@
 #include "util.h"
 
+// define the mutex
+mutex planner_mtx;
+
 complex_to_real myabs = [](complex<double> z) -> double {return abs(z);};
 complex_to_real myarg = [](complex<double> z) -> double {return arg(z);};
 complex_to_real myre = [](complex<double> z) -> double {return real(z);};
