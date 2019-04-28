@@ -132,12 +132,11 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
 
         if(contains(conf.tasks, "out_lims")) {
             // record the boundaries of the image that are above the given sensitivity
-            // lims = {imin, imax, jmin, jmax} is equivalent to:
-            // lims = {min_row, max_row, min_col, max_col}
-            double p1 = ps[out_lims[2]];
-            double p2 = ps[out_lims[3]];
-            double q1 = qs[out_lims[0]];
-            double q2 = qs[out_lims[1]];
+            // reminder: lims = {imin, imax, jmin, jmax}
+            int imin = out_lims[0], imax = out_lims[1];
+            int jmin = out_lims[2], jmax = out_lims[3];
+            double p1 = ps[jmin], p2 = ps[jmax - 1];
+            double q1 = qs[imin], q2 = qs[imax - 1];
 
             dl.line += "\t" + to_string(p1) + "\t" + to_string(p2);
             dl.line += "\t" + to_string(q1) + "\t" + to_string(q2);
@@ -217,7 +216,9 @@ int main(int argc, char * argv[]) {
         // the last worker has to finish the shapes
         if(i_th == N_WORKERS - 1) end = conf.shapes.size();
 
-        worker_threads.push_back(thread(shapes_worker, conf, i_th, start, end));
+        if(start < end)
+            // only start workers if they have something to do
+            worker_threads.push_back(thread(shapes_worker, conf, i_th, start, end));
     }
 
     // join everything when it's done
