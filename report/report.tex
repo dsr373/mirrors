@@ -10,6 +10,7 @@
 \usepackage{amsmath}
 % \usepackage{amssymb}
 \usepackage[separate-uncertainty=true]{siunitx}
+\usepackage{physics}
 \usepackage{minted}
 \usepackage{titling}
 % \usepackage{lipsum}
@@ -111,7 +112,7 @@ with the corresponding frequency values:
 \end{equation}
 where $\Delta$ is the sampling interval of the original signal. Comparing to a 1D discrete form of the diffraction integral (Equation~\ref{eqn:diff}):
 \begin{equation}
-    \psi_k \propto \sum_{n=0}^{N-1} A_n \exp{\left( i p_k x_n \right)},\quad \R{where} \quad x_n = n \Delta
+    \psi_k \propto \sum_{n=0}^{N-1} A_n \exp{\left( i p_k x_n \right)}, \qq{where} x_n = n \Delta
 \end{equation}
 we see that we need to rescale:
 \begin{equation}
@@ -127,7 +128,7 @@ To determine whether the program is outputting something sensible, we need to te
 \end{equation}
 thus it's expected to have the first zeros at:
 \begin{equation}\label{eqn:test_rect}
-    p = \pm \frac{\pi}{a}\quad \R{and} \quad q = \pm \frac{\pi}{b}.
+    p = \pm \frac{\pi}{a} \qq{and} q = \pm \frac{\pi}{b}.
 \end{equation}
 
 \paragraph{Circular aperture} A circular aperture of radius $R$ has a diffraction pattern called an Airy disc, with angular radius:
@@ -143,7 +144,7 @@ The amplitude of light illuminating a telescope mirror is often not uniform. A `
     A(r) = \begin{cases}
         e ^ {-r^2 / {2 \sigma^2}} &, r \leq R\\
         0 &, r > R
-    \end{cases}, \quad \R{where}\ r^2 = x^2 + y^2.
+    \end{cases}, \qq{where} r^2 = x^2 + y^2.
 \end{equation}
 
 This is the multiplication of a Gaussian with a circular aperture of radius $R$. From the convolution theorem, its diffraction pattern is the convolution between another Gaussian and a Bessel function. Intuitively, this should lead to a ``smearing'' of the central maximum relative to a uniformly-lit mirror. Since the variance of a Gaussian is inversely proportional to the variance of its F.T., the smearing will be stronger at small $\sigma$.
@@ -172,11 +173,11 @@ Due to the Airy disc of the smaller $A_{\R{hole}}$ being larger than that of the
     \end{minipage}%
     \hfill
     \begin{minipage}{0.4\textwidth}
-        \caption{effect of deformations in the mirror surface on the phase of the wave.}\label{fig:bend}
+        \caption{effect of deformations in the mirror surface on the phase of the wave. A deformation of depth $\eps$ produces an optical path difference of $2\eps$, one for the incident wave and one for the reflected wave.}\label{fig:bend}
     \end{minipage}
 \end{figure}
 
-Mirror surfaces could have deformations in them due to manufacturing errors, altering the phase of light. As seen in Figure~\ref{fig:bend}, the effect is that, for a dent of depth $\eps$, there is an extra path of $2\eps$ (one for incoming, one for reflected), leading to a phase difference of:
+Mirror surfaces could have deformations in them due to manufacturing errors, altering the phase of light. As seen in Figure~\ref{fig:bend}, the effect is that, for a dent of depth $\eps$, there is a path difference of $2\eps$, leading to a phase difference of:
 \begin{equation}
     \Delta\ph = 2k\eps = \frac{4\pi}{\lambda}\eps
 \end{equation}
@@ -221,7 +222,9 @@ Configuration files are stored by convention in the \texttt{config} directory, a
 The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. Applying this is required to see a diffraction pattern as it would appear on a screen.
 
 \subsection{Correlating errors}
-As mentioned in Section~\ref{sec:analysis:bent}, we want to investigate the effects of spatially-correlated phase errors. To produce such deformations, we convolve random errors with a gaussian shape of the desired correlation width, as suggested in the manual~\cite{manual}. Taking advantage of the convolution theorem, this is equivalent to multiplication of FTs of the two shapes, followed by a reverse FT. The \texttt{corr\_errors} aperture generator implements this.
+As mentioned in Section~\ref{sec:analysis:bent}, we want to investigate the effects of spatially-correlated phase errors. To produce such deformations, we convolve random gaussian-distributed numbers with a gaussian shape of the desired correlation width, as suggested in the manual~\cite{manual}. Taking advantage of the convolution theorem, this is equivalent to multiplication of FTs of the two shapes, followed by a reverse FT. The numbers are then normalised to the desired RMS and set as the phase in the ``mirror'' array. The \texttt{corr\_errors} aperture generator implements this.
+
+We want to ensure that the phase error produced by this method is the desired one, and that it doesn't change with the correlation length $l_c$. These properties are tested in Section~\ref{sec:res:rms}.
 
 \section{Results and Discussion}\label{sec:res}
 \subsection{Tests}
@@ -314,9 +317,56 @@ Figure~\ref{fig:gpic} shows the images produced by illuminating the same mirror 
     \end{minipage}
 \end{figure}
 
-Figure~\ref{fig:hole} shows the results of the calculation suggested in Section~\ref{sec:analysis:hole}. We can see the amplitude of the difference reaching at most around \num{2e-5}. In the original diffraction patterns, the central amplitude is on the order of $10^4$, so indeed the two patterns are equal to a very high accuracy. The differences are well under the precision to which the numbers were printed before plotting (which is around $10^{-6}$).
+Figure~\ref{fig:hole} shows the results of the calculation suggested in Section~\ref{sec:analysis:hole}. We can see the amplitude of the difference reaching at most around \num{2e-5}. In the original diffraction patterns, the central amplitude is on the order of $10^4$, so indeed the two patterns are equal to a very high accuracy. The differences are on the order of the precision to which the numbers were printed before plotting, around $10^{-6}$.
 
 This confirms that the F.T. operations we use are linear to a good accuracy.
+
+\subsection{Random errors}\label{sec:res:rand}
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/rand/int}
+        \caption{dependence of the central amplitude on the RMS phase (wavefront) error. Note logarithmic scale of the vertical axis.}\label{fig:rand:int}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/rand/size}
+        \caption{(lack of) relationship of full-width-at-half-power with random phase errors.}\label{fig:rand:size}
+    \end{subfigure}
+    \caption{}\label{fig:rand}
+\end{figure}
+
+Figure~\ref{fig:rand} shows how properties of the image are affected by random errors. The with of the central disc is unaffected, but the central amplitude ($\psi_0$) decreases with the RMS error $\sigma_\eps$. When $\sigma_\eps = \sqrt{\expval{\Delta\ph^2}} \rightarrow \pi$, the amplitude tends to zero. The linear relationship in Fig.~\ref{fig:rand:int} indicates that the amplitude is a Gaussian function of the wavefront error:
+\begin{equation}
+    \psi_0 \propto \exp \left( - \frac{(\sigma_\eps / \lambda)^2}{2 \sigma_\psi^2} \right),
+\end{equation}
+with
+\begin{equation}
+    \sigma_\psi = \num{79.56 \pm 0.03 e-3}
+\end{equation}
+given by the line slope.
+
+\subsection{Error correlation tests}\label{sec:res:rms}
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{pictures/rmstest/depth}
+        \caption{}\label{fig:rms:depth}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{pictures/rmstest/l_corr}
+        \caption{}\label{fig:rms:length}
+    \end{subfigure}
+    \caption{dependence of RMS (root mean square) phase on desired RMS and correlation length.}\label{fig:rms}
+\end{figure}
+
+In Figure~\ref{fig:rms:depth} we see that the produced RMS phase error is close to the desired one for phases of up to $\frac{\pi}{2}$. It saturates to about \SI{1.8}{\radian} at larger desired $\sigma_\eps$, probably due to some numbers falling outside the $(-\pi,\ \pi)$ range, and overflowing when they are converted to complex phase. This is expected behaviour.
+
+In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on correlation length, which confirms normalisation is correct.
 
 \section{Conclusion}\label{sec:conclusion}
 
