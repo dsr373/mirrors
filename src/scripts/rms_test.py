@@ -20,10 +20,6 @@ def plot_depth(data):
     ys = np.array(data[1])    # obtained phase error
     dys = np.array(data[2])   # error
 
-    print(xs)
-    print(ys)
-    print(dys)
-
     # formatting niceness
     matplotlib.rcParams.update({'font.size': FONTSIZE})
     matplotlib.rcParams.update({'errorbar.capsize': CAPSIZE})
@@ -33,10 +29,14 @@ def plot_depth(data):
     ax.errorbar(xs, ys, yerr=dys, fmt='+', label="data", markersize=FONTSIZE)
 
     # fit a line
-    coefs, covar = np.polyfit(xs, ys, 1, cov=True)
-    fit_label = "Line fit: " + FIT_LABEL.format(coefs[0], coefs[1])
+    # first, find the xs between 0 and pi/2
+    idx = [i for i, x in enumerate(xs) if x >= 0 and x <= np.pi/2]
+    
+    coefs, covar = np.polyfit(xs[idx], ys[idx], 1, cov=True)
     print(FIT_INFO.format(coefs[0], np.sqrt(covar[0, 0]), coefs[1], np.sqrt(covar[1, 1])))
-    ax.plot(xs, np.polyval(coefs, xs), '-', label=fit_label)
+
+    fit_label = "Line fit: " + FIT_LABEL.format(coefs[0], coefs[1])
+    ax.plot(xs[idx], np.polyval(coefs, xs[idx]), '-', label=fit_label)
 
     # label the plot
     ax.set_xlabel("Desired phase RMS (radians)")
