@@ -62,7 +62,7 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
 /**
  * Find the x-coordinate of the first half-power point and the error
  */
-ValueError<double> hwhp(const Array2d &a, const vector<double> &xs);
+ValueError<double> hwhp(const Array2d &a, const vector<double> &coord, bool vertical = false);
 
 /**
  * Calculate the mean and standard deviation of fun within a given radius

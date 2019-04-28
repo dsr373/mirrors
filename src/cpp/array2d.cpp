@@ -221,25 +221,29 @@ ValueError<double> find_first_min(complex_to_real fun, const Array2d &a, const v
 }
 
 /**
- * Find the x-coordinate of the first half-power point and the error
+ * Find the x-coordinate of the first half-power point along the first horizontal and the error
+ * If vertical is true, the y-coordinate along the first vertical is found instead.
+ * coord are the x-positions (or y-positions) of the points, depending on vertical
  */
-ValueError<double> hwhp(const Array2d &a, const vector<double> &xs) {
-    int i = 0, j = 0;
-    int nx = xs.size();
+ValueError<double> hwhp(const Array2d &a, const vector<double> &coord, bool vertical) {
+    int j = 0;
+    int n = coord.size();
 
     double max_abs = abs(a(0, 0));
     double half_power = max_abs / sqrt(2.0);
 
-    // walk along the first row until abs(a) drops below half_power
-    while(j < nx-1)
-        if(abs(a(i, j)) < half_power)
+    // walk along the first row or column until abs(a) drops below half_power
+    while(j < n-1)
+        if(!vertical && abs(a(0, j)) < half_power)
+            break;
+        else if(vertical && abs(a(j, 0)) < half_power)
             break;
         else
-            j ++;
+            j++;
     
     ValueError<double> res;
-    res.val = xs[j];
-    res.err = abs(xs[j] - xs[j-1]);
+    res.val = coord[j];
+    res.err = abs(coord[j] - coord[j-1]);
     return res;
 }
 

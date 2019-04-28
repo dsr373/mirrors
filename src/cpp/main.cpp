@@ -92,8 +92,14 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
             dl.line += "\t" + to_string(min_pos.val) + "\t" + to_string(min_pos.err);
         }
         if(contains(conf.tasks, "fwhp")) {
-            // print coordinate of full-width at half-power. times by 2 for FULL width
+            // print coordinate of full-width at half-power along horizontal.
+            // times by 2 for FULL width (function gives half width)
             ValueError<double> res = hwhp(out, ps);
+            dl.line += "\t" + to_string(res.val * 2) + "\t" + to_string(res.err * 2);
+        }
+        if(contains(conf.tasks, "fwhp_y")) {
+            // print coordinate of FWHP along vertical
+            ValueError<double> res = hwhp(out, qs, true);
             dl.line += "\t" + to_string(res.val * 2) + "\t" + to_string(res.err * 2);
         }
         if(contains(conf.tasks, "central_amplitude")) {
@@ -113,7 +119,7 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
             in_lims = in.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
         }
 
-        if(any_begins_with(conf.tasks, "print_out")) {
+        if(any_begins_with(conf.tasks, "print_out") || contains(conf.tasks, "out_lims")) {
             // this screws up out
             proc_log("\tfftshift(out)");
             fftshift(out);
@@ -121,6 +127,19 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
             // look for out limits
             proc_log("\tout limits");
             out_lims = out.find_interesting(myabs, conf.abs_sens, conf.rel_sens);
+        }
+
+        if(contains(conf.tasks, "out_lims")) {
+            // record the boundaries of the image that are above the given sensitivity
+            // lims = {imin, imax, jmin, jmax} is equivalent to:
+            // lims = {min_row, max_row, min_col, max_col}
+            double p1 = ps[out_lims[2]];
+            double p2 = ps[out_lims[3]];
+            double q1 = qs[out_lims[0]];
+            double q2 = qs[out_lims[1]];
+
+            dl.line += "\t" + to_string(p1) + "\t" + to_string(p2);
+            dl.line += "\t" + to_string(q1) + "\t" + to_string(q2);
         }
 
         // DO the array printing. 
@@ -201,7 +220,6 @@ int main(int argc, char * argv[]) {
     }
 
     // join everything when it's done
-    main_log("Synchronising worker threads");
     for(vector<thread>::iterator th = worker_threads.begin(); th != worker_threads.end(); th++ )
         th->join();
 
