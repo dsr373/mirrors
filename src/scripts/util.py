@@ -107,6 +107,33 @@ def accumulate_data(data, xidx, yidx, dyidx=None):
     
     return res
 
+
+def group_data(data, idx):
+    """
+    Group the rows in a 2d data array based on column number idx,
+    and return a dict whose values are sub-arrays of data that have
+    the same value in the idx-th column, and whose keys are that common value.
+    """
+    res = {}
+    # data is originally read in column-first representation, so needs transposing
+    data = np.ndarray.transpose(data)
+
+    # walk the data row-wise and add each row to the corresponding entry in res
+    for row in data:
+        key = row[idx]
+        if key in res:
+            res[key].append(row)
+        else:
+            res[key] = [row]
+    
+    # transpose back to column-first for easy plotting
+    for key in res.keys():
+        res[key] = np.array(res[key])
+        res[key] = np.ndarray.transpose(res[key])
+    
+    return res
+
+
 def relim(data_shape, old_lim, new_lim):
     """ 
     Take a data array with known x and y limits
