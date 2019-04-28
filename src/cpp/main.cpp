@@ -123,6 +123,7 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
             // this screws up out
             proc_log("\tfftshift(out)");
             fftshift(out);
+            ps = fftshift(ps); qs = fftshift(qs);
             
             // look for out limits
             proc_log("\tout limits");
@@ -164,7 +165,7 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
             // print image amplitude
             string out_fname = conf.out_prefix + to_string(shape_idx) + "out_abs.txt";
             FILE * out_filep = fopen(out_fname.c_str(), "w");
-            print_lim_array(out_filep, myabs, out, fftshift(ps), fftshift(qs), out_lims);
+            print_lim_array(out_filep, myabs, out, ps, qs, out_lims);
             fclose(out_filep);
         }
         if(contains(conf.tasks, "print_out_phase")) {
@@ -172,7 +173,7 @@ void shapes_worker(const Config& conf, unsigned int n_proc, unsigned int start, 
             // print image phase
             string out_fname = conf.out_prefix + to_string(shape_idx) + "out_phase.txt";
             FILE * out_filep = fopen(out_fname.c_str(), "w");
-            print_lim_array(out_filep, myarg, out, fftshift(ps), fftshift(qs), out_lims);
+            print_lim_array(out_filep, myarg, out, ps, qs, out_lims);
             fclose(out_filep);
         }
         dataq.push(dl);
