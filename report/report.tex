@@ -338,6 +338,32 @@ This confirms that the F.T. operations we use are linear to a good accuracy.
     \caption{}\label{fig:rand}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \begin{subfigure}{\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors0in_phase.png}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors0out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/6$}\label{fig:randpic:1}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors1in_phase.png}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors1out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/2$}\label{fig:randpic:2}
+    \end{subfigure}
+    \caption{Typical random error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see.}\label{fig:randpic}
+\end{figure}
+
 Figure~\ref{fig:rand} shows how properties of the image are affected by random errors. The with of the central disc is unaffected, but the central amplitude ($\psi_0$) decreases with the RMS error $\sigma_\eps$. When $\sigma_\eps = \sqrt{\expval{\Delta\ph^2}} \rightarrow \pi$, the amplitude tends to zero. The linear relationship in Fig.~\ref{fig:rand:int} indicates that the amplitude is a Gaussian function of the wavefront error:
 \begin{equation}
     \psi_0 \propto \exp \left( - \frac{(\sigma_\eps / \lambda)^2}{2 \sigma_\psi^2} \right),
@@ -368,6 +394,33 @@ In Figure~\ref{fig:rms:depth} we see that the produced RMS phase error is close 
 
 In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on correlation length, which confirms normalisation is correct.
 
+\subsection{Spatially correlated errors}\label{sec:res:corr}
+\begin{figure}
+    \centering
+    \begin{subfigure}{\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors0in_phase.png}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors0out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/6$}\label{fig:randpic:1}
+    \end{subfigure}
+
+    \begin{subfigure}{\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors1in_phase.png}
+        \end{minipage}%
+        \hfill
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors1out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/2$}\label{fig:randpic:2}
+    \end{subfigure}
+    \caption{Typical random error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see.}\label{fig:randpic}
+\end{figure}
+
 \section{Conclusion}\label{sec:conclusion}
 
 \printbibliography{}
@@ -392,6 +445,9 @@ In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on corr
 % \subsubsection{src/cpp/array2d.cpp}
 % \inputminted[linenos,breaklines]{C++}{../src/cpp/array2d.cpp}
 
+% \subsubsection{src/cpp/generators.cpp}
+% \inputminted[linenos,breaklines]{C++}{../src/cpp/generators.cpp}
+
 \subsection{Plotting in Python}
 
 % \subsubsection{src/scripts/util.py}
@@ -414,5 +470,11 @@ In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on corr
 
 % \subsubsection{src/scripts/rand.py}
 % \inputminted[linenos,breaklines]{Python}{../src/scripts/rand.py}
+
+% \subsubsection{src/scripts/rms_test.py}
+% \inputminted[linenos,breaklines]{Python}{../src/scripts/rms_test.py}
+
+% \subsubsection{src/scripts/corr.py}
+% \inputminted[linenos,breaklines]{Python}{../src/scripts/corr.py}
 
 \end{document}
