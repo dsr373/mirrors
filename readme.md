@@ -74,7 +74,7 @@ Then, for each shape:
 
 ## Tasks
 
-The possible tasks are:
+The possible 'figure-producing' tasks are:
 
 * print_in_abs
 * print_in_phase
@@ -94,10 +94,14 @@ USE WITH CARE: for large arrays, printing can get slower than the actual Fourier
 The following tasks all print to a single data file per config, named `<prefix>dat.txt`
 
 * params: shape parameters
-* fwhp: full width at half power
-* find_min: find the first minimum along the horizontal, starting from the centre
+* find_min: find the first minimum along the horizontal, starting from the centre, and its discretisation error
+* fwhp: full width at half power along the x-axis, and its error (the discretisation error)
+* fwhp_y: same as above, but along the y-axis
 * central_amplitude: print the central value in the image array (arbitrary units that depend of nx, ny and other factors)
 * in_phase_stat: find the mean and standard deviation of the phase in the mirror array
+* out_lims: the limits (4 numbers: pmin, pmax, qmin, qmax) within which the image has features above the specified sensitivities. The limits are exactly the same as for printing.
+
+The order in which they print is the same as the order in which they are listed above. Their order in the configuration file is not important.
 
 ## Aperture types
 
