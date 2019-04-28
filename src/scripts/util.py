@@ -14,9 +14,16 @@ def print_warning(configs):
     print(SEP)
 
 def extract_value(line):
+    """ Helper that returns the value from a `key = value` string """
     return re.split(r'\s+=\s+', line)[-1].strip()
 
 def parse_config(filename):
+    """
+    Parses a configuration file and returns the values of some of the options
+    It returns the number of shapes, the prefix for the files produced,
+    and the figures produced
+    e.g. if there is a task called "print_in_phase", figs will contain "in_phase"
+    """
     n_shapes = None
     prefix = None
     tasks = None
@@ -54,7 +61,7 @@ def read_image(filename):
 
 
 def read_data(config_filename):
-    """ Read the data file created by running some config file """
+    """ Read the data file created by running the executable on given config """
     _, prefix, _ = parse_config(config_filename)
 
     data_fname = prefix + "dat.txt"
