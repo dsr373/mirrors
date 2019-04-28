@@ -1,0 +1,37 @@
+nx = 8192
+ny = 8192
+prefix = data/errors
+tasks = print_in_phase print_out_abs
+rel_sens = 0.01
+abs_sens = 0
+n_shapes = 6
+
+type = rand_errors
+lx = 512
+ly = 512
+params = 6 3 0 0.5236 03482
+
+type = rand_errors
+lx = 512
+ly = 512
+params = 6 3 0 1.5708 03482
+
+type = corr_errors
+lx = 512
+ly = 512
+params = 6 3 0 0.5236 54268 0.1
+
+type = corr_errors
+lx = 512
+ly = 512
+params = 6 3 0 0.5236 45972 0.3
+
+type = corr_errors
+lx = 512
+ly = 512
+params = 6 3 0 0.5236 12549 0.5
+
+type = corr_errors
+lx = 512
+ly = 512
+params = 6 3 0 0.5236 85468 0.8
