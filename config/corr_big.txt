@@ -1,0 +1,6007 @@
+nx = 4096
+ny = 4096
+prefix = data/corr_big
+tasks = params fwhp fwhp_y central_amplitude out_lims
+rel_sens = 0.01
+abs_sens = 0
+n_shapes = 1200
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 14728  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 17642  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 24719  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 08063  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 11755  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 25277  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 16646  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 22235  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 22735  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 16805  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 15578  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 02917  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 10546  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 08847  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 00830  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 17179  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 05127  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 28036  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 03910  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 11341  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 26061  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 28340  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 27576  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 06004  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 02759  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 27796  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 21303  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 23537  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 28955  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 14405  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 28923  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 01718  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 11725  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 15087  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 06824  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 29891  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 17231  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 29409  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 12325  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 28223  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 11713  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 23831  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 13184  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 21819  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 16677  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 16436  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 20848  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 22851  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 09185  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 14669  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 08413  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 00325  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 12338  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 22602  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 08421  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 24878  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 15865  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 22369  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 01282  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 25728  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 25929  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 19848  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 12068  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 07859  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 11055  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 30457  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 26038  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 08467  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 21231  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 17888  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 18755  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 07979  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 27779  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 10119  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 21813  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 07605  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 06683  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 09023  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 12872  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 14509  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 18022  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 15844  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 19982  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 14402  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 15695  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 03110  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 10269  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 06088  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 03037  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 06019  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 02684  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 29686  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 23314  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 17068  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 23755  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 29983  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 08771  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 01620  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 29085  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.15708 14023  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 14504  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 27009  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 26360  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 07774  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 19031  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 14755  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 15124  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 06005  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 11095  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 20151  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 02999  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 13948  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 07817  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 08946  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 05756  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 01715  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 13189  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 10210  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 29576  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 31166  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 09399  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23051  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 22759  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23319  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 20856  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 13551  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 30891  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 07284  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 05266  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 01115  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 01162  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 16617  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 22049  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 03554  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 24046  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 06983  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 19397  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23399  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 09216  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 26845  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 10982  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 02309  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 03985  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 06016  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 01146  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 24375  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 19693  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 02508  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 31269  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 00987  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 03635  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 08637  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23917  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 10993  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 05638  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 03486  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 24271  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 05375  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 08984  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 12214  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 11118  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 15747  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 11740  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23588  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 16724  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 27133  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 16030  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 20617  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 05659  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 16511  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 00282  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 10932  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23222  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 24827  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 30579  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 13618  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 28705  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 28200  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 11511  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 22387  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 23012  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 13328  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 00176  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 06437  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 09731  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 30377  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 08649  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 19064  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 05854  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 30408  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 09409  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 29380  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 22808  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 31292  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 15303  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 14900  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 15548  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 15136  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 28920  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.31416 28127  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 02423  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 28721  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 29521  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 19881  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 05417  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 20829  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 18767  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 29038  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13816  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 02918  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 12782  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 01154  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 29289  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 24170  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 03908  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 01326  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 29445  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 18238  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 06447  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 22018  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 01902  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 04207  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 00697  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13374  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 09875  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 25317  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 26396  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 04740  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 04359  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 00846  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 19742  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 05819  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 16664  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13394  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 26041  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 12099  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 25956  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 03987  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 25245  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 23800  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13356  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 24280  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 01032  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 01555  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 21520  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 28125  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 07825  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 20989  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13561  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 15062  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13631  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 17570  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 30930  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 30555  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 07226  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 24696  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 05957  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 04666  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 24307  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 17784  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 30460  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 25737  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 09326  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 15909  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 28641  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 22182  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 03696  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 26110  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 07690  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 28131  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 27508  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 23733  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 24195  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 28182  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 23424  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 12721  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 19547  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 01635  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 28310  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 10411  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 09035  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13195  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 24566  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 00795  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 08860  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13951  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 14639  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 20147  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 09963  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 26734  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 05516  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 18094  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 11805  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 25021  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 23503  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 02329  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 31739  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 13476  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 27256  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.47124 21635  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 21161  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 19802  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 24987  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 00240  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 24954  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22886  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 11572  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22280  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 21919  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 14027  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 07982  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 26778  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 05279  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 09559  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 23142  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 28287  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 15727  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 13420  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 02081  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 21863  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 25949  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 20124  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 18307  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 16652  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 27725  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 16016  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 19432  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 14698  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22918  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 12976  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 07912  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 03394  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 12151  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 01001  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 13497  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 15814  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 27264  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 29737  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 17321  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 06495  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 30943  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 09660  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 01727  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 04000  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 23042  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 11063  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 20948  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 09583  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 09141  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 06538  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 31630  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 08741  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 04746  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 04821  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 11208  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 08647  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 15154  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 25693  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 18486  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 01955  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 07151  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 17342  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 27466  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 06212  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 16061  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 15451  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 08823  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 14908  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 05947  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 00087  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 05363  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 17395  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22039  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 00503  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 27733  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 16075  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 03949  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 00788  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22078  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 10023  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 31021  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22273  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 12349  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 09282  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 31475  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 08373  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 10340  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 06946  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 13868  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 04618  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 22367  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 03888  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 02096  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 28253  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 20006  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 16009  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 27464  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 20803  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 21255  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.62832 05254  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 00425  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 30065  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 31010  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 26496  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 25924  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 19305  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 07563  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16509  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 29315  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 09577  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 12071  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 30263  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 09248  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16572  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 03354  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 03890  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 00328  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 13728  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 06888  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 07830  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16007  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 10147  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 28525  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 10493  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 03493  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 11538  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21801  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 23632  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 26843  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 18035  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 01622  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 29094  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21425  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16965  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 18708  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 27627  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 27216  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 27830  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 20096  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 30854  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 15410  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 04045  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 08252  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 08772  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 24259  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 00506  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 12259  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 31591  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21580  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 08159  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16438  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21632  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 18290  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 20384  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 31090  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 03101  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 17674  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 11209  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 26971  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 30684  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 24948  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16554  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 23112  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 08310  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 15208  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 31098  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21828  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 05523  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 11480  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 09653  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 13704  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 14222  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 25804  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 03618  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 25853  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 13258  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16169  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 29331  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 11455  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 31135  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 23790  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 15425  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 16653  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 24215  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 08341  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 31795  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21392  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 07257  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 19860  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 03262  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 21132  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 13880  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 24423  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 27288  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 20924  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 07457  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 22977  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 20411  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 02135  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.78540 05671  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 06745  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10430  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 11306  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 20763  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 15440  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 29681  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 31873  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 20802  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 06899  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 24851  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 02681  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 06914  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 04133  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 27523  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 05197  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 29913  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 18238  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 04809  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 31285  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 01825  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 02753  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 16904  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 00776  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 20544  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 08741  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10105  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 26723  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 17696  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 16334  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 05167  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 28987  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10762  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 30570  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 03474  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 08732  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 02624  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 18117  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 05338  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 31548  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 25361  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 25208  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 12289  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 16867  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 04737  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 06471  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 31381  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 16139  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 07113  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10599  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 03389  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10962  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 01646  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 01428  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 02852  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10984  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 03165  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 23877  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 18912  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 25250  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 26675  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 11132  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 23471  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 31009  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 16660  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 24808  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 17795  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 02676  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 30758  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 11341  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 19573  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 12901  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 15521  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 19170  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 19937  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 31189  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 26021  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 11291  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 02211  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 24514  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 30363  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 05201  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 19728  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 26265  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 08999  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 21527  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 28609  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 00836  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 27564  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 24490  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 06010  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 12161  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 20985  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 15333  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 30860  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 22808  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 24579  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 22265  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 07553  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 10784  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  0.94248 27277  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 29955  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04029  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 19453  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 19382  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 10044  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 25654  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 05332  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 02731  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04331  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 29396  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 08796  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 30680  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 13639  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 18149  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 29552  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04369  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 28688  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 30484  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 27427  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 25037  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 27946  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 00243  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 21355  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 00282  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 27045  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 00628  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 14295  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 14443  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 09540  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 17261  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 00800  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 08648  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 06378  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 08428  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 11628  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 28991  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 05636  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 29108  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 29994  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04655  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 20211  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 26986  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 25961  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 17765  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 05644  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 18630  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 14690  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 03056  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 31678  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 09477  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 06198  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 28786  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 08267  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 17857  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 31781  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 18563  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 13499  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 23395  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 30579  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 17889  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 24356  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 17570  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 06034  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 28292  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 26464  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 19488  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 14419  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 25117  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 30036  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 00951  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 10781  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 01727  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 14881  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 22118  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 28313  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 19117  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 25209  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 01745  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04543  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04011  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 21330  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 15993  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 22741  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 26968  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 26593  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 05786  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 27033  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 03651  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 22757  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 13904  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 09253  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 04876  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 26364  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 11343  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 20955  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 27430  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 23746  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 11260  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 25525  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.09956 03849  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 12684  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 23226  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 24234  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 25624  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 15317  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 22021  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 08113  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 29582  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 21386  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 00702  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 17883  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 14549  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16836  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 24848  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 23925  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16785  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 14942  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 18355  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 00973  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 03024  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 03766  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 14911  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 03916  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 02574  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 25412  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16933  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 26183  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 03482  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 26682  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 22339  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 04463  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 00261  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 26717  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 21400  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 22748  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 20547  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 05278  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 12856  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 13961  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 30162  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 12128  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 28696  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 31788  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 14871  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 11463  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 17420  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 30918  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 08406  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 28615  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 26492  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 23256  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 26825  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 21066  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 26100  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 28019  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 25571  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 27666  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 00992  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 23836  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 19647  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 17649  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 30387  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 17746  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 30304  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 02298  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 30783  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 13544  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 08420  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 25273  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 24463  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 10933  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 14643  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 17583  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 12488  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16846  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 30633  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16616  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 22676  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 29509  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 11727  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 05400  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 22029  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 25226  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 20499  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 11777  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16022  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 05704  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 27794  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 10787  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 02622  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 29152  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 23628  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 16988  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 22778  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 17316  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 25573  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 05255  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 10821  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 18699  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.25664 04053  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 05232  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 08348  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 19808  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 18701  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 05183  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 23624  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 16202  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 02574  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 26759  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 04340  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 16467  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 24253  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 24808  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 14153  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 11048  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 25595  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 02225  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 10758  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 04267  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 31871  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 27419  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 19842  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 12948  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 30377  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 23495  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 17004  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 10572  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 01144  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 02077  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 28954  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 19110  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 31968  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 19293  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 29565  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 10824  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06474  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 01621  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 31265  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 00339  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 09788  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 25628  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 22029  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 14590  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 02622  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 01884  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 17019  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 17676  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 24920  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 13969  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06468  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 10917  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 05307  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 07995  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06468  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 30236  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 13046  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 04865  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 24226  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 26041  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 29810  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 03270  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 29853  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 10423  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 21901  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 00747  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 30673  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06905  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 03259  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06219  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06982  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 17292  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 21131  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 17457  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 20916  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 09284  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 16880  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06869  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 22196  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 18870  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 21898  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06949  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 14175  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 07009  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 09901  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 30421  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 24471  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 12588  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 26040  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 25378  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 31449  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 02715  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 27802  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 11295  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 15820  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 08810  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 13795  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 07625  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 10068  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 18082  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.41372 06170  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 29173  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 13172  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 08789  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 04862  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 25132  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 24041  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 25386  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 07132  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 20966  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 24246  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 11082  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 17084  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 15368  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 08889  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 06223  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 03499  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 16425  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 22065  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 06081  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 16830  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 27228  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 20277  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 05536  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 00053  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 16718  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 31776  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 03241  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 13436  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 30291  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 27329  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 29977  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 08711  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 29547  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 02332  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 26301  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 21212  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 07780  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 04781  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 23894  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 30739  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 16370  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 04969  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 27095  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 07601  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 17706  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 09795  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 29071  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 11649  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 24843  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 11648  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 12677  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 19774  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 05278  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 21037  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 16762  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 31902  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 13379  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 21207  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 16333  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 04382  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 13025  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 22996  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 26252  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 00906  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 08336  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 10970  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 07547  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 28428  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 04204  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 25197  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 02220  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 22740  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 24805  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 12616  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 04949  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 03176  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 23426  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 07960  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 00826  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 21807  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 08433  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 11212  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 29495  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 28035  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 23191  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 22577  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 31997  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 23158  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 12730  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 06701  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 26309  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 05114  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 31329  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 06071  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 02320  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 13058  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 18697  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 11048  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 10110  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  1.57080 23925  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26674  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 04326  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 23959  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 30498  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 11876  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 04532  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 07918  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 27621  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 29610  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 23068  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 03198  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 17883  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 28030  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 09693  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 19750  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26922  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 03010  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 31710  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26221  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 04057  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 29064  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 23313  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 12294  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26917  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 20618  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 09734  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 06393  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 01213  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 00801  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 12808  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 02332  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 28395  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 29579  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 16413  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 17504  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 13944  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 19740  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 14720  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 10803  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 31659  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 15466  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 30899  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26990  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 23539  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 22226  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 13154  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 00963  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 13968  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 12950  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 02459  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 03792  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 15091  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 28723  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 31822  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 00565  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 15091  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 24347  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 15781  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 01973  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 13110  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 06096  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 05557  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 07354  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 22802  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 31205  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 11278  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 19341  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 00810  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 28162  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26311  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 12469  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 15760  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 11452  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 13900  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 18360  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 23129  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 30882  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 19251  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 19313  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 09247  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 21024  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 11439  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 25189  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26873  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 30284  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 31404  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 30951  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 12264  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 20867  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 26691  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 04556  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 27912  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 14953  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 21258  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 11246  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 23669  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 31729  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 27078  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 00403  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.09440 19481  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 29863  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 31296  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 06044  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 17142  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 03909  0.15000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 10696  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 06417  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 04837  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 21528  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 18698  0.30000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 02632  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 28065  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 00021  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 15438  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 24737  0.45000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 24925  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 05096  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 01577  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 14318  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 16327  0.60000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19486  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 07548  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 24700  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 15908  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 31507  0.75000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 24007  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 30669  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 23993  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 14388  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 28696  0.90000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 14604  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 00495  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 27954  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19954  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 30204  1.05000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 14334  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 15269  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 13464  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 00819  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 17754  1.20000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 07724  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 05293  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 11917  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 09272  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 00714  1.35000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 09952  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 02709  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 17512  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19737  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 03349  1.50000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 21533  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 07481  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 16582  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 21789  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 20835  1.65000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 10066  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 13489  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 06586  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 25810  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 30337  1.80000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 03239  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 24823  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 13107  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 18597  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 24132  1.95000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 31483  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 06012  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19291  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 05147  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 03105  2.10000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19165  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 28971  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 09889  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 13151  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 26710  2.25000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 22243  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19932  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 15758  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 00963  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 20551  2.40000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 01604  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 16788  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 23839  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 00264  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19502  2.55000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 19408  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 22535  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 06803  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 27963  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 02964  2.70000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 02795  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 11091  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 07744  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 27769  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 06660  2.85000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 17293  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 17040  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 22810  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 21486  3.00000
+
+type = corr_errors
+lx = 512
+ly = 512
+params =  6.00000  3.00000  0.00000  2.61799 16041  3.00000
