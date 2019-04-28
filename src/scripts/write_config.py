@@ -18,23 +18,21 @@ def write_option(fout, name, value):
     fout.write(PARAM_STR.format(name, value))
 
 ################ change these ################
-FILENAME = "corr_big.txt"
+FILENAME = "corr_sig.txt"
 
-# for sigma put 6 values between 0 and pi/2 and two between pi/2 and pi
-N_SIGMAS = 12
-sigmas = [np.pi / 2 / (N_SIGMAS-2) * (i+1) for i in range(N_SIGMAS-2)] + [4 * np.pi / 6, 5 * np.pi / 6]
+# write the RMS errors
+sigmas = [(i+1)/12 * np.pi for i in range(12)]
 print(sigmas)
-# for correlation length put 20 values uniformly from 0 to 3.0
-N_LS = 20
-ls = [3 / N_LS * (i+1) for i in range(N_LS)]
+# for each, write the correlation lengths
+ls = [(i+1) * 0.25 for i in range(5)]
 print(ls)
 
 # repeat each this many times - to deal with the randomness
 N_DIFF_SHAPES = len(ls) * len(sigmas)
-N_REPEAT = 5
+N_REPEAT = 10
 
-NX, NY = 2**12, 2**12
-DATA_PREFIX = os.path.join(DATA_DIR, "corr_big")
+NX, NY = 2**13, 2**13
+DATA_PREFIX = os.path.join(DATA_DIR, "corr_sig")
 TASKS = "params fwhp fwhp_y central_amplitude out_lims"
 REL_SENS, ABS_SENS = 0.01, 0
 

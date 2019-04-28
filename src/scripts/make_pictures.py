@@ -9,20 +9,16 @@ import matplotlib
 
 from util import *
 
-COLORMAP = matplotlib.cm.plasma
+COLORMAP = matplotlib.cm.inferno
 PHASE_COLORMAP = matplotlib.cm.bwr
-FIGSIZE = (12, 9)
+FIGSIZE = (9, 8)
 FONTSIZE = 16
 
-def colour_plot(filename, title, colorbar=False, logdata=False, colormap=COLORMAP):
+def colour_plot(data, limits, title, colorbar=False, colormap=COLORMAP):
     matplotlib.rcParams.update({'font.size': FONTSIZE})
-    
-    xlim, ylim, data = read_image(filename)
-    if logdata:
-        data = np.log(data)
-    
+        
     fig, ax = plt.subplots(figsize=FIGSIZE)
-    im = ax.imshow(data, cmap=colormap, interpolation='nearest', extent=(xlim+ylim))
+    im = ax.imshow(data, cmap=colormap, interpolation='nearest', extent=limits)
 
     # draw colorbar
     if colorbar:
@@ -31,7 +27,7 @@ def colour_plot(filename, title, colorbar=False, logdata=False, colormap=COLORMA
     ax.set_title(title)
 
 
-SAVE_DIR = os.path.join("fig", "gauss")
+SAVE_DIR = os.path.join("fig", "error_pics")
 
 if __name__ == "__main__":
     os.makedirs(SAVE_DIR, exist_ok=True)
@@ -44,14 +40,31 @@ if __name__ == "__main__":
 
     # uncomment this to automagically plot everything created by a certain config
     # otherwise do it manually with your own tweaks
-    n_shapes, prefix, figs = parse_config("config/correlated.txt")
+    n_shapes, prefix, figs = parse_config("config/errors.txt")
     for i in range(n_shapes):
         for fig in figs:
             filename = prefix + str(i) + fig + ".txt"
-            title = "{:d} {:s}".format(i+1, fig.replace("_", " "))
+            title = fig.replace("_", " ").replace("in", "mirror").replace("out", "image").replace("abs", "amplitude")
+
+            # read the data
+            xlim, ylim, data = read_image(filename)
+            coord_lim = xlim+ylim
+            
+            # select the colormap
             if fig.endswith("phase"):
                 colormap = PHASE_COLORMAP
             else:
                 colormap = COLORMAP
-            colour_plot(filename, title, colorbar=True, colormap=colormap)
+            
+            # relimit to make all the same size
+            if fig.startswith("out"):
+                idx_lim, coord_lim = relim(data.shape, xlim+ylim, (-4.1, 4.1, -4.1, 4.1))
+                min_row, max_row, min_col, max_col = idx_lim
+                data = np.sqrt(data[min_row:max_row, min_col:max_col])
+
+            colour_plot(data, coord_lim, title, colorbar=True, colormap=colormap)
+            
+            # save the figure
+            figname = filename.replace(".txt", ".png").replace("data/", "")
+            plt.savefig(os.path.join(SAVE_DIR, figname), boox_inches="tight")
         plt.show()
