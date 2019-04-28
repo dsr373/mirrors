@@ -1,7 +1,7 @@
 nx = 8192
 ny = 8192
 prefix = data/corr
-tasks = print_in_phase print_out_abs print_out_phase
+tasks = print_in_phase print_out_abs fwhp fwhp_y out_lims
 rel_sens = 0.01
 abs_sens = 0
 n_shapes = 6
