@@ -48,10 +48,10 @@ if __name__ == "__main__":
     for i in range(n_shapes):
         for fig in figs:
             filename = prefix + str(i) + fig + ".txt"
-            title = "{:d} {:s}".format(i, fig.replace("_", " "))
+            title = "{:d} {:s}".format(i+1, fig.replace("_", " "))
             if fig.endswith("phase"):
                 colormap = PHASE_COLORMAP
             else:
                 colormap = COLORMAP
             colour_plot(filename, title, colorbar=True, colormap=colormap)
-    plt.show()
+        plt.show()
