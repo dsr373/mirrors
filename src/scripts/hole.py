@@ -63,6 +63,8 @@ if __name__ == "__main__":
     xs, ys, h_abs = read_image("data/hole2out_abs.txt");
     (row_min, row_max, col_min, col_max), newlims = relim(h_abs.shape, xs+ys, xlim+ylim)
     h_abs = h_abs[row_min:row_max, col_min:col_max]
+    colour_plot(np.sqrt(h_abs), newlims, "Holed mirror image", colorbar=True)
+    plt.savefig(os.path.join(SAVE_DIR, "image.png"), bbox_inches='tight')
 
     colour_plot(np.abs(diff - h_abs), newlims, "Holed mirror delta", colorbar=True)
     plt.savefig(os.path.join(SAVE_DIR, "delta2.png"), bbox_inches='tight')

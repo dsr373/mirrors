@@ -195,6 +195,12 @@ def plot_amp_v_sig(data_dict, runs=None):
         print("Run: l_c = {:.4f}".format(key))
         print(FIT_INFO.format(coefs[0], np.sqrt(covar[0, 0]),
               coefs[1], np.sqrt(covar[1, 1])))
+        
+        # print the decay width sigma_psi
+        slope, err_slope = coefs[0], np.sqrt(covar[0, 0])
+        sig_psi = np.sqrt(- 1 / 2 / slope)
+        err_sig_psi = 1/2 * sig_psi * err_slope / (- slope)
+        print("sig_psi = {:4g} +/- {:4g}".format(sig_psi, err_sig_psi))
 
         ax.plot(xs[idxs], np.polyval(coefs, xs[idxs]), '-', color=scatter.get_color())
 

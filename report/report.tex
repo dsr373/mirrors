@@ -40,7 +40,8 @@
 \predate{\begin{center} \large }
 \postdate{\end{center}}
 
-
+% === Minted ===
+\setminted{breaklines,linenos}
 
 \begin{document}
 \title{Optics with Imperfect Mirrors\\Part II Computational Project}
@@ -49,7 +50,7 @@
 \maketitle
 
 \abstract{
-    Write fancy abstract here TODO.
+A computational study of the effects of deformations in the surface of telescope mirrors is performed. The far-field diffraction pattern of mirrors is computed in a \CC{} program using discrete Fourier transforms. The depth of the defects causes a decrease in the central intensity of the diffraction pattern, thus raising the lower bound on the brightness of observable objects. The central amplitude follows: $\psi_0 \propto \exp(-(\sigma_\eps/\lambda)^2 / 2\sigma_\psi^2)$, where $\sigma_\eps$ quantifies the typical defect depth. The spatial distribution of defects affects resolution, with smaller and denser deformations causing more spread-out fluctuations in the image.
 }
 
 \noindent\rule{0.85\textwidth}{0.4pt}
@@ -89,7 +90,7 @@ where $x'$ and $y'$ are distances that would span a physical image plane, and $k
 \begin{equation}\label{eqn:diff}
     \psi(p, q) \propto \iint A(x, y) \exp \left( ipx + iqy \right) dx dy,
 \end{equation}
-which is just a Fourier transform of $A$. In the figures of diffraction patterns I produce, the axes will be $p$ and $q$.
+which is just a Fourier transform of $A$. The dimensions of the diffraction pattern will always be given in terms of $p$ and $q$, and thus have units of \si{\per\metre}.
 
 NB: Seemingly we've also eliminated the dependence on $\lambda$, but that will be needed again in the analysis of dented mirrors (Section~\ref{sec:analysis:bent}).
 
@@ -104,7 +105,7 @@ The fact that the image is a Fourier transform of the aperture function is very 
 
 Minor adaptations are required to use the DFT algorithms in the library. The 1D discrete Fourier transform is defined as~\cite[Chapter 12.1]{NumRecipes}:
 \begin{equation}
-    H_k \propto \sum_{n=0}^{N-1} h_n\ \exp{\left( 2\pi{}i \frac{kn}{N} \right)},
+    H_k \propto \sum_{n=0}^{N-1} h_n\ \exp( 2\pi{}i \frac{kn}{N} ),
 \end{equation}
 with the corresponding frequency values:
 \begin{equation}\label{eqn:fk}
@@ -112,7 +113,7 @@ with the corresponding frequency values:
 \end{equation}
 where $\Delta$ is the sampling interval of the original signal. Comparing to a 1D discrete form of the diffraction integral (Equation~\ref{eqn:diff}):
 \begin{equation}
-    \psi_k \propto \sum_{n=0}^{N-1} A_n \exp{\left( i p_k x_n \right)}, \qq{where} x_n = n \Delta
+    \psi_k \propto \sum_{n=0}^{N-1} A_n \exp( i p_k x_n ), \qq{where} x_n = n \Delta
 \end{equation}
 we see that we need to rescale:
 \begin{equation}
@@ -184,24 +185,26 @@ Mirror surfaces could have deformations in them due to manufacturing errors, alt
 
 We are going to investigate the effect of two types of phase errors:
 \begin{itemize}
-    \item without spatial correlation, with a given RMS
-    \item spatially correlated, to simulate bends in the mirror.
+    \item without spatial correlation, with a given RMS $\sigma_\eps$
+    \item spatially correlated on length $l_c$, to simulate deformations in the mirror.
 \end{itemize}
 
-The expected effect of these errors is to decrease the central intensity of the image, as they introduce decoherence to the light.
+The expected effect of these errors is to decrease the central intensity of the image, as they introduce decoherence to the light. We can also expect that errors on smaller correlation lengths will cause a wider spread of fluctuations in the beam pattern.
 
 \section{Implementation}\label{sec:impl}
-The implementation consists of several different parts, discussed in the subsections that follow. The overall logic flow of the program is:
-The executable is invoked with one argument, pointing to a configuration file. The instructions therein are read and executed in order, thus computing diffraction patterns for the described apertures. The results are printed to disk, and figures can then be produced by invoking the respective Python scripts for each problem.
+More complete implementation details and instructions are found in the file \texttt{readme.md}. This section discusses details that are critical to the performance of the program.
 
-\CC{} source files are in \texttt{src/cpp}, and plotting scripts in \texttt{src/scripts}. Data is written by convention to the \texttt{data} directory, and figures to \texttt{fig}.
+The overall logic flow of the program is:
+The executable is invoked with one argument, naming a ``configuration file''. The instructions therein are read and executed in order, thus computing diffraction patterns for the described apertures. The results are printed to disk, and figures can then be produced by invoking the respective Python scripts for each problem.
+
+\CC{} source files are in \texttt{src/cpp}, and plotting scripts in \texttt{src/scripts}. Sample configuration files can be found in \texttt{config}.
+
+Note that, besides \texttt{FFTW}, I also used the GNU Scientific Library~\cite{gsl}, mainly for random number generators and statistics.
 
 \subsection{Describing Apertures and Images}
 In the \texttt{FFTW} library two-dimensional $N_x$ by $N_y$ arrays are represented as one-dimensional arrays of complex numbers (the inbuilt \texttt{complex} type~\cite{cppcomplex}) of length $N_x \times N_y$~\cite[Section 3.2]{fftw}.
 
 Because working directly with a 1D representation of 2D data can be clunky, I decided to wrap this functionality in a class called \texttt{Array2d}, declared in the header with the same name. The class stores the data internally in the 1D array representation, but has a more user-friendly interface. It defines the \texttt{[i][j]} and \texttt{(i, j)} operators for easy access to the element in the $i^{th}$ row and $j^{th}$ column.
-
-\paragraph{FFTW compatibility} The method \texttt{ptr()} returns a pointer to the beginning of the array, cast to \texttt{fftw\_complex} type. This pointer can be passed to functions in the \texttt{FFTW} library~\cite[Section 4]{fftw}.
 
 \paragraph{Memory allocation} One special feature of this class that breaks with convention is that the (compiler generated) copy constructor only performs a shallow copy, copying the pointer to the data array, but not the data itself. Only the explicitly defined constructor \mintinline{C++}{Array2d::Array2d(int nx, int ny)} uses \texttt{fftw\_alloc\_complex} to allocate new memory for the array. This means that the user of the class has finer control over where memory is allocated, which is important in the case of large arrays. For example, using IEEE double-precision floating point, which occupies 64 bits of memory, a $2^{13} \times 2^{13}$ array of complex numbers occupies around \SI{1}{GB} of memory.
 
@@ -217,6 +220,9 @@ Configuration files are stored by convention in the \texttt{config} directory, a
     \item \texttt{n\_shapes}, the number of shapes
     \item for each shape, its properties: \texttt{type} (the name of the aperture generator), \texttt{lx} and \texttt{ly} (the domain of $A(x,y)$), and \texttt{params}, a list of parameters of the shape, e.g.\ the dimensions or the taper of Gaussian illumination.
 \end{itemize}
+
+\subsection{Parallelization}
+The program can use multiple threads to process several shapes in parallel. The variable \texttt{N\_WORKERS} in \texttt{main.cpp} controls the number of threads (``workers'') used. Care must be taken to not run out of memory, as each thread allocates between 2 and 4 \texttt{Array2d} objects. The \texttt{FFTW} library only allows the creation of one Fourier transform plan at a time~\cite[Section 5]{fftw}. This means that a larger number of threads has a larger initialization time, since each worker thread creates its own plans.
 
 \subsection{The \texttt{fftshift} operation}
 The result of this operation is shifting the zero-frequency component of the spectrum from the beginning to the middle of an array. This takes advantage of the fact that the Fourier frequencies (Equation~\ref{eqn:fk}) are cyclic with period $1/\Delta$~\cite[Section~12.1.2]{NumRecipes}. Applying this is required to see a diffraction pattern as it would appear on a screen.
@@ -308,17 +314,22 @@ Figure~\ref{fig:gpic} shows the images produced by illuminating the same mirror 
 \subsection{Central hole}\label{sec:res:hole}
 \begin{figure}
     \centering
-    \begin{minipage}{0.6\textwidth}
+    \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/hole/delta2.png}
+        \caption{The diffraction pattern of a mirror with a central hole of radius $r=\SI{0.5}{m}$ was subtracted from the difference of diffraction patterns of a complete mirror and just the central hole.}\label{fig:hole-delta}
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.37\textwidth}
-        \caption{The diffraction pattern of a mirror with a central hole of radius $r=\SI{0.5}{m}$ was subtracted from the difference of diffraction patterns of a complete mirror and just the central hole.}\label{fig:hole}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/hole/image.png}
+        \caption{diffraction pattern of holed mirror. The amplitude was raised to the power $1/2$ for better visibility.}\label{fig:hole}
     \end{minipage}
 \end{figure}
 
-Figure~\ref{fig:hole} shows the results of the calculation suggested in Section~\ref{sec:analysis:hole}. We can see the amplitude of the difference reaching at most around \num{2e-5}. In the original diffraction patterns, the central amplitude is on the order of $10^4$, so indeed the two patterns are equal to a very high accuracy. The differences are on the order of the precision to which the numbers were printed before plotting, around $10^{-6}$.
+The diffraction pattern of a mirror with a central hole is seen in Figure~\ref{fig:hole}. The expected irregular rings are visible.
+
+Figure~\ref{fig:hole-delta} shows the results of the calculation suggested in Section~\ref{sec:analysis:hole}. We can see the amplitude of the difference reaching at most around \num{2e-5}. In the original diffraction patterns, the central amplitude is on the order of $10^4$, so indeed the two patterns are equal to a very high accuracy. The differences are on the order of the precision to which the numbers were printed before plotting, around $10^{-6}$.
 
 This confirms that the F.T. operations we use are linear to a good accuracy.
 
@@ -328,7 +339,7 @@ This confirms that the F.T. operations we use are linear to a good accuracy.
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/rand/int}
-        \caption{dependence of the central amplitude on the RMS phase (wavefront) error. Note logarithmic scale of the vertical axis.}\label{fig:rand:int}
+        \caption{dependence of the central amplitude on phase (wavefront) error. Note logarithmic scale of the vertical axis.}\label{fig:rand:int}
     \end{subfigure}%
     \hfill
     \begin{subfigure}{0.45\textwidth}
@@ -339,8 +350,10 @@ This confirms that the F.T. operations we use are linear to a good accuracy.
     \caption{}\label{fig:rand}
 \end{figure}
 
-Figure~\ref{fig:rand} shows how properties of the image are affected by random errors. The with of the central disc is unaffected, but the central amplitude ($\psi_0$) decreases with the RMS error $\sigma_\eps$. When $\sigma_\eps = \sqrt{\expval{\Delta\ph^2}} \rightarrow \pi$, the amplitude tends to zero. The linear relationship in Fig.~\ref{fig:rand:int} indicates that the amplitude is a Gaussian function of the wavefront error:
-\begin{equation}
+Typical mirror and image shapes for random phase errors are seen in Figure~\ref{fig:randpic}.
+
+Figure~\ref{fig:rand} shows how properties of the image are affected by random errors. The width of the central disc is unaffected, but the central amplitude ($\psi_0$) decreases with the RMS error $\sigma_\eps$. When $4\pi\sigma_\eps / \lambda = \sigma_\ph \rightarrow \pi$, the amplitude tends to zero. The linear relationship in Fig.~\ref{fig:rand:int} indicates that the amplitude is a Gaussian function of the wavefront error:
+\begin{equation}\label{eqn:amp-v-rms}
     \psi_0 \propto \exp \left( - \frac{(\sigma_\eps / \lambda)^2}{2 \sigma_\psi^2} \right),
 \end{equation}
 with
@@ -369,28 +382,79 @@ The implication for telescopes is that larger wavefront errors will decrease the
 
 In Figure~\ref{fig:rms:depth} we see that the produced RMS phase error is close to the desired one for phases of up to $\frac{\pi}{2}$. It saturates to about \SI{1.8}{\radian} at larger desired $\sigma_\eps$, probably due to some numbers falling outside the $(-\pi,\ \pi)$ range, and overflowing when they are converted to complex phase. This is expected behaviour.
 
-In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on correlation length, which confirms normalisation is correct.
+Figure~\ref{fig:rms:length} shows that the RMS wavefront error does not depend on correlation length, which confirms normalisation is correct.
 
 \subsection{Spatially correlated errors}\label{sec:res:corr}
 \begin{figure}
     \centering
-    \begin{subfigure}{0.47\textwidth}
+    \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/corr/amp.pdf}
-        \caption{dependence of central amplitude on the RMS of correlated phase errors.}
-    \end{subfigure}%
-    \hfill
-    \begin{subfigure}{0.47\textwidth}
+        \caption{dependence of central amplitude on the RMS of correlated phase errors, for different defect lengths (in meters). Values are normalised to the smallest in the series.}\label{fig:corr:amps}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/corr/dist.pdf}
-        \caption{farthest distance from the centre where an amplitude at least \SI{1}{m} of the central one is found, as a function of error correlation length (or defect `width').}
-    \end{subfigure}
-    \caption{}
-    \label{}
+        \caption{farthest distance from the centre where an amplitude at least \SI{1}{\percent} of the central one is found, as a function of error correlation length (or defect `width'). Error bars are the standard deviation of 20 runs. Three of the series are seen to saturate at the same value, reaching the maximum extent of the discrete Fourier transform.}\label{fig:corr:dist}
+    \end{minipage}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/corr/fwhp.pdf}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \caption{the full width at half power as a function of correlation length, for different values of the RMS wavefront error. Error bars are the standard deviation of 20 runs.}\label{fig:corr:fwhp}
+    \end{minipage}
+\end{figure}
 
-\newgeometry{top=1cm, left=0.5cm, right=0.5cm}
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{ c | c }
+        Defect length $l_c$ & Decay width $\sigma_\psi$ \\
+        \hline
+        \SI{0.25}{m} & $\num{79.6 \pm 0.2 e-3}$ \\
+        \SI{0.50}{m} & $\num{79.8 \pm 0.3 e-3}$ \\
+        \SI{0.75}{m} & $\num{80.0 \pm 0.8 e-3}$ \\
+        \SI{1.00}{m} & $\num{81.6 \pm 0.9 e-3}$ \\
+        \SI{1.25}{m} & $\num{83 \pm 1 e-3}$ \\
+    \end{tabular}
+    \caption{decay widths of on-axis amplitude with wavefront error.}\label{tab:corr-amp}
+\end{table}
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{ c | c }
+        RMS phase ($4\pi\sigma_\eps/\lambda$) & exponent ($n$) \\
+        \hline
+        $\SI{\pi/6}{\radian}$ & $\num{0.736 \pm 0.008}$ \\
+        $\SI{\pi/3}{\radian}$ & $\num{0.801 \pm 0.008}$ \\
+        $\SI{\pi/2}{\radian}$ & $\num{0.84 \pm 0.01}$ \\
+        $\SI{2\pi/3}{\radian}$ & $\num{0.93 \pm 0.02}$ \\
+        $\SI{5\pi/6}{\radian}$ & $\num{0.98 \pm 0.04}$ \\
+    \end{tabular}
+    \caption{exponents in the relation of \SI{1}{\percent} decay distance with defect correlation length.}\label{tab:corr-dist}
+\end{table}
+
+Finally, we explore the effects of finite-width defects in the mirror surface. Figure~\ref{fig:corrpic} shows some typical diffraction patterns at different defect lengths.
+
+Figure~\ref{fig:corr:amps} shows that the exponential relationship in Equation~\ref{eqn:amp-v-rms} does not hold for the entire range $4\pi\sigma_\eps/\lambda \in (0, \pi)$, but rather only to around $3\pi/4$. The decay rates $\sigma_\psi$ of amplitude with wavefront error are in Table~\ref{tab:corr-amp}. At small correlation lengths, these are similar to the one found in Section~\ref{sec:res:rand}, which is good limiting behaviour.
+
+Another interesting relation emerges: I measured the maximum distance from the centre it takes the amplitude to decay to \SI{1}{\percent} of the maximum value. The results in Figure~\ref{fig:corr:dist} show that this decay distance ($p_{1/100}$) decreases with the defect width, and increases with the wavefront error, i.e.\ with the depth. The fitted lines show that:
+\begin{equation}
+    p_{1/100} \propto l_c^{-n}, \qq{with} n \in (2/3, 1).
+\end{equation}
+The calculated values of the exponent $n$ are in Table~\ref{tab:corr-dist}.
+
+For telescope manufacturing, the implication is that, at the same wavefront precision, many narrow defects will spread energy farther from the centre of the diffraction pattern compared to fewer wider defects. In the light of the inverse relationship between the sizes of mirror shapes and their Fourier Transforms, this makes intuitive sense.
+
+Interestingly, the full width at half-power of the central diffraction peak was found to be unaffected by the correlation length, at least in the range of lengths studied (see Figure~\ref{fig:corr:fwhp}). A possible explanation is that, since the typical size of the defects is smaller than the mirror size ($l_c \in$ \SIrange{0.1}{1.5}{\metre}, while $R = \SI{6}{\metre}$), their effects on the image are on a larger length scale than the central maximum.
+
+The on-axis amplitude was also found to not vary with the defect size. If the normalisation in Figure~\ref{fig:corr:amps} is removed, all the data series approximately coincide. Again, the intuitive explanation would be that, since $\psi_0$ is the integral of the aperture function (i.e.\ in Equation~\ref{eqn:diff} the exponent is $0$), the spatial distribution of complex phase is not important.
+
+\newgeometry{left=0.5cm, right=0.5cm}
 \begin{figure}
     \centering
     \begin{subfigure}{0.5\textwidth}
@@ -471,64 +535,76 @@ In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on corr
         \caption{$\sigma_{\eps} = \pi/6 \qq*{,} l_c = \SI{0.8}{m}$}\label{fig:corrpic:4}
     \end{subfigure}
 
-    \caption{Typical correlated error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see.}\label{fig:corrpic}
+    \caption{Typical correlated error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see. Note that at larger correlation length, the central peak is absent.}\label{fig:corrpic}
 \end{figure}
 \restoregeometry{}
 
 \section{Conclusion}\label{sec:conclusion}
+I performed a computational study of the effects of wavefront error, such as those produced by deviations from the parabolic shape, on the images produced by telescope mirrors. A program was written in \CC{} to calculate the far-field diffraction pattern of a general mirror shape using a Fast Fourier Transform algorithm. It was tested with known mirror shapes and found to perform as expected.
+
+The effect of gaussian-tapered illumination on the diffraction pattern was investigated. It was found to slightly widen the central maximum and decrease the peak intensity, but greatly reduce the sharpness of secondary rings found in a typical Airy pattern. A central hole, such as the one due to a secondary mirror, was found to have minimal effects on the beam.
+
+The effects of two types of wavefront error were studied: random and spatially correlated. In both cases, an increase in the typical depth of the defects, i.e.\ the RMS phase error, was found to decrease the central amplitude of the diffraction pattern, thus decreasing the apparent brightness of objects seen through the telescope.
+
+The spatial distribution of errors was seen to affect the spatial distribution of fluctuations in the image, but not its brightness or the width of the central maximum. For wider deformations, the fluctuations were concentrated closer to the central peak, whereas for denser and smaller deformations the fluctuations were spread out farther in the image plane. Thus, small and dense deformations have worse effects on the telescope's resolution.
+
+\paragraph{Word count:} \textbf{2949}
 
 \printbibliography{}
 \pagebreak
 
 \appendix
+\newgeometry{top=1cm,left=1cm,right=1cm}
 \section{Code listing}
 \subsection{Numerical routines in C++}
 
-% \subsubsection{src/cpp/main.cpp}
-% \inputminted[linenos,breaklines]{C++}{../src/cpp/main.cpp}
+\subsubsection{src/cpp/main.cpp}
+\inputminted[fontsize=\footnotesize]{C++}{../src/cpp/main.cpp}
 
-% \subsubsection{src/cpp/util.h}
-% \inputminted[linenos,breaklines]{C++}{../src/cpp/util.h}
+\subsubsection{src/cpp/util.h}
+\inputminted[fontsize=\footnotesize]{C++}{../src/cpp/util.h}
 
-% \subsubsection{src/cpp/util.cpp}
-% \inputminted[linenos,breaklines]{C++}{../src/cpp/util.cpp}
+\subsubsection{src/cpp/util.cpp}
+\inputminted[fontsize=\footnotesize]{C++}{../src/cpp/util.cpp}
 
-% \subsubsection{src/cpp/array2d.h}
-% \inputminted[linenos,breaklines]{C++}{../src/cpp/array2d.h}
+\subsubsection{src/cpp/array2d.h}
+\inputminted[fontsize=\footnotesize]{C++}{../src/cpp/array2d.h}
 
-% \subsubsection{src/cpp/array2d.cpp}
-% \inputminted[linenos,breaklines]{C++}{../src/cpp/array2d.cpp}
+\subsubsection{src/cpp/array2d.cpp}
+\inputminted[fontsize=\footnotesize]{C++}{../src/cpp/array2d.cpp}
 
-% \subsubsection{src/cpp/generators.cpp}
-% \inputminted[linenos,breaklines]{C++}{../src/cpp/generators.cpp}
+\subsubsection{src/cpp/generators.cpp}
+\inputminted[fontsize=\footnotesize]{C++}{../src/cpp/generators.cpp}
 
 \subsection{Plotting in Python}
 
-% \subsubsection{src/scripts/util.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/util.py}
+\subsubsection{src/scripts/util.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/util.py}
 
-% \subsubsection{src/scripts/write\_config.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/write_config.py}
+\subsubsection{src/scripts/write\_config.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/write_config.py}
 
-% \subsubsection{src/scripts/make\_pictures.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/make_pictures.py}
+\subsubsection{src/scripts/make\_pictures.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/make_pictures.py}
 
-% \subsubsection{src/scripts/tests.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/tests.py}
+\subsubsection{src/scripts/tests.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/tests.py}
 
-% \subsubsection{src/scripts/gauss.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/gauss.py}
+\subsubsection{src/scripts/gauss.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/gauss.py}
 
-% \subsubsection{src/scripts/hole.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/hole.py}
+\subsubsection{src/scripts/hole.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/hole.py}
 
-% \subsubsection{src/scripts/rand.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/rand.py}
+\subsubsection{src/scripts/rand.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/rand.py}
 
-% \subsubsection{src/scripts/rms_test.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/rms_test.py}
+\subsubsection{src/scripts/rms\_test.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/rms_test.py}
 
-% \subsubsection{src/scripts/corr.py}
-% \inputminted[linenos,breaklines]{Python}{../src/scripts/corr.py}
+\subsubsection{src/scripts/corr.py}
+\inputminted[fontsize=\footnotesize]{Python}{../src/scripts/corr.py}
+
+\restoregeometry{}
 
 \end{document}
