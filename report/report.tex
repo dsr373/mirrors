@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass{article}
 
 \usepackage[scale=0.75,a4paper]{geometry}
 \usepackage[utf8]{inputenc}
@@ -266,12 +266,13 @@ Figure~\ref{fig:typ} shows that the diffraction patterns look as expected. Most 
 \subsection{Gaussian Illumination}\label{sec:res:gauss}
 \begin{figure}
     \centering
-    \begin{subfigure}{0.5\textwidth}
+    \begin{subfigure}{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/gauss/size.pdf}
         \caption{Dependence of full width at half maximum on aperture taper. The fit is for $R/\sigma > 3$.}\label{fig:gauss:size}
     \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
+    \hfill
+    \begin{subfigure}{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{pictures/gauss/int.pdf}
         \caption{Central intensity variation with aperture taper.}\label{fig:gauss:int}
@@ -338,32 +339,6 @@ This confirms that the F.T. operations we use are linear to a good accuracy.
     \caption{}\label{fig:rand}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \begin{subfigure}{\textwidth}
-        \begin{minipage}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pictures/error_pics/errors0in_phase.png}
-        \end{minipage}%
-        \hfill
-        \begin{minipage}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pictures/error_pics/errors0out_abs.png}
-        \end{minipage}
-        \caption{$\sigma_{\eps} = \pi/6$}\label{fig:randpic:1}
-    \end{subfigure}
-
-    \begin{subfigure}{\textwidth}
-        \begin{minipage}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pictures/error_pics/errors1in_phase.png}
-        \end{minipage}%
-        \hfill
-        \begin{minipage}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{pictures/error_pics/errors1out_abs.png}
-        \end{minipage}
-        \caption{$\sigma_{\eps} = \pi/2$}\label{fig:randpic:2}
-    \end{subfigure}
-    \caption{Typical random error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see.}\label{fig:randpic}
-\end{figure}
-
 Figure~\ref{fig:rand} shows how properties of the image are affected by random errors. The with of the central disc is unaffected, but the central amplitude ($\psi_0$) decreases with the RMS error $\sigma_\eps$. When $\sigma_\eps = \sqrt{\expval{\Delta\ph^2}} \rightarrow \pi$, the amplitude tends to zero. The linear relationship in Fig.~\ref{fig:rand:int} indicates that the amplitude is a Gaussian function of the wavefront error:
 \begin{equation}
     \psi_0 \propto \exp \left( - \frac{(\sigma_\eps / \lambda)^2}{2 \sigma_\psi^2} \right),
@@ -373,6 +348,8 @@ with
     \sigma_\psi = \num{79.56 \pm 0.03 e-3}
 \end{equation}
 given by the line slope.
+
+The implication for telescopes is that larger wavefront errors will decrease the apparent brightness of the observed objects.
 
 \subsection{Error correlation tests}\label{sec:res:rms}
 \begin{figure}
@@ -397,29 +374,106 @@ In Figure~\ref{fig:rms:length} we see that the RMS error does not depend on corr
 \subsection{Spatially correlated errors}\label{sec:res:corr}
 \begin{figure}
     \centering
-    \begin{subfigure}{\textwidth}
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/corr/amp.pdf}
+        \caption{dependence of central amplitude on the RMS of correlated phase errors.}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pictures/corr/dist.pdf}
+        \caption{farthest distance from the centre where an amplitude at least \SI{1}{m} of the central one is found, as a function of error correlation length (or defect `width').}
+    \end{subfigure}
+    \caption{}
+    \label{}
+\end{figure}
+
+
+\newgeometry{top=1cm, left=0.5cm, right=0.5cm}
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
         \begin{minipage}{0.5\textwidth}
+            \centering
             \includegraphics[width=\textwidth]{pictures/error_pics/errors0in_phase.png}
         \end{minipage}%
         \hfill
         \begin{minipage}{0.5\textwidth}
+            \centering
             \includegraphics[width=\textwidth]{pictures/error_pics/errors0out_abs.png}
         \end{minipage}
         \caption{$\sigma_{\eps} = \pi/6$}\label{fig:randpic:1}
-    \end{subfigure}
-
-    \begin{subfigure}{\textwidth}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.5\textwidth}
         \begin{minipage}{0.5\textwidth}
+            \centering
             \includegraphics[width=\textwidth]{pictures/error_pics/errors1in_phase.png}
         \end{minipage}%
         \hfill
         \begin{minipage}{0.5\textwidth}
+            \centering
             \includegraphics[width=\textwidth]{pictures/error_pics/errors1out_abs.png}
         \end{minipage}
         \caption{$\sigma_{\eps} = \pi/2$}\label{fig:randpic:2}
     \end{subfigure}
     \caption{Typical random error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see.}\label{fig:randpic}
 \end{figure}
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors2in_phase.png}
+        \end{minipage}%
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors2out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/6 \qq*{,} l_c = \SI{0.1}{m}$}\label{fig:corrpic:1}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.5\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors3in_phase.png}
+        \end{minipage}%
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors3out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/6 \qq*{,} l_c = \SI{0.3}{m}$}\label{fig:corrpic:2}
+    \end{subfigure}
+
+    \begin{subfigure}{0.5\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors4in_phase.png}
+        \end{minipage}%
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors4out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/6 \qq*{,} l_c = \SI{0.5}{m}$}\label{fig:corrpic:3}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{0.5\textwidth}
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors5in_phase.png}
+        \end{minipage}%
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{pictures/error_pics/errors5out_abs.png}
+        \end{minipage}
+        \caption{$\sigma_{\eps} = \pi/6 \qq*{,} l_c = \SI{0.8}{m}$}\label{fig:corrpic:4}
+    \end{subfigure}
+
+    \caption{Typical correlated error aperture functions and resulting diffraction patterns. Amplitudes are raised to the power $1/2$ to make features easier to see.}\label{fig:corrpic}
+\end{figure}
+\restoregeometry{}
 
 \section{Conclusion}\label{sec:conclusion}
 
