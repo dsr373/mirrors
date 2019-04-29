@@ -29,9 +29,9 @@ print(ls)
 
 # repeat each this many times - to deal with the randomness
 N_DIFF_SHAPES = len(ls) * len(sigmas)
-N_REPEAT = 10
+N_REPEAT = 20
 
-NX, NY = 2**13, 2**13
+NX, NY = 2**12, 2**12
 DATA_PREFIX = os.path.join(DATA_DIR, "corr_sig")
 TASKS = "params fwhp fwhp_y central_amplitude out_lims"
 REL_SENS, ABS_SENS = 0.01, 0
