@@ -66,5 +66,5 @@ if __name__ == "__main__":
             
             # save the figure
             figname = filename.replace(".txt", ".png").replace("data/", "")
-            plt.savefig(os.path.join(SAVE_DIR, figname), boox_inches="tight")
+            plt.savefig(os.path.join(SAVE_DIR, figname), bbox_inches="tight")
         plt.show()
